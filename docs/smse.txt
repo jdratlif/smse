@@ -1,0 +1,372 @@
+--------------------------------------------------------------------------------
+| smse 0.90 - The Super Metroid SRAM Editor
+| Copyright (C) 2005 emuWorks (http://games.technoplaza.net/)
+| by John Ratliff <webmaster [AT] technoplaza [DOT] net>
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+| Table of Contents
+--------------------------------------------------------------------------------
+
+  - 1.0 Introduction
+  - 2.0 Compilation and Installation
+  - 3.0 Using the Program
+    - 3.1 Basics
+    - 3.2 Save Points
+    - 3.3 The Game Menu
+      - 3.3.1 Game Selection
+      - 3.3.2 The Ending Submenu
+      - 3.3.3 The Give Submenu
+  - 4.0 Known Bugs and Issues
+  - 5.0 Release History
+  - 6.0 Contact Information
+  - 7.0 Thanks and Acknowledgments
+  - 8.0 Legal Information
+
+--------------------------------------------------------------------------------
+| 1.0 Introduction
+--------------------------------------------------------------------------------
+
+  Welcome to smse, the Super Metroid SRAM Editor. This program is a
+  cross-platform tool for editing Super Metroid SRAM files created and used by
+  SNES emulators.
+  
+  In more simple terms, if you play Super Metroid for SNES on an emulator, you
+  can edit the save games with this program. SRAM files are emulator
+  independent, meaning they work with any proper SNES emulator. The two most
+  popular and complete SNES emulators are Snes9x and ZSNES. This program has
+  been tested to work with both of them, though ANY SNES emulator should work.
+  
+  The SRAM file is NOT a save state and this program is NOT a save state
+  emulator. Save states ARE emulator dependent, and I disdain save state editors
+  because of that. This program will not edit ZSNES save states (*.zst,
+  *.zs[1-9]) or Snes9x freeze states (*.00[0-9]). It works only with the games
+  own internal save method of SRAM. Snes9x and ZSNES always create SRAM files
+  with the extention .srm, and since they are the standard, I will assume all
+  other emulators do as well.
+  
+  So, what does this program do? It lets you edit nearly any property of your
+  Super Metroid save game. In other words, it's a cheat tool for Super Metroid.
+  
+  You may be asking why I wrote this when there are other programs around that
+  edit Super Metroid save games. First, most of them are ZSNES save state
+  editors which I hate and no Mac user can even use. Second, they are extremely
+  limited in what they do. I wanted a program that would surpass the current
+  offerings. Third, they are all windows only.
+  
+  phonymike created the first (and only until now) SRAM editor for Super
+  Metroid. His work was inspiring, far surpassing the two savestate editors I
+  have seen. Yet even his work is lacking in my eyes. I wanted something truly
+  comprehensive. Thanks to phonymike's work on the SRAM checksum, I have been
+  able to create smse, which is a tribute to his work in finding the checksum
+  algorithm required to write an SRAM editor like this. I also borrowed
+  information on some SRAM offsets from his documentation, though I found many
+  others independently.
+  
+  So, why is smse better than all the previous offerings?
+  
+  First, as has already been said, it is an SRAM editor rather than a save state
+  editor. Therefore, smse will work with ANY SNES emulator: ZSNES, Snes9x, or
+  some other emulator that may have replaced them by the time you read this.
+  
+  Second, you can edit nearly every single property of a Super Metroid game.
+  Samus' energy and inventory, bosses killed, zebetites killed, the save point,
+  Samus' map data, game time, every piece of equipment, every missile, super
+  missile, and power bomb pack, every energy tank and reserve tank, every door,
+  and more.
+  
+  Third, it works in Windows, Linux, and Mac OS X. It probably works in every
+  unix since the unix version uses GTK+, but only these three platforms are
+  tested and supported. Be glad to help you out on another system though if you
+  need it.
+  
+  Fourth, it is free software under the GNU GPL. This means you can get the
+  source code if you like.
+  
+--------------------------------------------------------------------------------
+| 2.0 Compilation and Installation
+--------------------------------------------------------------------------------
+
+  If you are not using a binary distribution (Binaries are provided for Windows,
+  Linux GTK+, and Mac OS X), then you will need to compile the source. Or maybe
+  you just want to. In either case, it should be fairly simple. First, here are
+  the prerequisites:
+  
+  An ISO compliant C++ compiler. I use g++ (3.3 or higher is recommended).
+  wxWidgets >= 2.6.0. I used wxWidgets 2.6.2. http://www.wxwidgets.org
+  
+  I use the GNU autotools to create Makefiles, so if you have a UNIX build
+  environment, you can probably just do
+  
+  ./configure && make
+  
+  make install if you like. configure with --prefix if you like also. You can do
+  ./configure --help for a full option listing.
+  
+  In Windows, you can use mingw and msys to obtain a unix development
+  environment. This is how I built the Windows binary.
+  
+--------------------------------------------------------------------------------
+| 3.0 Using the Program
+--------------------------------------------------------------------------------
+
+  To start the program, simply double-click on the smse (or smse.exe in Windows)
+  executable. You can also start it from a terminal if you prefer.
+  
+--------------------------------------------------------------------------------
+| 3.1 Basics
+--------------------------------------------------------------------------------
+
+  I think the program is fairly intuitive for anyone reasonably familiar with
+  common program controls such as checkboxes, drop-down boxes, text boxes, and
+  spin buttons.
+  
+  When the program is started, a big blank window will open. You will need to
+  select open from the file menu to select a Super Metroid SRAM file. At this
+  time, you cannot specify one on the terminal. When you select open, a file
+  dialog will appear and let you browse for your SRAM file.
+  
+  ZSNES on Windows generally stores its SRAM files in the same directory as the
+  ROM file unless you have explicitly changed this behavior. I believe Snes9x
+  does the same. Consult your emulator docs for more information on where to
+  find your SRM file. An example of a Super Metroid SRAM file might be
+  "Super Metroid (J,U).srm". This is the NSRT ROM name for Super Metroid
+  (Japan/US version).
+  
+  After you have opened the SRAM file, a notebook will open (terminology varies,
+  but a notebook is the window with tabs at the top where you can select a
+  different page). There are five tabs on the notebook: "Game", "Misc", "Items",
+  "Color Doors", and "Special Doors". The names should give you a hint as to
+  what kinds of Super Metroid properties you can edit on each page, but we will
+  do a brief overview.
+  
+  The 'Game' tab has general game properties. These include Samus' health,
+  inventory, which bosses she has killed, the save point, and her map data (the
+  maps given to you by the map data stations in the game).
+  
+  Note: The Tourian map is given to you automatically when you first enter
+        Tourian, but you can take it away and give it back.
+        
+  The 'Misc' tab has the more minor game properties that are generally of little
+  interest to edit. The sole exception is the game time, which determines your
+  ending. In addition to the game time, you can edit some misc game properties
+  like whether you have rescued the animals or brok the Maridian glass tube.
+  Finally, the game configuration is editable here (controller configuration,
+  language, etc).
+  
+  The 'Items' tab contains all the items Samus can find on Zebes. This includes
+  all her suit power-ups (Morphing Ball, Space Jump, Varia Suit, etc), the
+  grappling beam and X-Ray Scope, all the missile, super missile, and power bomb
+  packs, and finally, all the energy and reserve tanks.
+  
+  Note: To avoid any confusion by Super Metroid, the program tries as much as
+        possible to limit invalid selections or choices. You cannot have
+        missiles, super missiles, or power bombs without any packs picked up.
+        The carrying capacity of each is limited to how many you have picked up.
+        The same goes for energy and reserve energy. You also cannot have the
+        spazer and plasma simultaneously. This is a good limit though because if
+        you fired such a beam, the game would crash (yes, I tried it).
+        
+  The 'Color Doors' tab contains all the red, green, and yellow doors in the
+  game that I was able to find. I think this is all of them, but I might have
+  missed a couple. The doors have descriptions where possible, but some doors
+  don't lead to anything that can be pointed out without a common point of
+  reference. I did about the best I could. I will try to update the names if I
+  can.
+  
+  The final tab, 'Special Doors' contains all the eye doors and metal doors.
+  The eye doors are the doors with eyes in them that shoot at Samus. There are
+  five in the game, one for each area (excluding Crateria and the Space Colony).
+  The metal doors are the ones that flash when you have completed a task. I do
+  not know the ramifications of opening a door and exiting through it before a
+  task is complete. For instance, if you were to open Phantoon's exit door and
+  leave during the battle, it is unknown what would happen. Attempt this at your
+  own risk. Maybe I'll try it and update the docs.
+  
+  Most of the controls on the five tabs are fairly straightforward. Checkboxes
+  for almost everything. A few radio buttons for exclusive choices and finally,
+  some text boxes for entering values.
+  
+  The energy, reserve, missile, super missile, and power bomb controls cannot
+  prevent you from entering values beyond the valid range. However, a warning
+  will appear in the status bar for four seconds if you try, and the invalid
+  value will never be used. I wish I could prevent users from entering invalid
+  values in the first place, but this seems to be a difficult if not impossible
+  task.
+  
+  Because of the way the game works, it is not possible to kill individual
+  zebetites. The game only checks for a certain bit pattern when deciding to
+  display a zebetite or not. This means you can kill any number of zebetites
+  in a row, but you can't kill 1 and 3 without killing 2. (or if you can, then
+  I don't know the math to do it).
+  
+  The game time control is in the form hours:minutes. You must supply a valid
+  value for the game time to change. The status bar will flash a warning while
+  you edit until you have a valid value. The range of Metroid time is 0:00 (0
+  hours and 0 minutes) to 99:59 (99 hours and 59 minutes). The game will stop
+  tracking time after this.
+  
+  The controller configuration controls are not validated currently. This means
+  you can enter invalid controller configurations and the program will simply
+  let you. The game will be confused though and ignore any invalid selections
+  you make. For some reason, the game only allows Angle Up/Down to be mapped to
+  the R and L buttons, so the program only presents those two values.
+  
+--------------------------------------------------------------------------------
+| 3.2 Save Points
+--------------------------------------------------------------------------------
+
+  I wish I had a comprehensive list of the save points, but unfortunately, such
+  a list would require a common point of reference, which I don't have.
+  
+  There are three save points I know about. I may update this section to list
+  some others that could be easily described.
+  
+  Crateria 1 is Samus' ship.
+  Tourian 1 is the save point just before Mother Brain.
+  Tourian 2 is the save point at the entrance to Tourian.
+  
+  Once you pass the Metroid larva, you cannot exit Tourian normally. The metal
+  door that blocks your path cannot be opened as far as I know. You can change
+  your save point if you want to leave Tourian.
+  
+  The numbers mean nothing. 1 is not necessarily the save point closest to the
+  area's elevator (though one would think it should be, I don't think it ever
+  is). Sorry I don't have a better list than this. I'll try to work on getting
+  the ones closest to the area elevators at the least.
+  
+--------------------------------------------------------------------------------
+| 3.3 The Game Menu
+--------------------------------------------------------------------------------
+
+  The game menu is a handy menu for several reasons. First, it allows you to
+  change game slots and edit different games. Second, it allows you to select
+  game times for the three endings. Third, it allows you to easily give yourself
+  certain blocks of stuff.
+
+--------------------------------------------------------------------------------
+| 3.3.1 Game Selection
+--------------------------------------------------------------------------------
+
+  By default, when you open a SRAM file, it defaults to Game A. You can change
+  this to any of the three games by selecting them from the Game menu.
+
+--------------------------------------------------------------------------------
+| 3.3.2 The Ending Submenu
+--------------------------------------------------------------------------------
+
+  The ending submenu on the game menu allows you to select which ending you
+  want. The best ending changes your time to 0:00, the average ending changes
+  your time to 3:00, and the worst ending changes your time to 10:00.
+  
+  The three endings are:
+  
+  Best    ) Samus removes her space suit to show her in a swimsuit
+  Average ) Samus removes her helmet
+  Worst   ) Thumbs up from Samus, but the suit and helmet stay on
+  
+  Your ending is slightly affected if you rescue the animals, but this is not
+  changed by the ending menu. You can edit this property on the 'Misc' tab if
+  you don't want to rescue them yourself.
+
+--------------------------------------------------------------------------------
+| 3.3.3 The Give Submenu
+--------------------------------------------------------------------------------
+
+  The final part of the game menu is the give submenu. This menu allows you to
+  give yourself certain blocks of stuff.
+  
+  Everything - You get everything.
+  
+  Energy - Fill Samus' primary and reserve tanks
+  Inventory - Fill Samus' missile, super missile, and power bomb inventory
+  
+  Bosses - Kills all bosses
+  Mini-Bosses - Kills all mini-bosses
+  Zebetites - Kills all zebetites
+  
+  Maps - Give Samus all map data
+  
+  Items - Give Samus all items (Morphing Ball, Space Jump, Ice Beam, etc)
+  
+  Missile Packs - Give Samus all missile packs
+  Super Missile Packs - Give Samus all super missile packs
+  Power Bomb Packs - Give Samue all power bomb packs
+  
+  Energy Tanks - Give Samus all energy tanks
+  Reserve Tanks - Give Samus all reserve tanks
+  
+  Red Doors - Open all red doors
+  Green Doors - Open all green doors
+  Yellow Doors - Open all yellow doors
+  Eye Doors - Destroy all eye doors
+  Metal Doors - Open all metal doors
+  
+  Using the give everything, I was able to beat the game in 10 minutes. 1 minute
+  to complete the Space Colony, and 9 minutes to make it from the ship to
+  Tourian, kill mother brain, and escape Zebes. I did not rescue the animals or
+  use any speed tricks. It would have been faster if I had changed my save point
+  to Tourian 1. Because all the metal doors were open, I simply screw attacked
+  past the Metroids without killing any. I received a 100% collection rate for
+  items.
+
+--------------------------------------------------------------------------------
+| 4.0 Known Bugs and Issues
+--------------------------------------------------------------------------------
+
+  There are no KNOWN bugs at this time. :-)
+  
+  This program requires a 1024x768 display. Sorry. I really do try to aim for
+  800x600 most of the time, but there are just too many things to edit in
+  Super Metroid. An 800x600 rewrite may come later, but right now, it's not on
+  my TODO list. In Windows, it may barely fit on 800x600. Linux is a definite
+  no, and I don't think the OS X version will fit in 800x600 either.
+  
+  You can create invalid controller configurations with this program. There is
+  no check for invalid configurations currently. I hope to address this in a
+  future version, but it wasn't a priority. I doubt many people will use the
+  controller configuration controls, but if you do, make sure you don't
+  duplicate any buttons or it won't work as expected.
+  
+  I think you can edit which Metroids have been killed. I thought earlier it was
+  tied to the metal doors being open, but later information contradicts this. I
+  may add a Metroid killing property in a future version.
+  
+--------------------------------------------------------------------------------
+| 5.0 Release History
+--------------------------------------------------------------------------------
+  
+  Version 0.90 - Thursday, October 13, 2005
+    - First public release
+
+--------------------------------------------------------------------------------
+| 6.0 Contacting the Author
+--------------------------------------------------------------------------------
+
+  I can be contacted via email (webmaster [AT] technoplaza [DOT] net). Replace
+  that as appropriate. I also have an online feedback form at
+  http://www.technoplaza.net/feedback.php
+  
+--------------------------------------------------------------------------------
+| Thanks and Acknowledgments
+--------------------------------------------------------------------------------
+
+  Thanks go to phonymike, creator of the original SRAM editor for Super Metroid,
+  and the guy who discovered the checksum algorithm required to make SRAM
+  editors for Super Metroid. smse would not exist without his work.
+  
+  Thanks also go out to the entire wxWidgets team for creating a free
+  cross-platform GUI API that lets me build programs on Windows, Linux, and
+  Mac OS X without Java.
+
+--------------------------------------------------------------------------------
+| 8.0 Legal Information
+--------------------------------------------------------------------------------
+
+  This program is Copyright (C) 2005 emuWorks (http://games.technoplaza.net/).
+  It is licensed under the GNU General Public License, which is included with
+  this program in the docs directory in the file license.txt.
+  
+  For more information, please consult GNU at http://www.gnu.org/, or the Free
+  Software Foundation at http://www.fsf.org/.
+
