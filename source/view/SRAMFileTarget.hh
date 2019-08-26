@@ -20,39 +20,43 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
  
-// $Id: App.hh,v 1.2 2005/10/15 03:13:48 technoplaza Exp $
+// $Id: SRAMFileTarget.hh,v 1.1 2005/10/15 03:13:48 technoplaza Exp $
 
-#ifndef _SMSE_APP_HH_
-#define _SMSE_APP_HH_
+#ifndef _SMSE_SRAMFILETARGET_HH_
+#define _SMSE_SRAMFILETARGET_HH_
 
-/// a namespace for all the classes used by smse
+#include <wx/dnd.h>
+
 namespace smse {
     class Frame;
     
-    /// The application class and starting point.
-    class App : public wxApp {
-        DECLARE_CLASS(App)
-        
+    /// Class to implement a drop target for SRAM files on the Frame
+    class SRAMFileTarget : public wxFileDropTarget {
     private:
         Frame *frame;
         
     public:
         /**
-         * Called to initialize the application.
+         * Creates a new SRAMFileTarget.
          *
-         * @return true on successful initialization; false otherwise.
+         * @param frame The Frame to send files to.
          */
-        virtual bool OnInit();
+        SRAMFileTarget(Frame *frame);
         
         /**
-         * Called to run the application.
+         * Called when files are dropped on the associated Frame.
          *
-         * @return The exit code.
+         * @param x The x-coordinate of the drop (unused).
+         * @param y The y-coordinate of the drop (unused).
+         * @param files The filenames.
+         *
+         * @return true if the drop was accepted; false otherwise.
          */
-        virtual int OnRun();
+        virtual bool OnDropFiles(wxCoord x, wxCoord y,
+            const wxArrayString &files);
     };
     
-    DECLARE_APP(App)
+    inline SRAMFileTarget::SRAMFileTarget(Frame *frame) : frame(frame) {}
 }
 
 #endif

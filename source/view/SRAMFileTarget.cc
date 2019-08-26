@@ -20,7 +20,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
  
-// $Id: App.cc,v 1.2 2005/10/15 03:13:48 technoplaza Exp $
+// $Id: SRAMFileTarget.cc,v 1.1 2005/10/15 03:13:48 technoplaza Exp $
 
 #ifdef HAVE_CONFIG_H
     #include <config.h>
@@ -32,41 +32,33 @@
     #include <wx/wx.h>
 #endif
 
-#include <wx/xrc/xmlres.h>
-
-#include "AppConstants.hh"
-#include "App.hh"
+#include "model/SRAMFile.hh"
 #include "view/Frame.hh"
+#include "view/SRAMFileTarget.hh"
 
 using namespace smse;
 
-const wxString smse::APP_NAME(wxT("Super Metroid SRAM Editor"));
-const wxString smse::APP_VERSION(wxT(PACKAGE_VERSION));
-const wxString smse::APP_COPYRIGHT(wxT("Copyright (C) 2005 emuWorks"));
-const wxString smse::APP_URL(wxT("http://games.technoplaza.net/"));
-
-// prototype for InitXmlResource function
-void InitXmlResource();
-
-bool App::OnInit() {
-    // initialize the XRC resources
-    wxXmlResource::Get()->InitAllHandlers();
-    InitXmlResource();
-    
-    frame = new Frame;
-    frame->Show();
+bool SRAMFileTarget::OnDropFiles(wxCoord, wxCoord, const wxArrayString &files) {
+    if (files.GetCount() > 0) {
+        // save current SRAMFile
+        if (frame->sram && frame->sram->isModified()) {
+            int answer = wxMessageBox(wxT("Save current SRAM?"),
+                wxT("Warning: Unsaved SRAM file"),
+                wxYES_NO | wxCANCEL | wxICON_QUESTION);
+            
+            if (answer == wxYES) {
+                if (!frame->save()) {
+                    return false;
+                }
+            } else if (answer == wxCANCEL) {
+                return false;
+            }
+        }
+        
+        // open the first file
+        frame->open(files[0]);
+    }
     
     return true;
 }
-
-int App::OnRun() {
-    if (argc >= 2) {
-        frame->open(argv[1]);
-    }
-    
-    return wxApp::OnRun();
-}
-
-IMPLEMENT_CLASS(App, wxApp)
-IMPLEMENT_APP(App)
 

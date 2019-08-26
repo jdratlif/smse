@@ -81,84 +81,141 @@
                     <object class="separator">
                     </object>
                     <object class="wxMenuItem" name="IDM_GAME_GIVE_ENERGY">
-                        <label>E&amp;nergy</label>
+                        <label>Energy</label>
                         <help>Fill Samus' primary and reserve energy</help>
                     </object>
                     <object class="wxMenuItem" name="IDM_GAME_GIVE_INVENTORY">
-                        <label>&amp;Inventory</label>
+                        <label>Inventory</label>
                         <help>Fill Samus' missile, super missile, and power bomb inventory</help>
                     </object>
                     <object class="separator">
                     </object>
                     <object class="wxMenuItem" name="IDM_GAME_GIVE_BOSSES">
-                        <label>&amp;Bosses</label>
+                        <label>Bosses</label>
                         <help>Kill all bosses</help>
                     </object>
                     <object class="wxMenuItem" name="IDM_GAME_GIVE_MINIBOSSES">
-                        <label>&amp;Mini-Bosses</label>
+                        <label>Mini-Bosses</label>
                         <help>Kill all mini-bosses</help>
                     </object>
+                    <object class="wxMenuItem" name="IDM_GAME_GIVE_METROIDROOMS">
+                        <label>Metroid Rooms</label>
+                        <help>Clear all metroid rooms</help>
+                    </object>
                     <object class="wxMenuItem" name="IDM_GAME_GIVE_ZEBETITES">
-                        <label>&amp;Zebetites</label>
+                        <label>Zebetites</label>
                         <help>Kill all zebetites</help>
                     </object>
                     <object class="separator">
                     </object>
                     <object class="wxMenuItem" name="IDM_GAME_GIVE_MAPS">
-                        <label>M&amp;aps</label>
+                        <label>Maps</label>
                         <help>Give Samus all area maps</help>
                     </object>
                     <object class="separator">
                     </object>
                     <object class="wxMenuItem" name="IDM_GAME_GIVE_ITEMS">
-                        <label>Item&amp;s</label>
+                        <label>Items</label>
                         <help>Give Samus all items</help>
                     </object>
                     <object class="separator">
                     </object>
                     <object class="wxMenuItem" name="IDM_GAME_GIVE_MISSILES">
-                        <label>Missi&amp;le Packs</label>
+                        <label>Missile Packs</label>
                         <help>Give Samus all missile packs</help>
                     </object>
                     <object class="wxMenuItem" name="IDM_GAME_GIVE_SMISSILES">
-                        <label>S&amp;uper Missile Packs</label>
+                        <label>Super Missile Packs</label>
                         <help>Give Samus all super missile packs</help>
                     </object>
                     <object class="wxMenuItem" name="IDM_GAME_GIVE_PBOMBS">
-                        <label>&amp;Power Bomb Packs</label>
+                        <label>Power Bomb Packs</label>
                         <help>Give Samus all power bomb packs</help>
                     </object>
                     <object class="separator">
                     </object>
                     <object class="wxMenuItem" name="IDM_GAME_GIVE_ETANKS">
-                        <label>Energy &amp;Tanks</label>
+                        <label>Energy Tanks</label>
                         <help>Give Samus all energy tanks</help>
                     </object>
                     <object class="wxMenuItem" name="IDM_GAME_GIVE_RTANKS">
-                        <label>Reser&amp;ve Tanks</label>
+                        <label>Reserve Tanks</label>
                         <help>Give Samus all reserve tanks</help>
                     </object>
                     <object class="separator">
                     </object>
                     <object class="wxMenuItem" name="IDM_GAME_GIVE_REDDOORS">
-                        <label>Re&amp;d Doors</label>
+                        <label>Red Doors</label>
                         <help>Open all red doors</help>
                     </object>
                     <object class="wxMenuItem" name="IDM_GAME_GIVE_GREENDOORS">
-                        <label>&amp;Green Doors</label>
+                        <label>Green Doors</label>
                         <help>Open all green doors</help>
                     </object>
                     <object class="wxMenuItem" name="IDM_GAME_GIVE_YELLOWDOORS">
-                        <label>Yello&amp;w Doors</label>
+                        <label>Yellow Doors</label>
                         <help>Open all yellow doors</help>
                     </object>
                     <object class="wxMenuItem" name="IDM_GAME_GIVE_EYEDOORS">
-                        <label>E&amp;ye Doors</label>
+                        <label>Eye Doors</label>
                         <help>Destroy all eye doors</help>
                     </object>
                     <object class="wxMenuItem" name="IDM_GAME_GIVE_METALDOORS">
-                        <label>Metal D&amp;oors</label>
+                        <label>Metal Doors</label>
                         <help>Open all metal doors</help>
+                    </object>
+                </object>
+                <object class="separator">
+                </object>
+                <object class="wxMenu" name="IDM_GAME_COPY">
+                    <label>Copy</label>
+                    <object class="wxMenu" name="IDM_GAME_COPYA">
+                        <label>Game A</label>
+                        <object class="wxMenuItem" name="IDM_GAME_COPYAB">
+                            <label>Game B</label>
+                            <help>Copy game A over game B</help>
+                        </object>
+                        <object class="wxMenuItem" name="IDM_GAME_COPYAC">
+                            <label>Game C</label>
+                            <help>Copy game A over game C</help>
+                        </object>
+                    </object>
+                    <object class="wxMenu" name="IDM_GAME_COPYB">
+                        <label>Game B</label>
+                        <object class="wxMenuItem" name="IDM_GAME_COPYBA">
+                            <label>Game A</label>
+                            <help>Copy game B over game A</help>
+                        </object>
+                        <object class="wxMenuItem" name="IDM_GAME_COPYBC">
+                            <label>Game C</label>
+                            <help>Copy game B over game C</help>
+                        </object>
+                    </object>
+                    <object class="wxMenu" name="IDM_GAME_COPYC">
+                        <label>Game C</label>
+                        <object class="wxMenuItem" name="IDM_GAME_COPYCA">
+                            <label>Game A</label>
+                            <help>Copy game C over game A</help>
+                        </object>
+                        <object class="wxMenuItem" name="IDM_GAME_COPYCB">
+                            <label>Game B</label>
+                            <help>Copy game C over game B</help>
+                        </object>
+                    </object>
+                </object>
+                <object class="wxMenu" name="IDM_GAME_CLEAR">
+                    <label>Clear</label>
+                    <object class="wxMenuItem" name="IDM_GAME_CLEARA">
+                        <label>Game A</label>
+                        <help>Clear game A</help>
+                    </object>
+                    <object class="wxMenuItem" name="IDM_GAME_CLEARB">
+                        <label>Game B</label>
+                        <help>Clear game B</help>
+                    </object>
+                    <object class="wxMenuItem" name="IDM_GAME_CLEARC">
+                        <label>Game C</label>
+                        <help>Clear game C</help>
                     </object>
                 </object>
             </object>
@@ -352,14 +409,14 @@
                                                         <vgap>0</vgap>
                                                         <hgap>0</hgap>
                                                         <object class="sizeritem">
-                                                            <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP|wxADJUST_MINSIZE</flag>
+                                                            <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxADJUST_MINSIZE</flag>
                                                             <border>5</border>
                                                             <object class="wxStaticText" name="wxID_STATIC">
                                                                 <label>Kraid:</label>
                                                             </object>
                                                         </object>
                                                         <object class="sizeritem">
-                                                            <flag>wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                            <flag>wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT</flag>
                                                             <border>5</border>
                                                             <object class="wxCheckBox" name="IDC_GAME_BOSS_KRAID">
                                                                 <style>wxCHK_2STATE</style>
@@ -368,7 +425,7 @@
                                                             </object>
                                                         </object>
                                                         <object class="sizeritem">
-                                                            <flag>wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                            <flag>wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT</flag>
                                                             <border>5</border>
                                                             <object class="wxCheckBox" name="IDC_GAME_STATUE_KRAID">
                                                                 <style>wxCHK_2STATE</style>
@@ -474,14 +531,14 @@
                                                         <vgap>0</vgap>
                                                         <hgap>0</hgap>
                                                         <object class="sizeritem">
-                                                            <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP|wxADJUST_MINSIZE</flag>
+                                                            <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxADJUST_MINSIZE</flag>
                                                             <border>5</border>
                                                             <object class="wxStaticText" name="wxID_STATIC">
                                                                 <label>Silver Torizo:</label>
                                                             </object>
                                                         </object>
                                                         <object class="sizeritem">
-                                                            <flag>wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                            <flag>wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT</flag>
                                                             <border>5</border>
                                                             <object class="wxCheckBox" name="IDC_GAME_MINIBOSS_SILVERTORIZO">
                                                                 <style>wxCHK_2STATE</style>
@@ -553,6 +610,50 @@
                                                                 <checked>0</checked>
                                                             </object>
                                                         </object>
+                                                    </object>
+                                                </object>
+                                            </object>
+                                        </object>
+                                        <object class="sizeritem">
+                                            <flag>wxGROW|wxLEFT|wxRIGHT</flag>
+                                            <border>5</border>
+                                            <object class="wxStaticBoxSizer" name="wxID_ANY">
+                                                <orient>wxVERTICAL</orient>
+                                                <label>Metroids</label>
+                                                <object class="sizeritem">
+                                                    <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT</flag>
+                                                    <border>5</border>
+                                                    <object class="wxCheckBox" name="IDC_GAME_METROIDROOM1">
+                                                        <style>wxCHK_2STATE</style>
+                                                        <label>Room 1</label>
+                                                        <checked>0</checked>
+                                                    </object>
+                                                </object>
+                                                <object class="sizeritem">
+                                                    <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                    <border>5</border>
+                                                    <object class="wxCheckBox" name="IDC_GAME_METROIDROOM2">
+                                                        <style>wxCHK_2STATE</style>
+                                                        <label>Room 2</label>
+                                                        <checked>0</checked>
+                                                    </object>
+                                                </object>
+                                                <object class="sizeritem">
+                                                    <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                    <border>5</border>
+                                                    <object class="wxCheckBox" name="IDC_GAME_METROIDROOM3">
+                                                        <style>wxCHK_2STATE</style>
+                                                        <label>Room 3</label>
+                                                        <checked>0</checked>
+                                                    </object>
+                                                </object>
+                                                <object class="sizeritem">
+                                                    <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                    <border>5</border>
+                                                    <object class="wxCheckBox" name="IDC_GAME_METROIDROOM4">
+                                                        <style>wxCHK_2STATE</style>
+                                                        <label>Room 4</label>
+                                                        <checked>0</checked>
                                                     </object>
                                                 </object>
                                             </object>
@@ -667,7 +768,7 @@
                                                 <orient>wxVERTICAL</orient>
                                                 <label>Samus' Maps</label>
                                                 <object class="sizeritem">
-                                                    <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                    <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT</flag>
                                                     <border>5</border>
                                                     <object class="wxCheckBox" name="IDC_GAME_MAP_C">
                                                         <style>wxCHK_2STATE</style>
@@ -1322,7 +1423,201 @@
                                             </object>
                                         </object>
                                         <object class="sizeritem">
+                                            <flag>wxGROW|wxRIGHT</flag>
+                                            <border>5</border>
+                                            <object class="wxStaticBoxSizer" name="wxID_ANY">
+                                                <orient>wxVERTICAL</orient>
+                                                <label>Energy Tanks</label>
+                                                <object class="sizeritem">
+                                                    <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                    <border>5</border>
+                                                    <object class="wxCheckBox" name="IDC_ITEMS_ET_C1">
+                                                        <style>wxCHK_2STATE</style>
+                                                        <label>Crateria 1</label>
+                                                        <checked>0</checked>
+                                                    </object>
+                                                </object>
+                                                <object class="sizeritem">
+                                                    <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                    <border>5</border>
+                                                    <object class="wxCheckBox" name="IDC_ITEMS_ET_C2">
+                                                        <style>wxCHK_2STATE</style>
+                                                        <label>Crateria 2</label>
+                                                        <checked>0</checked>
+                                                    </object>
+                                                </object>
+                                                <object class="sizeritem">
+                                                    <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                    <border>5</border>
+                                                    <object class="wxCheckBox" name="IDC_ITEMS_ET_BS1">
+                                                        <style>wxCHK_2STATE</style>
+                                                        <label>Brinstar 1</label>
+                                                        <checked>0</checked>
+                                                    </object>
+                                                </object>
+                                                <object class="sizeritem">
+                                                    <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                    <border>5</border>
+                                                    <object class="wxCheckBox" name="IDC_ITEMS_ET_BS2">
+                                                        <style>wxCHK_2STATE</style>
+                                                        <label>Brinstar 2</label>
+                                                        <checked>0</checked>
+                                                    </object>
+                                                </object>
+                                                <object class="sizeritem">
+                                                    <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                    <border>5</border>
+                                                    <object class="wxCheckBox" name="IDC_ITEMS_ET_BS3">
+                                                        <style>wxCHK_2STATE</style>
+                                                        <label>Brinstar 3</label>
+                                                        <checked>0</checked>
+                                                    </object>
+                                                </object>
+                                                <object class="sizeritem">
+                                                    <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                    <border>5</border>
+                                                    <object class="wxCheckBox" name="IDC_ITEMS_ET_BS4">
+                                                        <style>wxCHK_2STATE</style>
+                                                        <label>Brinstar 4</label>
+                                                        <checked>0</checked>
+                                                    </object>
+                                                </object>
+                                                <object class="sizeritem">
+                                                    <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                    <border>5</border>
+                                                    <object class="wxCheckBox" name="IDC_ITEMS_ET_BS5">
+                                                        <style>wxCHK_2STATE</style>
+                                                        <label>Brinstar 5</label>
+                                                        <checked>0</checked>
+                                                    </object>
+                                                </object>
+                                                <object class="sizeritem">
+                                                    <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                    <border>5</border>
+                                                    <object class="wxCheckBox" name="IDC_ITEMS_ET_NF1">
+                                                        <style>wxCHK_2STATE</style>
+                                                        <label>Norfair 1</label>
+                                                        <checked>0</checked>
+                                                    </object>
+                                                </object>
+                                                <object class="sizeritem">
+                                                    <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                    <border>5</border>
+                                                    <object class="wxCheckBox" name="IDC_ITEMS_ET_NF2">
+                                                        <style>wxCHK_2STATE</style>
+                                                        <label>Norfair 2</label>
+                                                        <checked>0</checked>
+                                                    </object>
+                                                </object>
+                                                <object class="sizeritem">
+                                                    <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                    <border>5</border>
+                                                    <object class="wxCheckBox" name="IDC_ITEMS_ET_NF3">
+                                                        <style>wxCHK_2STATE</style>
+                                                        <label>Norfair 3</label>
+                                                        <checked>0</checked>
+                                                    </object>
+                                                </object>
+                                                <object class="sizeritem">
+                                                    <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                    <border>5</border>
+                                                    <object class="wxCheckBox" name="IDC_ITEMS_ET_NF4">
+                                                        <style>wxCHK_2STATE</style>
+                                                        <label>Norfair 4</label>
+                                                        <checked>0</checked>
+                                                    </object>
+                                                </object>
+                                                <object class="sizeritem">
+                                                    <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                    <border>5</border>
+                                                    <object class="wxCheckBox" name="IDC_ITEMS_ET_WS">
+                                                        <style>wxCHK_2STATE</style>
+                                                        <label>Wrecked Ship</label>
+                                                        <checked>0</checked>
+                                                    </object>
+                                                </object>
+                                                <object class="sizeritem">
+                                                    <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                    <border>5</border>
+                                                    <object class="wxCheckBox" name="IDC_ITEMS_ET_M1">
+                                                        <style>wxCHK_2STATE</style>
+                                                        <label>Maridia 1</label>
+                                                        <checked>0</checked>
+                                                    </object>
+                                                </object>
+                                                <object class="sizeritem">
+                                                    <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                    <border>5</border>
+                                                    <object class="wxCheckBox" name="IDC_ITEMS_ET_M2">
+                                                        <style>wxCHK_2STATE</style>
+                                                        <label>Maridia 2</label>
+                                                        <checked>0</checked>
+                                                    </object>
+                                                </object>
+                                            </object>
+                                        </object>
+                                        <object class="sizeritem">
                                             <flag>wxGROW|wxLEFT|wxRIGHT</flag>
+                                            <border>5</border>
+                                            <object class="wxStaticBoxSizer" name="wxID_ANY">
+                                                <orient>wxVERTICAL</orient>
+                                                <label>Reserve Tanks</label>
+                                                <object class="sizeritem">
+                                                    <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                    <border>5</border>
+                                                    <object class="wxCheckBox" name="IDC_ITEMS_RTANK_BS">
+                                                        <style>wxCHK_2STATE</style>
+                                                        <label>Brinstar</label>
+                                                        <checked>0</checked>
+                                                    </object>
+                                                </object>
+                                                <object class="sizeritem">
+                                                    <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                    <border>5</border>
+                                                    <object class="wxCheckBox" name="IDC_ITEMS_RTANK_NF">
+                                                        <style>wxCHK_2STATE</style>
+                                                        <label>Norfair</label>
+                                                        <checked>0</checked>
+                                                    </object>
+                                                </object>
+                                                <object class="sizeritem">
+                                                    <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                    <border>5</border>
+                                                    <object class="wxCheckBox" name="IDC_ITEMS_RTANK_WS">
+                                                        <style>wxCHK_2STATE</style>
+                                                        <label>Wrecked Ship</label>
+                                                        <checked>0</checked>
+                                                    </object>
+                                                </object>
+                                                <object class="sizeritem">
+                                                    <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                    <border>5</border>
+                                                    <object class="wxCheckBox" name="IDC_ITEMS_RTANK_M">
+                                                        <style>wxCHK_2STATE</style>
+                                                        <label>Maridia</label>
+                                                        <checked>0</checked>
+                                                    </object>
+                                                </object>
+                                            </object>
+                                        </object>
+                                    </object>
+                                </object>
+                            </object>
+                        </object>
+                    </object>
+                    <object class="notebookpage">
+                        <label>Pickups</label>
+                        <object class="wxPanel" name="IDP_PICKUPS">
+                            <style>wxSUNKEN_BORDER|wxTAB_TRAVERSAL</style>
+                            <object class="wxBoxSizer">
+                                <orient>wxVERTICAL</orient>
+                                <object class="sizeritem">
+                                    <flag>wxALIGN_LEFT|wxALL</flag>
+                                    <border>5</border>
+                                    <object class="wxBoxSizer">
+                                        <orient>wxHORIZONTAL</orient>
+                                        <object class="sizeritem">
+                                            <flag>wxGROW|wxRIGHT</flag>
                                             <border>5</border>
                                             <object class="wxStaticBoxSizer" name="wxID_ANY">
                                                 <orient>wxVERTICAL</orient>
@@ -1342,36 +1637,36 @@
                                                                 <vgap>0</vgap>
                                                                 <hgap>0</hgap>
                                                                 <object class="sizeritem">
-                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT</flag>
                                                                     <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_ITEMS_MISSILE_C1">
+                                                                    <object class="wxCheckBox" name="IDC_PICKUPS_MISSILE_C1">
                                                                         <style>wxCHK_2STATE</style>
                                                                         <label>One</label>
                                                                         <checked>0</checked>
                                                                     </object>
                                                                 </object>
                                                                 <object class="sizeritem">
-                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT</flag>
                                                                     <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_ITEMS_MISSILE_C2">
+                                                                    <object class="wxCheckBox" name="IDC_PICKUPS_MISSILE_C2">
                                                                         <style>wxCHK_2STATE</style>
                                                                         <label>Two</label>
                                                                         <checked>0</checked>
                                                                     </object>
                                                                 </object>
                                                                 <object class="sizeritem">
-                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT</flag>
                                                                     <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_ITEMS_MISSILE_C3">
+                                                                    <object class="wxCheckBox" name="IDC_PICKUPS_MISSILE_C3">
                                                                         <style>wxCHK_2STATE</style>
                                                                         <label>Three</label>
                                                                         <checked>0</checked>
                                                                     </object>
                                                                 </object>
                                                                 <object class="sizeritem">
-                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT</flag>
                                                                     <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_ITEMS_MISSILE_C4">
+                                                                    <object class="wxCheckBox" name="IDC_PICKUPS_MISSILE_C4">
                                                                         <style>wxCHK_2STATE</style>
                                                                         <label>Four</label>
                                                                         <checked>0</checked>
@@ -1380,7 +1675,7 @@
                                                                 <object class="sizeritem">
                                                                     <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
                                                                     <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_ITEMS_MISSILE_C5">
+                                                                    <object class="wxCheckBox" name="IDC_PICKUPS_MISSILE_C5">
                                                                         <style>wxCHK_2STATE</style>
                                                                         <label>Five</label>
                                                                         <checked>0</checked>
@@ -1389,7 +1684,7 @@
                                                                 <object class="sizeritem">
                                                                     <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
                                                                     <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_ITEMS_MISSILE_C6">
+                                                                    <object class="wxCheckBox" name="IDC_PICKUPS_MISSILE_C6">
                                                                         <style>wxCHK_2STATE</style>
                                                                         <label>Six</label>
                                                                         <checked>0</checked>
@@ -1398,7 +1693,7 @@
                                                                 <object class="sizeritem">
                                                                     <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
                                                                     <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_ITEMS_MISSILE_C7">
+                                                                    <object class="wxCheckBox" name="IDC_PICKUPS_MISSILE_C7">
                                                                         <style>wxCHK_2STATE</style>
                                                                         <label>Seven</label>
                                                                         <checked>0</checked>
@@ -1407,7 +1702,7 @@
                                                                 <object class="sizeritem">
                                                                     <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
                                                                     <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_ITEMS_MISSILE_C8">
+                                                                    <object class="wxCheckBox" name="IDC_PICKUPS_MISSILE_C8">
                                                                         <style>wxCHK_2STATE</style>
                                                                         <label>Eight</label>
                                                                         <checked>0</checked>
@@ -1432,54 +1727,54 @@
                                                                 <vgap>0</vgap>
                                                                 <hgap>0</hgap>
                                                                 <object class="sizeritem">
-                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT</flag>
                                                                     <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_ITEMS_MISSILE_BS1">
+                                                                    <object class="wxCheckBox" name="IDC_PICKUPS_MISSILE_BS1">
                                                                         <style>wxCHK_2STATE</style>
                                                                         <label>One</label>
                                                                         <checked>0</checked>
                                                                     </object>
                                                                 </object>
                                                                 <object class="sizeritem">
-                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT</flag>
                                                                     <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_ITEMS_MISSILE_BS2">
+                                                                    <object class="wxCheckBox" name="IDC_PICKUPS_MISSILE_BS2">
                                                                         <style>wxCHK_2STATE</style>
                                                                         <label>Two</label>
                                                                         <checked>0</checked>
                                                                     </object>
                                                                 </object>
                                                                 <object class="sizeritem">
-                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT</flag>
                                                                     <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_ITEMS_MISSILE_BS3">
+                                                                    <object class="wxCheckBox" name="IDC_PICKUPS_MISSILE_BS3">
                                                                         <style>wxCHK_2STATE</style>
                                                                         <label>Three</label>
                                                                         <checked>0</checked>
                                                                     </object>
                                                                 </object>
                                                                 <object class="sizeritem">
-                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT</flag>
                                                                     <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_ITEMS_MISSILE_BS4">
+                                                                    <object class="wxCheckBox" name="IDC_PICKUPS_MISSILE_BS4">
                                                                         <style>wxCHK_2STATE</style>
                                                                         <label>Four</label>
                                                                         <checked>0</checked>
                                                                     </object>
                                                                 </object>
                                                                 <object class="sizeritem">
-                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT</flag>
                                                                     <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_ITEMS_MISSILE_BS5">
+                                                                    <object class="wxCheckBox" name="IDC_PICKUPS_MISSILE_BS5">
                                                                         <style>wxCHK_2STATE</style>
                                                                         <label>Five</label>
                                                                         <checked>0</checked>
                                                                     </object>
                                                                 </object>
                                                                 <object class="sizeritem">
-                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT</flag>
                                                                     <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_ITEMS_MISSILE_BS6">
+                                                                    <object class="wxCheckBox" name="IDC_PICKUPS_MISSILE_BS6">
                                                                         <style>wxCHK_2STATE</style>
                                                                         <label>Six</label>
                                                                         <checked>0</checked>
@@ -1488,7 +1783,7 @@
                                                                 <object class="sizeritem">
                                                                     <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
                                                                     <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_ITEMS_MISSILE_BS7">
+                                                                    <object class="wxCheckBox" name="IDC_PICKUPS_MISSILE_BS7">
                                                                         <style>wxCHK_2STATE</style>
                                                                         <label>Seven</label>
                                                                         <checked>0</checked>
@@ -1497,7 +1792,7 @@
                                                                 <object class="sizeritem">
                                                                     <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
                                                                     <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_ITEMS_MISSILE_BS8">
+                                                                    <object class="wxCheckBox" name="IDC_PICKUPS_MISSILE_BS8">
                                                                         <style>wxCHK_2STATE</style>
                                                                         <label>Eight</label>
                                                                         <checked>0</checked>
@@ -1506,7 +1801,7 @@
                                                                 <object class="sizeritem">
                                                                     <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
                                                                     <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_ITEMS_MISSILE_BS9">
+                                                                    <object class="wxCheckBox" name="IDC_PICKUPS_MISSILE_BS9">
                                                                         <style>wxCHK_2STATE</style>
                                                                         <label>Nine</label>
                                                                         <checked>0</checked>
@@ -1515,7 +1810,7 @@
                                                                 <object class="sizeritem">
                                                                     <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
                                                                     <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_ITEMS_MISSILE_BS10">
+                                                                    <object class="wxCheckBox" name="IDC_PICKUPS_MISSILE_BS10">
                                                                         <style>wxCHK_2STATE</style>
                                                                         <label>Ten</label>
                                                                         <checked>0</checked>
@@ -1524,7 +1819,7 @@
                                                                 <object class="sizeritem">
                                                                     <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
                                                                     <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_ITEMS_MISSILE_BS11">
+                                                                    <object class="wxCheckBox" name="IDC_PICKUPS_MISSILE_BS11">
                                                                         <style>wxCHK_2STATE</style>
                                                                         <label>Eleven</label>
                                                                         <checked>0</checked>
@@ -1533,7 +1828,7 @@
                                                                 <object class="sizeritem">
                                                                     <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
                                                                     <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_ITEMS_MISSILE_BS12">
+                                                                    <object class="wxCheckBox" name="IDC_PICKUPS_MISSILE_BS12">
                                                                         <style>wxCHK_2STATE</style>
                                                                         <label>Twelve</label>
                                                                         <checked>0</checked>
@@ -1558,45 +1853,45 @@
                                                                 <vgap>0</vgap>
                                                                 <hgap>0</hgap>
                                                                 <object class="sizeritem">
-                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT</flag>
                                                                     <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_ITEMS_MISSILE_NF1">
+                                                                    <object class="wxCheckBox" name="IDC_PICKUPS_MISSILE_NF1">
                                                                         <style>wxCHK_2STATE</style>
                                                                         <label>One</label>
                                                                         <checked>0</checked>
                                                                     </object>
                                                                 </object>
                                                                 <object class="sizeritem">
-                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT</flag>
                                                                     <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_ITEMS_MISSILE_NF2">
+                                                                    <object class="wxCheckBox" name="IDC_PICKUPS_MISSILE_NF2">
                                                                         <style>wxCHK_2STATE</style>
                                                                         <label>Two</label>
                                                                         <checked>0</checked>
                                                                     </object>
                                                                 </object>
                                                                 <object class="sizeritem">
-                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT</flag>
                                                                     <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_ITEMS_MISSILE_NF3">
+                                                                    <object class="wxCheckBox" name="IDC_PICKUPS_MISSILE_NF3">
                                                                         <style>wxCHK_2STATE</style>
                                                                         <label>Three</label>
                                                                         <checked>0</checked>
                                                                     </object>
                                                                 </object>
                                                                 <object class="sizeritem">
-                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT</flag>
                                                                     <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_ITEMS_MISSILE_NF4">
+                                                                    <object class="wxCheckBox" name="IDC_PICKUPS_MISSILE_NF4">
                                                                         <style>wxCHK_2STATE</style>
                                                                         <label>Four</label>
                                                                         <checked>0</checked>
                                                                     </object>
                                                                 </object>
                                                                 <object class="sizeritem">
-                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT</flag>
                                                                     <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_ITEMS_MISSILE_NF5">
+                                                                    <object class="wxCheckBox" name="IDC_PICKUPS_MISSILE_NF5">
                                                                         <style>wxCHK_2STATE</style>
                                                                         <label>Five</label>
                                                                         <checked>0</checked>
@@ -1605,7 +1900,7 @@
                                                                 <object class="sizeritem">
                                                                     <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
                                                                     <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_ITEMS_MISSILE_NF6">
+                                                                    <object class="wxCheckBox" name="IDC_PICKUPS_MISSILE_NF6">
                                                                         <style>wxCHK_2STATE</style>
                                                                         <label>Six</label>
                                                                         <checked>0</checked>
@@ -1614,7 +1909,7 @@
                                                                 <object class="sizeritem">
                                                                     <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
                                                                     <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_ITEMS_MISSILE_NF7">
+                                                                    <object class="wxCheckBox" name="IDC_PICKUPS_MISSILE_NF7">
                                                                         <style>wxCHK_2STATE</style>
                                                                         <label>Seven</label>
                                                                         <checked>0</checked>
@@ -1623,7 +1918,7 @@
                                                                 <object class="sizeritem">
                                                                     <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
                                                                     <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_ITEMS_MISSILE_NF8">
+                                                                    <object class="wxCheckBox" name="IDC_PICKUPS_MISSILE_NF8">
                                                                         <style>wxCHK_2STATE</style>
                                                                         <label>Eight</label>
                                                                         <checked>0</checked>
@@ -1632,7 +1927,7 @@
                                                                 <object class="sizeritem">
                                                                     <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
                                                                     <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_ITEMS_MISSILE_NF9">
+                                                                    <object class="wxCheckBox" name="IDC_PICKUPS_MISSILE_NF9">
                                                                         <style>wxCHK_2STATE</style>
                                                                         <label>Nine</label>
                                                                         <checked>0</checked>
@@ -1641,7 +1936,7 @@
                                                                 <object class="sizeritem">
                                                                     <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
                                                                     <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_ITEMS_MISSILE_NF10">
+                                                                    <object class="wxCheckBox" name="IDC_PICKUPS_MISSILE_NF10">
                                                                         <style>wxCHK_2STATE</style>
                                                                         <label>Ten</label>
                                                                         <checked>0</checked>
@@ -1650,7 +1945,7 @@
                                                                 <object class="sizeritem">
                                                                     <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
                                                                     <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_ITEMS_MISSILE_NF11">
+                                                                    <object class="wxCheckBox" name="IDC_PICKUPS_MISSILE_NF11">
                                                                         <style>wxCHK_2STATE</style>
                                                                         <label>Eleven</label>
                                                                         <checked>0</checked>
@@ -1659,7 +1954,7 @@
                                                                 <object class="sizeritem">
                                                                     <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
                                                                     <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_ITEMS_MISSILE_NF12">
+                                                                    <object class="wxCheckBox" name="IDC_PICKUPS_MISSILE_NF12">
                                                                         <style>wxCHK_2STATE</style>
                                                                         <label>Twelve</label>
                                                                         <checked>0</checked>
@@ -1668,7 +1963,7 @@
                                                                 <object class="sizeritem">
                                                                     <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
                                                                     <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_ITEMS_MISSILE_NF13">
+                                                                    <object class="wxCheckBox" name="IDC_PICKUPS_MISSILE_NF13">
                                                                         <style>wxCHK_2STATE</style>
                                                                         <label>Thirteen</label>
                                                                         <checked>0</checked>
@@ -1677,7 +1972,7 @@
                                                                 <object class="sizeritem">
                                                                     <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
                                                                     <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_ITEMS_MISSILE_NF14">
+                                                                    <object class="wxCheckBox" name="IDC_PICKUPS_MISSILE_NF14">
                                                                         <style>wxCHK_2STATE</style>
                                                                         <label>Fourteen</label>
                                                                         <checked>0</checked>
@@ -1686,7 +1981,7 @@
                                                                 <object class="sizeritem">
                                                                     <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
                                                                     <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_ITEMS_MISSILE_NF15">
+                                                                    <object class="wxCheckBox" name="IDC_PICKUPS_MISSILE_NF15">
                                                                         <style>wxCHK_2STATE</style>
                                                                         <label>Fifteen</label>
                                                                         <checked>0</checked>
@@ -1703,27 +1998,27 @@
                                                         <orient>wxHORIZONTAL</orient>
                                                         <label>Wrecked Ship</label>
                                                         <object class="sizeritem">
-                                                            <flag>wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                            <flag>wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT</flag>
                                                             <border>5</border>
-                                                            <object class="wxCheckBox" name="IDC_ITEMS_MISSILE_WS1">
+                                                            <object class="wxCheckBox" name="IDC_PICKUPS_MISSILE_WS1">
                                                                 <style>wxCHK_2STATE</style>
                                                                 <label>One</label>
                                                                 <checked>0</checked>
                                                             </object>
                                                         </object>
                                                         <object class="sizeritem">
-                                                            <flag>wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                            <flag>wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT</flag>
                                                             <border>5</border>
-                                                            <object class="wxCheckBox" name="IDC_ITEMS_MISSILE_WS2">
+                                                            <object class="wxCheckBox" name="IDC_PICKUPS_MISSILE_WS2">
                                                                 <style>wxCHK_2STATE</style>
                                                                 <label>Two</label>
                                                                 <checked>0</checked>
                                                             </object>
                                                         </object>
                                                         <object class="sizeritem">
-                                                            <flag>wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                            <flag>wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT</flag>
                                                             <border>5</border>
-                                                            <object class="wxCheckBox" name="IDC_ITEMS_MISSILE_WS3">
+                                                            <object class="wxCheckBox" name="IDC_PICKUPS_MISSILE_WS3">
                                                                 <style>wxCHK_2STATE</style>
                                                                 <label>Three</label>
                                                                 <checked>0</checked>
@@ -1746,36 +2041,36 @@
                                                                 <vgap>0</vgap>
                                                                 <hgap>0</hgap>
                                                                 <object class="sizeritem">
-                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT</flag>
                                                                     <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_ITEMS_MISSILE_M1">
+                                                                    <object class="wxCheckBox" name="IDC_PICKUPS_MISSILE_M1">
                                                                         <style>wxCHK_2STATE</style>
                                                                         <label>One</label>
                                                                         <checked>0</checked>
                                                                     </object>
                                                                 </object>
                                                                 <object class="sizeritem">
-                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT</flag>
                                                                     <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_ITEMS_MISSILE_M2">
+                                                                    <object class="wxCheckBox" name="IDC_PICKUPS_MISSILE_M2">
                                                                         <style>wxCHK_2STATE</style>
                                                                         <label>Two</label>
                                                                         <checked>0</checked>
                                                                     </object>
                                                                 </object>
                                                                 <object class="sizeritem">
-                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT</flag>
                                                                     <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_ITEMS_MISSILE_M3">
+                                                                    <object class="wxCheckBox" name="IDC_PICKUPS_MISSILE_M3">
                                                                         <style>wxCHK_2STATE</style>
                                                                         <label>Three</label>
                                                                         <checked>0</checked>
                                                                     </object>
                                                                 </object>
                                                                 <object class="sizeritem">
-                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT</flag>
                                                                     <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_ITEMS_MISSILE_M4">
+                                                                    <object class="wxCheckBox" name="IDC_PICKUPS_MISSILE_M4">
                                                                         <style>wxCHK_2STATE</style>
                                                                         <label>Four</label>
                                                                         <checked>0</checked>
@@ -1784,7 +2079,7 @@
                                                                 <object class="sizeritem">
                                                                     <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
                                                                     <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_ITEMS_MISSILE_M5">
+                                                                    <object class="wxCheckBox" name="IDC_PICKUPS_MISSILE_M5">
                                                                         <style>wxCHK_2STATE</style>
                                                                         <label>Five</label>
                                                                         <checked>0</checked>
@@ -1793,7 +2088,7 @@
                                                                 <object class="sizeritem">
                                                                     <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
                                                                     <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_ITEMS_MISSILE_M6">
+                                                                    <object class="wxCheckBox" name="IDC_PICKUPS_MISSILE_M6">
                                                                         <style>wxCHK_2STATE</style>
                                                                         <label>Six</label>
                                                                         <checked>0</checked>
@@ -1802,7 +2097,7 @@
                                                                 <object class="sizeritem">
                                                                     <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
                                                                     <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_ITEMS_MISSILE_M7">
+                                                                    <object class="wxCheckBox" name="IDC_PICKUPS_MISSILE_M7">
                                                                         <style>wxCHK_2STATE</style>
                                                                         <label>Seven</label>
                                                                         <checked>0</checked>
@@ -1811,7 +2106,7 @@
                                                                 <object class="sizeritem">
                                                                     <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
                                                                     <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_ITEMS_MISSILE_M8">
+                                                                    <object class="wxCheckBox" name="IDC_PICKUPS_MISSILE_M8">
                                                                         <style>wxCHK_2STATE</style>
                                                                         <label>Eight</label>
                                                                         <checked>0</checked>
@@ -1832,7 +2127,7 @@
                                                 <object class="sizeritem">
                                                     <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT</flag>
                                                     <border>5</border>
-                                                    <object class="wxCheckBox" name="IDC_ITEMS_SMISSILE_C">
+                                                    <object class="wxCheckBox" name="IDC_PICKUPS_SMISSILE_C">
                                                         <style>wxCHK_2STATE</style>
                                                         <label>Crateria</label>
                                                         <checked>0</checked>
@@ -1841,7 +2136,7 @@
                                                 <object class="sizeritem">
                                                     <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT|wxTOP</flag>
                                                     <border>5</border>
-                                                    <object class="wxCheckBox" name="IDC_ITEMS_SMISSILE_BS1">
+                                                    <object class="wxCheckBox" name="IDC_PICKUPS_SMISSILE_BS1">
                                                         <style>wxCHK_2STATE</style>
                                                         <label>Brinstar 1</label>
                                                         <checked>0</checked>
@@ -1850,7 +2145,7 @@
                                                 <object class="sizeritem">
                                                     <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT|wxTOP</flag>
                                                     <border>5</border>
-                                                    <object class="wxCheckBox" name="IDC_ITEMS_SMISSILE_BS2">
+                                                    <object class="wxCheckBox" name="IDC_PICKUPS_SMISSILE_BS2">
                                                         <style>wxCHK_2STATE</style>
                                                         <label>Brinstar 2</label>
                                                         <checked>0</checked>
@@ -1859,7 +2154,7 @@
                                                 <object class="sizeritem">
                                                     <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT|wxTOP</flag>
                                                     <border>5</border>
-                                                    <object class="wxCheckBox" name="IDC_ITEMS_SMISSILE_BS3">
+                                                    <object class="wxCheckBox" name="IDC_PICKUPS_SMISSILE_BS3">
                                                         <style>wxCHK_2STATE</style>
                                                         <label>Brinstar 3</label>
                                                         <checked>0</checked>
@@ -1868,7 +2163,7 @@
                                                 <object class="sizeritem">
                                                     <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT|wxTOP</flag>
                                                     <border>5</border>
-                                                    <object class="wxCheckBox" name="IDC_ITEMS_SMISSILE_NF">
+                                                    <object class="wxCheckBox" name="IDC_PICKUPS_SMISSILE_NF">
                                                         <style>wxCHK_2STATE</style>
                                                         <label>Norfair</label>
                                                         <checked>0</checked>
@@ -1877,7 +2172,7 @@
                                                 <object class="sizeritem">
                                                     <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT|wxTOP</flag>
                                                     <border>5</border>
-                                                    <object class="wxCheckBox" name="IDC_ITEMS_SMISSILE_WS1">
+                                                    <object class="wxCheckBox" name="IDC_PICKUPS_SMISSILE_WS1">
                                                         <style>wxCHK_2STATE</style>
                                                         <label>Wrecked Ship 1</label>
                                                         <checked>0</checked>
@@ -1886,7 +2181,7 @@
                                                 <object class="sizeritem">
                                                     <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT|wxTOP</flag>
                                                     <border>5</border>
-                                                    <object class="wxCheckBox" name="IDC_ITEMS_SMISSILE_WS2">
+                                                    <object class="wxCheckBox" name="IDC_PICKUPS_SMISSILE_WS2">
                                                         <style>wxCHK_2STATE</style>
                                                         <label>Wrecked Ship 2</label>
                                                         <checked>0</checked>
@@ -1895,7 +2190,7 @@
                                                 <object class="sizeritem">
                                                     <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT|wxTOP</flag>
                                                     <border>5</border>
-                                                    <object class="wxCheckBox" name="IDC_ITEMS_SMISSILE_M1">
+                                                    <object class="wxCheckBox" name="IDC_PICKUPS_SMISSILE_M1">
                                                         <style>wxCHK_2STATE</style>
                                                         <label>Maridia 1</label>
                                                         <checked>0</checked>
@@ -1904,7 +2199,7 @@
                                                 <object class="sizeritem">
                                                     <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT|wxTOP</flag>
                                                     <border>5</border>
-                                                    <object class="wxCheckBox" name="IDC_ITEMS_SMISSILE_M2">
+                                                    <object class="wxCheckBox" name="IDC_PICKUPS_SMISSILE_M2">
                                                         <style>wxCHK_2STATE</style>
                                                         <label>Maridia 2</label>
                                                         <checked>0</checked>
@@ -1913,10 +2208,267 @@
                                                 <object class="sizeritem">
                                                     <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT|wxTOP</flag>
                                                     <border>5</border>
-                                                    <object class="wxCheckBox" name="IDC_ITEMS_SMISSILE_M3">
+                                                    <object class="wxCheckBox" name="IDC_PICKUPS_SMISSILE_M3">
                                                         <style>wxCHK_2STATE</style>
                                                         <label>Maridia 3</label>
                                                         <checked>0</checked>
+                                                    </object>
+                                                </object>
+                                            </object>
+                                        </object>
+                                        <object class="sizeritem">
+                                            <flag>wxGROW|wxLEFT|wxRIGHT</flag>
+                                            <border>5</border>
+                                            <object class="wxStaticBoxSizer" name="wxID_ANY">
+                                                <orient>wxVERTICAL</orient>
+                                                <label>Power Bomb Packs</label>
+                                                <object class="sizeritem">
+                                                    <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT</flag>
+                                                    <border>5</border>
+                                                    <object class="wxCheckBox" name="IDC_PICKUPS_PBOMB_BS1">
+                                                        <style>wxCHK_2STATE</style>
+                                                        <label>Brinstar 1</label>
+                                                        <checked>0</checked>
+                                                    </object>
+                                                </object>
+                                                <object class="sizeritem">
+                                                    <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                    <border>5</border>
+                                                    <object class="wxCheckBox" name="IDC_PICKUPS_PBOMB_BS2">
+                                                        <style>wxCHK_2STATE</style>
+                                                        <label>Brinstar 2</label>
+                                                        <checked>0</checked>
+                                                    </object>
+                                                </object>
+                                                <object class="sizeritem">
+                                                    <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                    <border>5</border>
+                                                    <object class="wxCheckBox" name="IDC_PICKUPS_PBOMB_BS3">
+                                                        <style>wxCHK_2STATE</style>
+                                                        <label>Brinstar 3</label>
+                                                        <checked>0</checked>
+                                                    </object>
+                                                </object>
+                                                <object class="sizeritem">
+                                                    <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                    <border>5</border>
+                                                    <object class="wxCheckBox" name="IDC_PICKUPS_PBOMB_BS4">
+                                                        <style>wxCHK_2STATE</style>
+                                                        <label>Brinstar 4</label>
+                                                        <checked>0</checked>
+                                                    </object>
+                                                </object>
+                                                <object class="sizeritem">
+                                                    <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                    <border>5</border>
+                                                    <object class="wxCheckBox" name="IDC_PICKUPS_PBOMB_BS5">
+                                                        <style>wxCHK_2STATE</style>
+                                                        <label>Brinstar 5</label>
+                                                        <checked>0</checked>
+                                                    </object>
+                                                </object>
+                                                <object class="sizeritem">
+                                                    <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                    <border>5</border>
+                                                    <object class="wxCheckBox" name="IDC_PICKUPS_PBOMB_C">
+                                                        <style>wxCHK_2STATE</style>
+                                                        <label>Crateria</label>
+                                                        <checked>0</checked>
+                                                    </object>
+                                                </object>
+                                                <object class="sizeritem">
+                                                    <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                    <border>5</border>
+                                                    <object class="wxCheckBox" name="IDC_PICKUPS_PBOMB_NF1">
+                                                        <style>wxCHK_2STATE</style>
+                                                        <label>Norfair 1</label>
+                                                        <checked>0</checked>
+                                                    </object>
+                                                </object>
+                                                <object class="sizeritem">
+                                                    <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                    <border>5</border>
+                                                    <object class="wxCheckBox" name="IDC_PICKUPS_PBOMB_NF2">
+                                                        <style>wxCHK_2STATE</style>
+                                                        <label>Norfair 2</label>
+                                                        <checked>0</checked>
+                                                    </object>
+                                                </object>
+                                                <object class="sizeritem">
+                                                    <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                    <border>5</border>
+                                                    <object class="wxCheckBox" name="IDC_PICKUPS_PBOMB_NF3">
+                                                        <style>wxCHK_2STATE</style>
+                                                        <label>Norfair 3</label>
+                                                        <checked>0</checked>
+                                                    </object>
+                                                </object>
+                                                <object class="sizeritem">
+                                                    <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                    <border>5</border>
+                                                    <object class="wxCheckBox" name="IDC_PICKUPS_PBOMB_M">
+                                                        <style>wxCHK_2STATE</style>
+                                                        <label>Maridia</label>
+                                                        <checked>0</checked>
+                                                    </object>
+                                                </object>
+                                            </object>
+                                        </object>
+                                    </object>
+                                </object>
+                            </object>
+                        </object>
+                    </object>
+                    <object class="notebookpage">
+                        <label>Red Doors</label>
+                        <object class="wxPanel" name="IDP_REDDOORS">
+                            <style>wxSUNKEN_BORDER|wxTAB_TRAVERSAL</style>
+                            <object class="wxBoxSizer">
+                                <orient>wxVERTICAL</orient>
+                                <object class="sizeritem">
+                                    <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT|wxTOP</flag>
+                                    <border>5</border>
+                                    <object class="wxBoxSizer">
+                                        <orient>wxHORIZONTAL</orient>
+                                        <object class="sizeritem">
+                                            <flag>wxGROW|wxRIGHT</flag>
+                                            <border>5</border>
+                                            <object class="wxStaticBoxSizer" name="wxID_ANY">
+                                                <orient>wxVERTICAL</orient>
+                                                <label>Crateria</label>
+                                                <object class="sizeritem">
+                                                    <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT</flag>
+                                                    <border>5</border>
+                                                    <object class="wxCheckBox" name="IDC_REDDOOR_C_MAP">
+                                                        <style>wxCHK_2STATE</style>
+                                                        <label>Map</label>
+                                                        <checked>0</checked>
+                                                    </object>
+                                                </object>
+                                                <object class="sizeritem">
+                                                    <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                    <border>5</border>
+                                                    <object class="wxCheckBox" name="IDC_REDDOOR_C_BOMBS">
+                                                        <style>wxCHK_2STATE</style>
+                                                        <label>Bombs</label>
+                                                        <checked>0</checked>
+                                                    </object>
+                                                </object>
+                                                <object class="sizeritem">
+                                                    <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                    <border>5</border>
+                                                    <object class="wxCheckBox" name="IDC_REDDOOR_C_TELEVATOR">
+                                                        <style>wxCHK_2STATE</style>
+                                                        <label>Tourian Elevator</label>
+                                                        <checked>0</checked>
+                                                    </object>
+                                                </object>
+                                            </object>
+                                        </object>
+                                        <object class="sizeritem">
+                                            <flag>wxGROW|wxLEFT|wxRIGHT</flag>
+                                            <border>5</border>
+                                            <object class="wxStaticBoxSizer" name="wxID_ANY">
+                                                <orient>wxVERTICAL</orient>
+                                                <label>Brinstar</label>
+                                                <object class="sizeritem">
+                                                    <flag>wxALIGN_CENTER_HORIZONTAL|wxALL</flag>
+                                                    <border>0</border>
+                                                    <object class="wxFlexGridSizer">
+                                                        <cols>2</cols>
+                                                        <rows>5</rows>
+                                                        <vgap>0</vgap>
+                                                        <hgap>0</hgap>
+                                                        <object class="sizeritem">
+                                                            <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT</flag>
+                                                            <border>5</border>
+                                                            <object class="wxCheckBox" name="IDC_REDDOOR_BS1">
+                                                                <style>wxCHK_2STATE</style>
+                                                                <label>One</label>
+                                                                <checked>0</checked>
+                                                            </object>
+                                                        </object>
+                                                        <object class="sizeritem">
+                                                            <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT</flag>
+                                                            <border>5</border>
+                                                            <object class="wxCheckBox" name="IDC_REDDOOR_BS6">
+                                                                <style>wxCHK_2STATE</style>
+                                                                <label>Six</label>
+                                                                <checked>0</checked>
+                                                            </object>
+                                                        </object>
+                                                        <object class="sizeritem">
+                                                            <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                            <border>5</border>
+                                                            <object class="wxCheckBox" name="IDC_REDDOOR_BS2">
+                                                                <style>wxCHK_2STATE</style>
+                                                                <label>Two</label>
+                                                                <checked>0</checked>
+                                                            </object>
+                                                        </object>
+                                                        <object class="sizeritem">
+                                                            <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                            <border>5</border>
+                                                            <object class="wxCheckBox" name="IDC_REDDOOR_BS_MAP">
+                                                                <style>wxCHK_2STATE</style>
+                                                                <label>Map</label>
+                                                                <checked>0</checked>
+                                                            </object>
+                                                        </object>
+                                                        <object class="sizeritem">
+                                                            <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                            <border>5</border>
+                                                            <object class="wxCheckBox" name="IDC_REDDOOR_BS3">
+                                                                <style>wxCHK_2STATE</style>
+                                                                <label>Three</label>
+                                                                <checked>0</checked>
+                                                            </object>
+                                                        </object>
+                                                        <object class="sizeritem">
+                                                            <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                            <border>5</border>
+                                                            <object class="wxCheckBox" name="IDC_REDDOOR_BS_RTANK">
+                                                                <style>wxCHK_2STATE</style>
+                                                                <label>Reserve Tank</label>
+                                                                <checked>0</checked>
+                                                            </object>
+                                                        </object>
+                                                        <object class="sizeritem">
+                                                            <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                            <border>5</border>
+                                                            <object class="wxCheckBox" name="IDC_REDDOOR_BS4">
+                                                                <style>wxCHK_2STATE</style>
+                                                                <label>Four</label>
+                                                                <checked>0</checked>
+                                                            </object>
+                                                        </object>
+                                                        <object class="sizeritem">
+                                                            <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                            <border>5</border>
+                                                            <object class="wxCheckBox" name="IDC_REDDOOR_BS_SPORESPAWN">
+                                                                <style>wxCHK_2STATE</style>
+                                                                <label>Spore Spawn</label>
+                                                                <checked>0</checked>
+                                                            </object>
+                                                        </object>
+                                                        <object class="sizeritem">
+                                                            <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                            <border>5</border>
+                                                            <object class="wxCheckBox" name="IDC_REDDOOR_BS5">
+                                                                <style>wxCHK_2STATE</style>
+                                                                <label>Five</label>
+                                                                <checked>0</checked>
+                                                            </object>
+                                                        </object>
+                                                        <object class="sizeritem">
+                                                            <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                            <border>5</border>
+                                                            <object class="wxCheckBox" name="IDC_REDDOOR_BS_XRAYSCOPE">
+                                                                <style>wxCHK_2STATE</style>
+                                                                <label>X-Ray Scope</label>
+                                                                <checked>0</checked>
+                                                            </object>
+                                                        </object>
                                                     </object>
                                                 </object>
                                             </object>
@@ -1926,104 +2478,106 @@
                                 <object class="sizeritem">
                                     <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT|wxTOP</flag>
                                     <border>5</border>
-                                    <object class="wxStaticBoxSizer" name="wxID_ANY">
-                                        <orient>wxVERTICAL</orient>
-                                        <label>Power Bomb Packs</label>
+                                    <object class="wxBoxSizer">
+                                        <orient>wxHORIZONTAL</orient>
                                         <object class="sizeritem">
-                                            <flag>wxALIGN_CENTER_HORIZONTAL|wxALL</flag>
-                                            <border>0</border>
-                                            <object class="wxFlexGridSizer">
-                                                <cols>5</cols>
-                                                <rows>2</rows>
-                                                <vgap>0</vgap>
-                                                <hgap>0</hgap>
+                                            <flag>wxGROW|wxRIGHT</flag>
+                                            <border>5</border>
+                                            <object class="wxStaticBoxSizer" name="wxID_ANY">
+                                                <orient>wxVERTICAL</orient>
+                                                <label>Norfair</label>
                                                 <object class="sizeritem">
-                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT</flag>
-                                                    <border>5</border>
-                                                    <object class="wxCheckBox" name="IDC_ITEMS_PBOMB_BS1">
-                                                        <style>wxCHK_2STATE</style>
-                                                        <label>Brinstar 1</label>
-                                                        <checked>0</checked>
+                                                    <flag>wxALIGN_CENTER_HORIZONTAL|wxALL</flag>
+                                                    <border>0</border>
+                                                    <object class="wxFlexGridSizer">
+                                                        <cols>2</cols>
+                                                        <rows>3</rows>
+                                                        <vgap>0</vgap>
+                                                        <hgap>0</hgap>
+                                                        <object class="sizeritem">
+                                                            <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT</flag>
+                                                            <border>5</border>
+                                                            <object class="wxCheckBox" name="IDC_REDDOOR_NF1">
+                                                                <style>wxCHK_2STATE</style>
+                                                                <label>One</label>
+                                                                <checked>0</checked>
+                                                            </object>
+                                                        </object>
+                                                        <object class="sizeritem">
+                                                            <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT</flag>
+                                                            <border>5</border>
+                                                            <object class="wxCheckBox" name="IDC_REDDOOR_NF_HJBOOTS">
+                                                                <style>wxCHK_2STATE</style>
+                                                                <label>High Jump Boots</label>
+                                                                <checked>0</checked>
+                                                            </object>
+                                                        </object>
+                                                        <object class="sizeritem">
+                                                            <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                            <border>5</border>
+                                                            <object class="wxCheckBox" name="IDC_REDDOOR_NF2">
+                                                                <style>wxCHK_2STATE</style>
+                                                                <label>Two</label>
+                                                                <checked>0</checked>
+                                                            </object>
+                                                        </object>
+                                                        <object class="sizeritem">
+                                                            <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                            <border>5</border>
+                                                            <object class="wxCheckBox" name="IDC_REDDOOR_NF_SPEEDBOOSTER">
+                                                                <style>wxCHK_2STATE</style>
+                                                                <label>Speed Booster</label>
+                                                                <checked>0</checked>
+                                                            </object>
+                                                        </object>
+                                                        <object class="sizeritem">
+                                                            <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                            <border>5</border>
+                                                            <object class="wxCheckBox" name="IDC_REDDOOR_NF3">
+                                                                <style>wxCHK_2STATE</style>
+                                                                <label>Three</label>
+                                                                <checked>0</checked>
+                                                            </object>
+                                                        </object>
+                                                        <object class="sizeritem">
+                                                            <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                            <border>5</border>
+                                                            <object class="wxCheckBox" name="IDC_REDDOOR_NF_WAVEBEAM">
+                                                                <style>wxCHK_2STATE</style>
+                                                                <label>Wave Beam</label>
+                                                                <checked>0</checked>
+                                                            </object>
+                                                        </object>
+                                                        <object class="sizeritem">
+                                                            <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                            <border>5</border>
+                                                            <object class="wxCheckBox" name="IDC_REDDOOR_NF4">
+                                                                <style>wxCHK_2STATE</style>
+                                                                <label>Four</label>
+                                                                <checked>0</checked>
+                                                            </object>
+                                                        </object>
+                                                        <object class="spacer">
+                                                            <flag>wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL|wxALL</flag>
+                                                            <border>0</border>
+                                                            <size>5,5</size>
+                                                        </object>
                                                     </object>
                                                 </object>
+                                            </object>
+                                        </object>
+                                        <object class="sizeritem">
+                                            <flag>wxGROW|wxRIGHT</flag>
+                                            <border>5</border>
+                                            <object class="wxStaticBoxSizer" name="wxID_ANY">
+                                                <orient>wxVERTICAL</orient>
+                                                <label>Wrecked Ship</label>
                                                 <object class="sizeritem">
-                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT</flag>
+                                                    <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT</flag>
                                                     <border>5</border>
-                                                    <object class="wxCheckBox" name="IDC_ITEMS_PBOMB_BS2">
+                                                    <object class="wxCheckBox" name="IDC_REDDOOR_WS_RTANK">
                                                         <style>wxCHK_2STATE</style>
-                                                        <label>Brinstar 2</label>
-                                                        <checked>0</checked>
-                                                    </object>
-                                                </object>
-                                                <object class="sizeritem">
-                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT</flag>
-                                                    <border>5</border>
-                                                    <object class="wxCheckBox" name="IDC_ITEMS_PBOMB_BS3">
-                                                        <style>wxCHK_2STATE</style>
-                                                        <label>Brinstar 3</label>
-                                                        <checked>0</checked>
-                                                    </object>
-                                                </object>
-                                                <object class="sizeritem">
-                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT</flag>
-                                                    <border>5</border>
-                                                    <object class="wxCheckBox" name="IDC_ITEMS_PBOMB_BS4">
-                                                        <style>wxCHK_2STATE</style>
-                                                        <label>Brinstar 4</label>
-                                                        <checked>0</checked>
-                                                    </object>
-                                                </object>
-                                                <object class="sizeritem">
-                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT</flag>
-                                                    <border>5</border>
-                                                    <object class="wxCheckBox" name="IDC_ITEMS_PBOMB_BS5">
-                                                        <style>wxCHK_2STATE</style>
-                                                        <label>Brinstar 5</label>
-                                                        <checked>0</checked>
-                                                    </object>
-                                                </object>
-                                                <object class="sizeritem">
-                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
-                                                    <border>5</border>
-                                                    <object class="wxCheckBox" name="IDC_ITEMS_PBOMB_C">
-                                                        <style>wxCHK_2STATE</style>
-                                                        <label>Crateria</label>
-                                                        <checked>0</checked>
-                                                    </object>
-                                                </object>
-                                                <object class="sizeritem">
-                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
-                                                    <border>5</border>
-                                                    <object class="wxCheckBox" name="IDC_ITEMS_PBOMB_NF1">
-                                                        <style>wxCHK_2STATE</style>
-                                                        <label>Norfair 1</label>
-                                                        <checked>0</checked>
-                                                    </object>
-                                                </object>
-                                                <object class="sizeritem">
-                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
-                                                    <border>5</border>
-                                                    <object class="wxCheckBox" name="IDC_ITEMS_PBOMB_NF2">
-                                                        <style>wxCHK_2STATE</style>
-                                                        <label>Norfair 2</label>
-                                                        <checked>0</checked>
-                                                    </object>
-                                                </object>
-                                                <object class="sizeritem">
-                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
-                                                    <border>5</border>
-                                                    <object class="wxCheckBox" name="IDC_ITEMS_PBOMB_NF3">
-                                                        <style>wxCHK_2STATE</style>
-                                                        <label>Norfair 3</label>
-                                                        <checked>0</checked>
-                                                    </object>
-                                                </object>
-                                                <object class="sizeritem">
-                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
-                                                    <border>5</border>
-                                                    <object class="wxCheckBox" name="IDC_ITEMS_PBOMB_M">
-                                                        <style>wxCHK_2STATE</style>
-                                                        <label>Maridia</label>
+                                                        <label>Reserve Tank</label>
                                                         <checked>0</checked>
                                                     </object>
                                                 </object>
@@ -2037,144 +2591,86 @@
                                     <object class="wxBoxSizer">
                                         <orient>wxHORIZONTAL</orient>
                                         <object class="sizeritem">
-                                            <flag>wxALIGN_CENTER_VERTICAL|wxRIGHT</flag>
+                                            <flag>wxGROW|wxRIGHT</flag>
                                             <border>5</border>
                                             <object class="wxStaticBoxSizer" name="wxID_ANY">
                                                 <orient>wxVERTICAL</orient>
-                                                <label>Energy Tanks</label>
+                                                <label>Maridia</label>
                                                 <object class="sizeritem">
                                                     <flag>wxALIGN_CENTER_HORIZONTAL|wxALL</flag>
                                                     <border>0</border>
                                                     <object class="wxFlexGridSizer">
-                                                        <cols>7</cols>
-                                                        <rows>2</rows>
+                                                        <cols>2</cols>
+                                                        <rows>4</rows>
                                                         <vgap>0</vgap>
                                                         <hgap>0</hgap>
                                                         <object class="sizeritem">
                                                             <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT</flag>
                                                             <border>5</border>
-                                                            <object class="wxCheckBox" name="IDC_ITEMS_ET_C1">
+                                                            <object class="wxCheckBox" name="IDC_REDDOOR_M1">
                                                                 <style>wxCHK_2STATE</style>
-                                                                <label>Crateria 1</label>
+                                                                <label>One</label>
                                                                 <checked>0</checked>
                                                             </object>
                                                         </object>
                                                         <object class="sizeritem">
                                                             <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT</flag>
                                                             <border>5</border>
-                                                            <object class="wxCheckBox" name="IDC_ITEMS_ET_C2">
+                                                            <object class="wxCheckBox" name="IDC_REDDOOR_M5">
                                                                 <style>wxCHK_2STATE</style>
-                                                                <label>Crateria 2</label>
-                                                                <checked>0</checked>
-                                                            </object>
-                                                        </object>
-                                                        <object class="sizeritem">
-                                                            <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT</flag>
-                                                            <border>5</border>
-                                                            <object class="wxCheckBox" name="IDC_ITEMS_ET_BS1">
-                                                                <style>wxCHK_2STATE</style>
-                                                                <label>Brinstar 1</label>
-                                                                <checked>0</checked>
-                                                            </object>
-                                                        </object>
-                                                        <object class="sizeritem">
-                                                            <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT</flag>
-                                                            <border>5</border>
-                                                            <object class="wxCheckBox" name="IDC_ITEMS_ET_BS2">
-                                                                <style>wxCHK_2STATE</style>
-                                                                <label>Brinstar 2</label>
-                                                                <checked>0</checked>
-                                                            </object>
-                                                        </object>
-                                                        <object class="sizeritem">
-                                                            <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT</flag>
-                                                            <border>5</border>
-                                                            <object class="wxCheckBox" name="IDC_ITEMS_ET_BS3">
-                                                                <style>wxCHK_2STATE</style>
-                                                                <label>Brinstar 3</label>
-                                                                <checked>0</checked>
-                                                            </object>
-                                                        </object>
-                                                        <object class="sizeritem">
-                                                            <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT</flag>
-                                                            <border>5</border>
-                                                            <object class="wxCheckBox" name="IDC_ITEMS_ET_BS4">
-                                                                <style>wxCHK_2STATE</style>
-                                                                <label>Brinstar 4</label>
-                                                                <checked>0</checked>
-                                                            </object>
-                                                        </object>
-                                                        <object class="sizeritem">
-                                                            <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT</flag>
-                                                            <border>5</border>
-                                                            <object class="wxCheckBox" name="IDC_ITEMS_ET_BS5">
-                                                                <style>wxCHK_2STATE</style>
-                                                                <label>Brinstar 5</label>
+                                                                <label>Five</label>
                                                                 <checked>0</checked>
                                                             </object>
                                                         </object>
                                                         <object class="sizeritem">
                                                             <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
                                                             <border>5</border>
-                                                            <object class="wxCheckBox" name="IDC_ITEMS_ET_NF1">
+                                                            <object class="wxCheckBox" name="IDC_REDDOOR_M2">
                                                                 <style>wxCHK_2STATE</style>
-                                                                <label>Norfair 1</label>
+                                                                <label>Two</label>
                                                                 <checked>0</checked>
                                                             </object>
                                                         </object>
                                                         <object class="sizeritem">
                                                             <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
                                                             <border>5</border>
-                                                            <object class="wxCheckBox" name="IDC_ITEMS_ET_NF2">
+                                                            <object class="wxCheckBox" name="IDC_REDDOOR_M6">
                                                                 <style>wxCHK_2STATE</style>
-                                                                <label>Norfair 2</label>
+                                                                <label>Six</label>
                                                                 <checked>0</checked>
                                                             </object>
                                                         </object>
                                                         <object class="sizeritem">
                                                             <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
                                                             <border>5</border>
-                                                            <object class="wxCheckBox" name="IDC_ITEMS_ET_NF3">
+                                                            <object class="wxCheckBox" name="IDC_REDDOOR_M3">
                                                                 <style>wxCHK_2STATE</style>
-                                                                <label>Norfair 3</label>
+                                                                <label>Three</label>
                                                                 <checked>0</checked>
                                                             </object>
                                                         </object>
                                                         <object class="sizeritem">
                                                             <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
                                                             <border>5</border>
-                                                            <object class="wxCheckBox" name="IDC_ITEMS_ET_NF4">
+                                                            <object class="wxCheckBox" name="IDC_REDDOOR_M_MAP">
                                                                 <style>wxCHK_2STATE</style>
-                                                                <label>Norfair 4</label>
+                                                                <label>Map</label>
                                                                 <checked>0</checked>
                                                             </object>
                                                         </object>
                                                         <object class="sizeritem">
                                                             <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
                                                             <border>5</border>
-                                                            <object class="wxCheckBox" name="IDC_ITEMS_ET_WS">
+                                                            <object class="wxCheckBox" name="IDC_REDDOOR_M4">
                                                                 <style>wxCHK_2STATE</style>
-                                                                <label>Wrecked Ship</label>
+                                                                <label>Four</label>
                                                                 <checked>0</checked>
                                                             </object>
                                                         </object>
-                                                        <object class="sizeritem">
-                                                            <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
-                                                            <border>5</border>
-                                                            <object class="wxCheckBox" name="IDC_ITEMS_ET_M1">
-                                                                <style>wxCHK_2STATE</style>
-                                                                <label>Maridia 1</label>
-                                                                <checked>0</checked>
-                                                            </object>
-                                                        </object>
-                                                        <object class="sizeritem">
-                                                            <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
-                                                            <border>5</border>
-                                                            <object class="wxCheckBox" name="IDC_ITEMS_ET_M2">
-                                                                <style>wxCHK_2STATE</style>
-                                                                <label>Maridia 2</label>
-                                                                <checked>0</checked>
-                                                            </object>
+                                                        <object class="spacer">
+                                                            <flag>wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL|wxALL</flag>
+                                                            <border>0</border>
+                                                            <size>5,5</size>
                                                         </object>
                                                     </object>
                                                 </object>
@@ -2185,51 +2681,23 @@
                                             <border>5</border>
                                             <object class="wxStaticBoxSizer" name="wxID_ANY">
                                                 <orient>wxVERTICAL</orient>
-                                                <label>Reserve Tanks</label>
+                                                <label>Tourian</label>
                                                 <object class="sizeritem">
-                                                    <flag>wxALIGN_CENTER_HORIZONTAL|wxALL</flag>
-                                                    <border>0</border>
-                                                    <object class="wxFlexGridSizer">
-                                                        <cols>2</cols>
-                                                        <rows>2</rows>
-                                                        <vgap>0</vgap>
-                                                        <hgap>0</hgap>
-                                                        <object class="sizeritem">
-                                                            <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT</flag>
-                                                            <border>5</border>
-                                                            <object class="wxCheckBox" name="IDC_ITEMS_RTANK_BS">
-                                                                <style>wxCHK_2STATE</style>
-                                                                <label>Brinstar</label>
-                                                                <checked>0</checked>
-                                                            </object>
-                                                        </object>
-                                                        <object class="sizeritem">
-                                                            <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT</flag>
-                                                            <border>5</border>
-                                                            <object class="wxCheckBox" name="IDC_ITEMS_RTANK_NF">
-                                                                <style>wxCHK_2STATE</style>
-                                                                <label>Norfair</label>
-                                                                <checked>0</checked>
-                                                            </object>
-                                                        </object>
-                                                        <object class="sizeritem">
-                                                            <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
-                                                            <border>5</border>
-                                                            <object class="wxCheckBox" name="IDC_ITEMS_RTANK_WS">
-                                                                <style>wxCHK_2STATE</style>
-                                                                <label>Wrecked Ship</label>
-                                                                <checked>0</checked>
-                                                            </object>
-                                                        </object>
-                                                        <object class="sizeritem">
-                                                            <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
-                                                            <border>5</border>
-                                                            <object class="wxCheckBox" name="IDC_ITEMS_RTANK_M">
-                                                                <style>wxCHK_2STATE</style>
-                                                                <label>Maridia</label>
-                                                                <checked>0</checked>
-                                                            </object>
-                                                        </object>
+                                                    <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT</flag>
+                                                    <border>5</border>
+                                                    <object class="wxCheckBox" name="IDC_REDDOOR_T1">
+                                                        <style>wxCHK_2STATE</style>
+                                                        <label>One</label>
+                                                        <checked>0</checked>
+                                                    </object>
+                                                </object>
+                                                <object class="sizeritem">
+                                                    <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                    <border>5</border>
+                                                    <object class="wxCheckBox" name="IDC_REDDOOR_T_MB">
+                                                        <style>wxCHK_2STATE</style>
+                                                        <label>Mother Brain</label>
+                                                        <checked>0</checked>
                                                     </object>
                                                 </object>
                                             </object>
@@ -2240,397 +2708,16 @@
                         </object>
                     </object>
                     <object class="notebookpage">
-                        <label>Color Doors</label>
-                        <object class="wxPanel" name="IDP_COLORDOORS">
+                        <label>Green Doors</label>
+                        <object class="wxPanel" name="IDP_GREENDOORS">
                             <style>wxSUNKEN_BORDER|wxTAB_TRAVERSAL</style>
                             <object class="wxBoxSizer">
                                 <orient>wxVERTICAL</orient>
                                 <object class="sizeritem">
                                     <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT|wxTOP</flag>
                                     <border>5</border>
-                                    <object class="wxStaticBoxSizer" name="wxID_ANY">
-                                        <orient>wxVERTICAL</orient>
-                                        <label>Red Doors</label>
-                                        <object class="sizeritem">
-                                            <flag>wxALIGN_LEFT|wxRIGHT</flag>
-                                            <border>5</border>
-                                            <object class="wxBoxSizer">
-                                                <orient>wxHORIZONTAL</orient>
-                                                <object class="sizeritem">
-                                                    <flag>wxGROW|wxRIGHT</flag>
-                                                    <border>5</border>
-                                                    <object class="wxStaticBoxSizer" name="wxID_ANY">
-                                                        <orient>wxVERTICAL</orient>
-                                                        <label>Crateria</label>
-                                                        <object class="sizeritem">
-                                                            <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT</flag>
-                                                            <border>5</border>
-                                                            <object class="wxCheckBox" name="IDC_REDDOOR_C_MAP">
-                                                                <style>wxCHK_2STATE</style>
-                                                                <label>Map</label>
-                                                                <checked>0</checked>
-                                                            </object>
-                                                        </object>
-                                                        <object class="sizeritem">
-                                                            <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT|wxTOP</flag>
-                                                            <border>5</border>
-                                                            <object class="wxCheckBox" name="IDC_REDDOOR_C_BOMBS">
-                                                                <style>wxCHK_2STATE</style>
-                                                                <label>Bombs</label>
-                                                                <checked>0</checked>
-                                                            </object>
-                                                        </object>
-                                                        <object class="sizeritem">
-                                                            <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT|wxTOP</flag>
-                                                            <border>5</border>
-                                                            <object class="wxCheckBox" name="IDC_REDDOOR_C_TELEVATOR">
-                                                                <style>wxCHK_2STATE</style>
-                                                                <label>Tourian Elevator</label>
-                                                                <checked>0</checked>
-                                                            </object>
-                                                        </object>
-                                                    </object>
-                                                </object>
-                                                <object class="sizeritem">
-                                                    <flag>wxGROW|wxLEFT|wxRIGHT</flag>
-                                                    <border>5</border>
-                                                    <object class="wxStaticBoxSizer" name="wxID_ANY">
-                                                        <orient>wxVERTICAL</orient>
-                                                        <label>Brinstar</label>
-                                                        <object class="sizeritem">
-                                                            <flag>wxALIGN_CENTER_HORIZONTAL|wxALL</flag>
-                                                            <border>0</border>
-                                                            <object class="wxFlexGridSizer">
-                                                                <cols>2</cols>
-                                                                <rows>5</rows>
-                                                                <vgap>0</vgap>
-                                                                <hgap>0</hgap>
-                                                                <object class="sizeritem">
-                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT</flag>
-                                                                    <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_REDDOOR_BS1">
-                                                                        <style>wxCHK_2STATE</style>
-                                                                        <label>One</label>
-                                                                        <checked>0</checked>
-                                                                    </object>
-                                                                </object>
-                                                                <object class="sizeritem">
-                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT</flag>
-                                                                    <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_REDDOOR_BS6">
-                                                                        <style>wxCHK_2STATE</style>
-                                                                        <label>Six</label>
-                                                                        <checked>0</checked>
-                                                                    </object>
-                                                                </object>
-                                                                <object class="sizeritem">
-                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
-                                                                    <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_REDDOOR_BS2">
-                                                                        <style>wxCHK_2STATE</style>
-                                                                        <label>Two</label>
-                                                                        <checked>0</checked>
-                                                                    </object>
-                                                                </object>
-                                                                <object class="sizeritem">
-                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
-                                                                    <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_REDDOOR_BS_MAP">
-                                                                        <style>wxCHK_2STATE</style>
-                                                                        <label>Map</label>
-                                                                        <checked>0</checked>
-                                                                    </object>
-                                                                </object>
-                                                                <object class="sizeritem">
-                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
-                                                                    <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_REDDOOR_BS3">
-                                                                        <style>wxCHK_2STATE</style>
-                                                                        <label>Three</label>
-                                                                        <checked>0</checked>
-                                                                    </object>
-                                                                </object>
-                                                                <object class="sizeritem">
-                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
-                                                                    <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_REDDOOR_BS_RTANK">
-                                                                        <style>wxCHK_2STATE</style>
-                                                                        <label>Reserve Tank</label>
-                                                                        <checked>0</checked>
-                                                                    </object>
-                                                                </object>
-                                                                <object class="sizeritem">
-                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
-                                                                    <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_REDDOOR_BS4">
-                                                                        <style>wxCHK_2STATE</style>
-                                                                        <label>Four</label>
-                                                                        <checked>0</checked>
-                                                                    </object>
-                                                                </object>
-                                                                <object class="sizeritem">
-                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
-                                                                    <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_REDDOOR_BS_SPORESPAWN">
-                                                                        <style>wxCHK_2STATE</style>
-                                                                        <label>Spore Spawn</label>
-                                                                        <checked>0</checked>
-                                                                    </object>
-                                                                </object>
-                                                                <object class="sizeritem">
-                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
-                                                                    <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_REDDOOR_BS5">
-                                                                        <style>wxCHK_2STATE</style>
-                                                                        <label>Five</label>
-                                                                        <checked>0</checked>
-                                                                    </object>
-                                                                </object>
-                                                                <object class="sizeritem">
-                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
-                                                                    <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_REDDOOR_BS_XRAYSCOPE">
-                                                                        <style>wxCHK_2STATE</style>
-                                                                        <label>X-Ray Scope</label>
-                                                                        <checked>0</checked>
-                                                                    </object>
-                                                                </object>
-                                                            </object>
-                                                        </object>
-                                                    </object>
-                                                </object>
-                                                <object class="sizeritem">
-                                                    <flag>wxGROW|wxLEFT|wxRIGHT</flag>
-                                                    <border>5</border>
-                                                    <object class="wxStaticBoxSizer" name="wxID_ANY">
-                                                        <orient>wxVERTICAL</orient>
-                                                        <label>Norfair</label>
-                                                        <object class="sizeritem">
-                                                            <flag>wxALIGN_CENTER_HORIZONTAL|wxALL</flag>
-                                                            <border>0</border>
-                                                            <object class="wxFlexGridSizer">
-                                                                <cols>2</cols>
-                                                                <rows>3</rows>
-                                                                <vgap>0</vgap>
-                                                                <hgap>0</hgap>
-                                                                <object class="sizeritem">
-                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT</flag>
-                                                                    <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_REDDOOR_NF1">
-                                                                        <style>wxCHK_2STATE</style>
-                                                                        <label>One</label>
-                                                                        <checked>0</checked>
-                                                                    </object>
-                                                                </object>
-                                                                <object class="sizeritem">
-                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT</flag>
-                                                                    <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_REDDOOR_NF_HJBOOTS">
-                                                                        <style>wxCHK_2STATE</style>
-                                                                        <label>High Jump Boots</label>
-                                                                        <checked>0</checked>
-                                                                    </object>
-                                                                </object>
-                                                                <object class="sizeritem">
-                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
-                                                                    <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_REDDOOR_NF2">
-                                                                        <style>wxCHK_2STATE</style>
-                                                                        <label>Two</label>
-                                                                        <checked>0</checked>
-                                                                    </object>
-                                                                </object>
-                                                                <object class="sizeritem">
-                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
-                                                                    <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_REDDOOR_NF_SPEEDBOOSTER">
-                                                                        <style>wxCHK_2STATE</style>
-                                                                        <label>Speed Booster</label>
-                                                                        <checked>0</checked>
-                                                                    </object>
-                                                                </object>
-                                                                <object class="sizeritem">
-                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
-                                                                    <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_REDDOOR_NF3">
-                                                                        <style>wxCHK_2STATE</style>
-                                                                        <label>Three</label>
-                                                                        <checked>0</checked>
-                                                                    </object>
-                                                                </object>
-                                                                <object class="sizeritem">
-                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
-                                                                    <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_REDDOOR_NF_WAVEBEAM">
-                                                                        <style>wxCHK_2STATE</style>
-                                                                        <label>Wave Beam</label>
-                                                                        <checked>0</checked>
-                                                                    </object>
-                                                                </object>
-                                                                <object class="sizeritem">
-                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
-                                                                    <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_REDDOOR_NF4">
-                                                                        <style>wxCHK_2STATE</style>
-                                                                        <label>Four</label>
-                                                                        <checked>0</checked>
-                                                                    </object>
-                                                                </object>
-                                                                <object class="spacer">
-                                                                    <flag>wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL|wxALL</flag>
-                                                                    <border>0</border>
-                                                                    <size>5,5</size>
-                                                                </object>
-                                                            </object>
-                                                        </object>
-                                                    </object>
-                                                </object>
-                                            </object>
-                                        </object>
-                                        <object class="sizeritem">
-                                            <flag>wxALIGN_LEFT|wxRIGHT</flag>
-                                            <border>5</border>
-                                            <object class="wxBoxSizer">
-                                                <orient>wxHORIZONTAL</orient>
-                                                <object class="sizeritem">
-                                                    <flag>wxGROW|wxRIGHT</flag>
-                                                    <border>5</border>
-                                                    <object class="wxStaticBoxSizer" name="wxID_ANY">
-                                                        <orient>wxVERTICAL</orient>
-                                                        <label>Wrecked Ship</label>
-                                                        <object class="sizeritem">
-                                                            <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT</flag>
-                                                            <border>5</border>
-                                                            <object class="wxCheckBox" name="IDC_REDDOOR_WS_RTANK">
-                                                                <style>wxCHK_2STATE</style>
-                                                                <label>Reserve Tank</label>
-                                                                <checked>0</checked>
-                                                            </object>
-                                                        </object>
-                                                    </object>
-                                                </object>
-                                                <object class="sizeritem">
-                                                    <flag>wxGROW|wxLEFT|wxRIGHT</flag>
-                                                    <border>5</border>
-                                                    <object class="wxStaticBoxSizer" name="wxID_ANY">
-                                                        <orient>wxVERTICAL</orient>
-                                                        <label>Maridia</label>
-                                                        <object class="sizeritem">
-                                                            <flag>wxALIGN_CENTER_HORIZONTAL|wxALL</flag>
-                                                            <border>0</border>
-                                                            <object class="wxFlexGridSizer">
-                                                                <cols>2</cols>
-                                                                <rows>4</rows>
-                                                                <vgap>0</vgap>
-                                                                <hgap>0</hgap>
-                                                                <object class="sizeritem">
-                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT</flag>
-                                                                    <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_REDDOOR_M1">
-                                                                        <style>wxCHK_2STATE</style>
-                                                                        <label>One</label>
-                                                                        <checked>0</checked>
-                                                                    </object>
-                                                                </object>
-                                                                <object class="sizeritem">
-                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT</flag>
-                                                                    <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_REDDOOR_M5">
-                                                                        <style>wxCHK_2STATE</style>
-                                                                        <label>Five</label>
-                                                                        <checked>0</checked>
-                                                                    </object>
-                                                                </object>
-                                                                <object class="sizeritem">
-                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
-                                                                    <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_REDDOOR_M2">
-                                                                        <style>wxCHK_2STATE</style>
-                                                                        <label>Two</label>
-                                                                        <checked>0</checked>
-                                                                    </object>
-                                                                </object>
-                                                                <object class="sizeritem">
-                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
-                                                                    <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_REDDOOR_M6">
-                                                                        <style>wxCHK_2STATE</style>
-                                                                        <label>Six</label>
-                                                                        <checked>0</checked>
-                                                                    </object>
-                                                                </object>
-                                                                <object class="sizeritem">
-                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
-                                                                    <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_REDDOOR_M3">
-                                                                        <style>wxCHK_2STATE</style>
-                                                                        <label>Three</label>
-                                                                        <checked>0</checked>
-                                                                    </object>
-                                                                </object>
-                                                                <object class="sizeritem">
-                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
-                                                                    <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_REDDOOR_M_MAP">
-                                                                        <style>wxCHK_2STATE</style>
-                                                                        <label>Map</label>
-                                                                        <checked>0</checked>
-                                                                    </object>
-                                                                </object>
-                                                                <object class="sizeritem">
-                                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
-                                                                    <border>5</border>
-                                                                    <object class="wxCheckBox" name="IDC_REDDOOR_M4">
-                                                                        <style>wxCHK_2STATE</style>
-                                                                        <label>Four</label>
-                                                                        <checked>0</checked>
-                                                                    </object>
-                                                                </object>
-                                                                <object class="spacer">
-                                                                    <flag>wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL|wxALL</flag>
-                                                                    <border>0</border>
-                                                                    <size>5,5</size>
-                                                                </object>
-                                                            </object>
-                                                        </object>
-                                                    </object>
-                                                </object>
-                                                <object class="sizeritem">
-                                                    <flag>wxGROW|wxLEFT|wxRIGHT</flag>
-                                                    <border>5</border>
-                                                    <object class="wxStaticBoxSizer" name="wxID_ANY">
-                                                        <orient>wxVERTICAL</orient>
-                                                        <label>Tourian</label>
-                                                        <object class="sizeritem">
-                                                            <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT</flag>
-                                                            <border>5</border>
-                                                            <object class="wxCheckBox" name="IDC_REDDOOR_T1">
-                                                                <style>wxCHK_2STATE</style>
-                                                                <label>One</label>
-                                                                <checked>0</checked>
-                                                            </object>
-                                                        </object>
-                                                        <object class="sizeritem">
-                                                            <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT|wxTOP</flag>
-                                                            <border>5</border>
-                                                            <object class="wxCheckBox" name="IDC_REDDOOR_T_MB">
-                                                                <style>wxCHK_2STATE</style>
-                                                                <label>Mother Brain</label>
-                                                                <checked>0</checked>
-                                                            </object>
-                                                        </object>
-                                                    </object>
-                                                </object>
-                                            </object>
-                                        </object>
-                                    </object>
-                                </object>
-                                <object class="sizeritem">
-                                    <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT|wxTOP</flag>
-                                    <border>5</border>
-                                    <object class="wxStaticBoxSizer" name="wxID_ANY">
+                                    <object class="wxBoxSizer">
                                         <orient>wxHORIZONTAL</orient>
-                                        <label>Green Doors</label>
                                         <object class="sizeritem">
                                             <flag>wxGROW|wxRIGHT</flag>
                                             <border>5</border>
@@ -2765,8 +2852,15 @@
                                                 </object>
                                             </object>
                                         </object>
+                                    </object>
+                                </object>
+                                <object class="sizeritem">
+                                    <flag>wxALIGN_LEFT|wxALL</flag>
+                                    <border>5</border>
+                                    <object class="wxBoxSizer">
+                                        <orient>wxHORIZONTAL</orient>
                                         <object class="sizeritem">
-                                            <flag>wxGROW|wxLEFT|wxRIGHT</flag>
+                                            <flag>wxGROW|wxRIGHT</flag>
                                             <border>5</border>
                                             <object class="wxStaticBoxSizer" name="wxID_ANY">
                                                 <orient>wxVERTICAL</orient>
@@ -2910,12 +3004,20 @@
                                         </object>
                                     </object>
                                 </object>
+                            </object>
+                        </object>
+                    </object>
+                    <object class="notebookpage">
+                        <label>Yellow &amp; Eye Doors</label>
+                        <object class="wxPanel" name="IDP_YELLOWEYEDOORS">
+                            <style>wxSUNKEN_BORDER|wxTAB_TRAVERSAL</style>
+                            <object class="wxBoxSizer">
+                                <orient>wxVERTICAL</orient>
                                 <object class="sizeritem">
-                                    <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT</flag>
+                                    <flag>wxALIGN_LEFT|wxALL</flag>
                                     <border>5</border>
-                                    <object class="wxStaticBoxSizer" name="wxID_ANY">
+                                    <object class="wxBoxSizer">
                                         <orient>wxHORIZONTAL</orient>
-                                        <label>Yellow Doors</label>
                                         <object class="sizeritem">
                                             <flag>wxGROW|wxRIGHT</flag>
                                             <border>5</border>
@@ -3079,15 +3181,6 @@
                                         </object>
                                     </object>
                                 </object>
-                            </object>
-                        </object>
-                    </object>
-                    <object class="notebookpage">
-                        <label>Special Doors</label>
-                        <object class="wxPanel" name="IDP_SPECIALDOORS">
-                            <style>wxSUNKEN_BORDER|wxTAB_TRAVERSAL</style>
-                            <object class="wxBoxSizer">
-                                <orient>wxVERTICAL</orient>
                                 <object class="sizeritem">
                                     <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT|wxTOP</flag>
                                     <border>5</border>
@@ -3141,6 +3234,15 @@
                                         </object>
                                     </object>
                                 </object>
+                            </object>
+                        </object>
+                    </object>
+                    <object class="notebookpage">
+                        <label>Metal Doors</label>
+                        <object class="wxPanel" name="IDP_METALDOORS">
+                            <style>wxSUNKEN_BORDER|wxTAB_TRAVERSAL</style>
+                            <object class="wxBoxSizer">
+                                <orient>wxVERTICAL</orient>
                                 <object class="sizeritem">
                                     <flag>wxALIGN_LEFT|wxALL</flag>
                                     <border>5</border>
@@ -3563,6 +3665,15 @@
                                                             <object class="wxCheckBox" name="IDC_METALDOOR_T4">
                                                                 <style>wxCHK_2STATE</style>
                                                                 <label>Four</label>
+                                                                <checked>0</checked>
+                                                            </object>
+                                                        </object>
+                                                        <object class="sizeritem">
+                                                            <flag>wxALIGN_LEFT|wxLEFT|wxRIGHT|wxTOP</flag>
+                                                            <border>5</border>
+                                                            <object class="wxCheckBox" name="IDC_METALDOOR_T5">
+                                                                <style>wxCHK_2STATE</style>
+                                                                <label>Five</label>
                                                                 <checked>0</checked>
                                                             </object>
                                                         </object>

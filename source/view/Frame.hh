@@ -20,15 +20,12 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
  
-// $Id: Frame.hh,v 1.39 2005/10/13 04:55:56 technoplaza Exp $
+// $Id: Frame.hh,v 1.44 2005/10/15 16:48:10 technoplaza Exp $
 
 #ifndef _SMSE_FRAME_HH_
 #define _SMSE_FRAME_HH_
 
 #include <wx/spinbutt.h>
-
-#define ID_SBTIMER wxID_HIGHEST + 1
-#define CLEAR_DELAY 4000
 
 namespace smse {
     class SRAMFile;
@@ -38,39 +35,12 @@ namespace smse {
         DECLARE_CLASS(Frame)
         DECLARE_EVENT_TABLE()
         
+        friend class SRAMFileTarget;
+        
     private:
-        /// number of missile packs in the game
-        static const int MISSILE_PACKS = 46;
-        
-        /// number of super missile packs in the game
-        static const int SMISSILE_PACKS = 10;
-        
-        /// number of power bomb packs in the game
-        static const int PBOMB_PACKS = 10;
-        
-        /// number of energy tanks in the game
-        static const int ETANKS = 14;
-        
-        /// number of reserve tanks in the game
-        static const int RTANKS = 4;
-        
-        /// number of red doors in the game
-        static const int REDDOORS = 30;
-        
-        /// number of green doors in the game
-        static const int GREENDOORS = 23;
-        
-        /// number of yellow doors in the game
-        static const int YELLOWDOORS = 13;
-        
-        /// number of eye doors in the game
-        static const int EYEDOORS = 5;
-        
-        /// number of metal doors in the game
-        static const int METALDOORS = 39;
-    
         wxTimer timer;
         SRAMFile *sram;
+        int game;
         bool ignoreTextEvents;
     
         /**
@@ -178,6 +148,11 @@ namespace smse {
          * Loads metal door data into the controls.
          */
         void loadMetalDoors();
+        
+        /**
+         * Loads the metroid room data into the controls.
+         */
+        void loadMetroidRooms();
         
         /**
          * Loads the miniboss data into the controls.
@@ -335,6 +310,34 @@ namespace smse {
         void onGame(wxCommandEvent &event);
         
         /**
+         * Called when one of the clear submenu items is selected.
+         *
+         * @param event The triggering wxCommandEvent.
+         */
+        void onGameClear(wxCommandEvent &event);
+        
+        /**
+         * Called in idle time to update the clear submenu.
+         *
+         * @param event The triggering wxUpdateUIEvent.
+         */
+        void onGameClearUpdate(wxUpdateUIEvent &event);
+        
+        /**
+         * Called when one of the copy submenu items is selected.
+         *
+         * @param event The triggering wxCommandEvent.
+         */
+        void onGameCopy(wxCommandEvent &event);
+        
+        /**
+         * Called in idle time to update the copy submenu.
+         *
+         * @param event The triggering wxUpdateUIEvent.
+         */
+        void onGameCopyUpdate(wxUpdateUIEvent &event);
+        
+        /**
          * Called when an ending from the game menu is selected.
          *
          * @param event The triggering wxCommandEvent.
@@ -417,6 +420,13 @@ namespace smse {
          * @param event The triggering wxCommandEvent (unused).
          */
         void onGameGiveMetalDoors(wxCommandEvent &event);
+        
+        /**
+         * Called when metroid rooms is selected from the give submenu.
+         *
+         * @param event The triggering wxCommandEvent (unused).
+         */
+        void onGameGiveMetroidRooms(wxCommandEvent &event);
         
         /**
          * Called when mini-bosses is selected from the give submenu.
@@ -543,6 +553,13 @@ namespace smse {
          * @param event The triggering wxCommandEvent.
          */
         void onMetalDoorChange(wxCommandEvent &event);
+        
+        /**
+         * Called when a metroid room control is changed.
+         *
+         * @param event The triggering wxCommandEvent.
+         */
+        void onMetroidRoomChange(wxCommandEvent &event);
         
         /**
          * Called when a mini boss control is changed.
@@ -713,13 +730,23 @@ namespace smse {
          * Creates a new Frame.
          */
         Frame();
+        
+        /**
+         * Opens an SRAM file.
+         *
+         * @param filename The filename to open.
+         */
+        void open(const wxString &filename);
     };
     
     inline void Frame::onFileCloseUpdate(wxUpdateUIEvent &event)
         { event.Enable(sram); }
+        
     inline void Frame::onFileExit(wxCommandEvent &) { Close(); }
+    
     inline void Frame::onGameEndingUpdate(wxUpdateUIEvent &event)
         { event.Enable(sram); }
+        
     inline void Frame::onGameGiveUpdate(wxUpdateUIEvent &event)
         { event.Enable(sram); }
 }

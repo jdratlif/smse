@@ -20,12 +20,13 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
  
-// $Id: SRAMFile.cc,v 1.31 2005/10/12 23:39:03 technoplaza Exp $
+// $Id: SRAMFile.cc,v 1.34 2005/10/15 08:56:50 technoplaza Exp $
 
 #ifdef HAVE_CONFIG_H
     #include <config.h>
 #endif
 
+#include <cstring>
 #include <fstream>
 
 #include "model/SRAMFile.hh"
@@ -165,19 +166,25 @@ const std::pair<int, unsigned char> SRAMFile::SRAM_OFFSET[] =
         std::pair<int, unsigned char>(0x6A, 0x1),
         std::pair<int, unsigned char>(0x60, 0x80),
         
-        // Zebetites [71]
+        // Metroid Rooms [71]
+        std::pair<int, unsigned char>(0x62, 0x1),
+        std::pair<int, unsigned char>(0x62, 0x2),
+        std::pair<int, unsigned char>(0x62, 0x4),
+        std::pair<int, unsigned char>(0x62, 0x8),
+        
+        // Zebetites [75]
         std::pair<int, unsigned char>(0x60, 0x3),
         
-        // Tourian Elevator [72]
+        // Tourian Elevator [76]
         std::pair<int, unsigned char>(0x61, 0x4),
         
-        // Maridia Glass Tube Broken [73]
+        // Maridia Glass Tube Broken [77]
         std::pair<int, unsigned char>(0x61, 0x8),
         
-        // Rescued Animals [74]
+        // Rescued Animals [78]
         std::pair<int, unsigned char>(0x61, 0x80),
         
-        // Crateria Missile Packs (8) [75]
+        // Crateria Missile Packs (8) [79]
         std::pair<int, unsigned char>(0xB0, 0x2),
         std::pair<int, unsigned char>(0xB0, 0x4),
         std::pair<int, unsigned char>(0xB0, 0x8),
@@ -187,7 +194,7 @@ const std::pair<int, unsigned char> SRAMFile::SRAM_OFFSET[] =
         std::pair<int, unsigned char>(0xB1, 0x4),
         std::pair<int, unsigned char>(0xB1, 0x10),
         
-        // Brinstar Missile Packs (12) [83]
+        // Brinstar Missile Packs (12) [87]
         std::pair<int, unsigned char>(0xB1, 0x80),
         std::pair<int, unsigned char>(0xB2, 0x4),
         std::pair<int, unsigned char>(0xB2, 0x8),
@@ -201,7 +208,7 @@ const std::pair<int, unsigned char> SRAMFile::SRAM_OFFSET[] =
         std::pair<int, unsigned char>(0xB5, 0x2),
         std::pair<int, unsigned char>(0xB5, 0x10),
         
-        // Norfair Missile Packs (15) [95]
+        // Norfair Missile Packs (15) [99]
         std::pair<int, unsigned char>(0xB6, 0x2),
         std::pair<int, unsigned char>(0xB6, 0x8),
         std::pair<int, unsigned char>(0xB6, 0x40),
@@ -218,12 +225,12 @@ const std::pair<int, unsigned char> SRAMFile::SRAM_OFFSET[] =
         std::pair<int, unsigned char>(0xB9, 0x4),
         std::pair<int, unsigned char>(0xB9, 0x20),
         
-        // Wrecked Ship Missile Packs (3) [110]
+        // Wrecked Ship Missile Packs (3) [114]
         std::pair<int, unsigned char>(0xC0, 0x1),
         std::pair<int, unsigned char>(0xC0, 0x4),
         std::pair<int, unsigned char>(0xC0, 0x8),
         
-        // Maridia Missile Packs (8) [113]
+        // Maridia Missile Packs (8) [117]
         std::pair<int, unsigned char>(0xC1, 0x1),
         std::pair<int, unsigned char>(0xC1, 0x8),
         std::pair<int, unsigned char>(0xC1, 0x20),
@@ -233,296 +240,297 @@ const std::pair<int, unsigned char> SRAMFile::SRAM_OFFSET[] =
         std::pair<int, unsigned char>(0xC2, 0x10),
         std::pair<int, unsigned char>(0xC2, 0x80),
         
-        // Crateria Super Missile Packs (1) [121]
+        // Crateria Super Missile Packs (1) [125]
         std::pair<int, unsigned char>(0xB1, 0x8),
         
-        // Brinstar Super Missile Packs (3) [122]
+        // Brinstar Super Missile Packs (3) [126]
         std::pair<int, unsigned char>(0xB1, 0x40),
         std::pair<int, unsigned char>(0xB2, 0x1),
         std::pair<int, unsigned char>(0xB3, 0x80),
         
-        // Norfair Super Missile Packs (1) [125]
+        // Norfair Super Missile Packs (1) [129]
         std::pair<int, unsigned char>(0xB8, 0x80),
         
-        // Wrecked Ship Super Missile Packs (2) [126]
+        // Wrecked Ship Super Missile Packs (2) [130]
         std::pair<int, unsigned char>(0xC0, 0x20),
         std::pair<int, unsigned char>(0xC0, 0x40),
         
-        // Maridia Super Missile Packs (3) [128]
+        // Maridia Super Missile Packs (3) [132]
         std::pair<int, unsigned char>(0xC1, 0x2),
         std::pair<int, unsigned char>(0xC1, 0x10),
         std::pair<int, unsigned char>(0xC2, 0x20),
         
-        // Crateria Power Bomb Packs (1) [131]
+        // Crateria Power Bomb Packs (1) [135]
         std::pair<int, unsigned char>(0xB0, 0x1),
         
-        // Brinstar Power Bomb Packs (5) [132]
+        // Brinstar Power Bomb Packs (5) [136]
         std::pair<int, unsigned char>(0xB1, 0x20),
         std::pair<int, unsigned char>(0xB3, 0x1),
         std::pair<int, unsigned char>(0xB3, 0x8),
         std::pair<int, unsigned char>(0xB4, 0x80),
         std::pair<int, unsigned char>(0xB5, 0x1),
         
-        // Norfair Power Bomb Packs (3) [137]
+        // Norfair Power Bomb Packs (3) [141]
         std::pair<int, unsigned char>(0xB7, 0x2),
         std::pair<int, unsigned char>(0xB9, 0x8),
         std::pair<int, unsigned char>(0xB9, 0x10),
         
-        // Maridia Power Bomb Packs (1) [140]
+        // Maridia Power Bomb Packs (1) [144]
         std::pair<int, unsigned char>(0xC2, 0x8),
         
-        // Crateria Energy Tanks (2) [141]
+        // Crateria Energy Tanks (2) [145]
         std::pair<int, unsigned char>(0xB0, 0x20),
         std::pair<int, unsigned char>(0xB1, 0x1),
         
-        // Brinstar Energy Tanks (5) [143]
+        // Brinstar Energy Tanks (5) [147]
         std::pair<int, unsigned char>(0xB3, 0x20),
         std::pair<int, unsigned char>(0xB3, 0x40),
         std::pair<int, unsigned char>(0xB4, 0x2),
         std::pair<int, unsigned char>(0xB4, 0x8),
         std::pair<int, unsigned char>(0xB5, 0x8),
         
-        // Norfair Energy Tanks (4) [148]
+        // Norfair Energy Tanks (4) [152]
         std::pair<int, unsigned char>(0xB6, 0x10),
         std::pair<int, unsigned char>(0xB7, 0x1),
         std::pair<int, unsigned char>(0xB9, 0x40),
         std::pair<int, unsigned char>(0xBA, 0x1),
         
-        // Wrecked Ship Energy Tanks (1)  [152]
+        // Wrecked Ship Energy Tanks (1)  [156]
         std::pair<int, unsigned char>(0xC0, 0x10),
         
-        // Maridia Energy Tanks (2) [153]
+        // Maridia Energy Tanks (2) [157]
         std::pair<int, unsigned char>(0xC1, 0x4),
         std::pair<int, unsigned char>(0xC3, 0x1),
         
-        // Brinstar Reserve Tank [155]
+        // Brinstar Reserve Tank [159]
         std::pair<int, unsigned char>(0xB2, 0x2),
         
-        // Norfair Reserve Tank [156]
+        // Norfair Reserve Tank [160]
         std::pair<int, unsigned char>(0xB7, 0x20),
         
-        // Wrecked Ship Reserve Tank [157]
+        // Wrecked Ship Reserve Tank [161]
         std::pair<int, unsigned char>(0xC0, 0x2),
         
-        // Maridia Reserve Tank [158]
+        // Maridia Reserve Tank [162]
         std::pair<int, unsigned char>(0xC2, 0x2),
         
-        // Crateria Red Doors (3) [159]
-        std::pair<int, unsigned char>(0xF0, 0x20),  // 159
-        std::pair<int, unsigned char>(0xF3, 0x20),  // 160
-        std::pair<int, unsigned char>(0xF3, 0x40),  // 161
+        // Crateria Red Doors (3) [163]
+        std::pair<int, unsigned char>(0xF0, 0x20),
+        std::pair<int, unsigned char>(0xF3, 0x20),
+        std::pair<int, unsigned char>(0xF3, 0x40),
         
-        // Brinstar Red Doors (10) [162]
-        std::pair<int, unsigned char>(0xF3, 0x80),  // 162
-        std::pair<int, unsigned char>(0xF4, 0x1),   // 163
-        std::pair<int, unsigned char>(0xF4, 0x2),   // 164
-        std::pair<int, unsigned char>(0xF4, 0x4),   // 165
-        std::pair<int, unsigned char>(0xF4, 0x8),   // 166
-        std::pair<int, unsigned char>(0xF4, 0x40),  // 167
-        std::pair<int, unsigned char>(0xF5, 0x4),   // 168
-        std::pair<int, unsigned char>(0xF5, 0x8),   // 169
-        std::pair<int, unsigned char>(0xF6, 0x4),   // 170
-        std::pair<int, unsigned char>(0xF7, 0x4),   // 171
+        // Brinstar Red Doors (10) [166]
+        std::pair<int, unsigned char>(0xF3, 0x80),
+        std::pair<int, unsigned char>(0xF4, 0x1),
+        std::pair<int, unsigned char>(0xF4, 0x2),
+        std::pair<int, unsigned char>(0xF4, 0x4),
+        std::pair<int, unsigned char>(0xF4, 0x8),
+        std::pair<int, unsigned char>(0xF4, 0x40),
+        std::pair<int, unsigned char>(0xF5, 0x4),
+        std::pair<int, unsigned char>(0xF5, 0x8),
+        std::pair<int, unsigned char>(0xF6, 0x4),
+        std::pair<int, unsigned char>(0xF7, 0x4),
         
-        // Norfair Red Doors (7) [172]
-        std::pair<int, unsigned char>(0xF9, 0x4),   // 172
-        std::pair<int, unsigned char>(0xF9, 0x20),  // 173
-        std::pair<int, unsigned char>(0xFA, 0x2),   // 174
-        std::pair<int, unsigned char>(0xFA, 0x4),   // 175
-        std::pair<int, unsigned char>(0xFA, 0x20),  // 176
-        std::pair<int, unsigned char>(0xFA, 0x40),  // 177
-        std::pair<int, unsigned char>(0xFA, 0x80),  // 178
+        // Norfair Red Doors (7) [176]
+        std::pair<int, unsigned char>(0xF9, 0x4),
+        std::pair<int, unsigned char>(0xF9, 0x20),
+        std::pair<int, unsigned char>(0xFA, 0x2),
+        std::pair<int, unsigned char>(0xFA, 0x4),
+        std::pair<int, unsigned char>(0xFA, 0x20),
+        std::pair<int, unsigned char>(0xFA, 0x40),
+        std::pair<int, unsigned char>(0xFA, 0x80),
         
-        // Wrecked Ship Red Doors (1) [179]
-        std::pair<int, unsigned char>(0x101, 0x8),  // 179
+        // Wrecked Ship Red Doors (1) [183]
+        std::pair<int, unsigned char>(0x101, 0x8),
         
-        // Maridia Red Doors (8) [180]
-        std::pair<int, unsigned char>(0x101, 0x10), // 180
-        std::pair<int, unsigned char>(0x101, 0x20), // 181
-        std::pair<int, unsigned char>(0x101, 0x40), // 182
-        std::pair<int, unsigned char>(0x102, 0x1),  // 183
-        std::pair<int, unsigned char>(0x102, 0x4),  // 184
-        std::pair<int, unsigned char>(0x102, 0x40), // 185
-        std::pair<int, unsigned char>(0x103, 0x1),  // 186
+        // Maridia Red Doors (8) [184]
+        std::pair<int, unsigned char>(0x101, 0x10),
+        std::pair<int, unsigned char>(0x101, 0x20),
+        std::pair<int, unsigned char>(0x101, 0x40),
+        std::pair<int, unsigned char>(0x102, 0x1),
+        std::pair<int, unsigned char>(0x102, 0x4),
+        std::pair<int, unsigned char>(0x102, 0x40),
+        std::pair<int, unsigned char>(0x103, 0x1),
         
-        // Tourian Red Doors (2) [187]
-        std::pair<int, unsigned char>(0x104, 0x80), // 187
-        std::pair<int, unsigned char>(0x105, 0x2),  // 188
+        // Tourian Red Doors (2) [191]
+        std::pair<int, unsigned char>(0x104, 0x80),
+        std::pair<int, unsigned char>(0x105, 0x2),
         
-        // Crateria Green Doors (2) [189]
-        std::pair<int, unsigned char>(0xF0, 0x1),   // 189
-        std::pair<int, unsigned char>(0xF1, 0x10),  // 190
+        // Crateria Green Doors (2) [193]
+        std::pair<int, unsigned char>(0xF0, 0x1),
+        std::pair<int, unsigned char>(0xF1, 0x10),
         
-        // Brinstar Green Doors (10) [191]
-        std::pair<int, unsigned char>(0xF5, 0x2),   // 191
-        std::pair<int, unsigned char>(0xF5, 0x40),  // 192
-        std::pair<int, unsigned char>(0xF6, 0x8),   // 193
-        std::pair<int, unsigned char>(0xF6, 0x10),  // 194
-        std::pair<int, unsigned char>(0xF6, 0x20),  // 195
-        std::pair<int, unsigned char>(0xF7, 0x1),   // 196
-        std::pair<int, unsigned char>(0xF7, 0x8),   // 197
-        std::pair<int, unsigned char>(0xF7, 0x20),  // 198
-        std::pair<int, unsigned char>(0xF7, 0x80),  // 199
-        std::pair<int, unsigned char>(0xF8, 0x10),  // 200
+        // Brinstar Green Doors (10) [195]
+        std::pair<int, unsigned char>(0xF5, 0x2),
+        std::pair<int, unsigned char>(0xF5, 0x40),
+        std::pair<int, unsigned char>(0xF6, 0x8),
+        std::pair<int, unsigned char>(0xF6, 0x10),
+        std::pair<int, unsigned char>(0xF6, 0x20),
+        std::pair<int, unsigned char>(0xF7, 0x1),
+        std::pair<int, unsigned char>(0xF7, 0x8),
+        std::pair<int, unsigned char>(0xF7, 0x20),
+        std::pair<int, unsigned char>(0xF7, 0x80),
+        std::pair<int, unsigned char>(0xF8, 0x10),
         
-        // Norfair Green Doors (6) [201]
-        std::pair<int, unsigned char>(0xF9, 0x2),   // 201
-        std::pair<int, unsigned char>(0xF9, 0x8),   // 202
-        std::pair<int, unsigned char>(0xF9, 0x40),  // 203
-        std::pair<int, unsigned char>(0xFA, 0x8),   // 204
-        std::pair<int, unsigned char>(0xFA, 0x10),  // 205
-        std::pair<int, unsigned char>(0xFB, 0x80),  // 206
+        // Norfair Green Doors (6) [205]
+        std::pair<int, unsigned char>(0xF9, 0x2),
+        std::pair<int, unsigned char>(0xF9, 0x8),
+        std::pair<int, unsigned char>(0xF9, 0x40),
+        std::pair<int, unsigned char>(0xFA, 0x8),
+        std::pair<int, unsigned char>(0xFA, 0x10),
+        std::pair<int, unsigned char>(0xFB, 0x80),
         
-        // Wrecked Ship Green Doors (1) [207]
-        std::pair<int, unsigned char>(0x100, 0x10), // 207
+        // Wrecked Ship Green Doors (1) [211]
+        std::pair<int, unsigned char>(0x100, 0x10),
         
-        // Maridia Green Doors (4) [208]
-        std::pair<int, unsigned char>(0x101, 0x80), // 208
-        std::pair<int, unsigned char>(0x102, 0x10), // 209
-        std::pair<int, unsigned char>(0x102, 0x20), // 210
-        std::pair<int, unsigned char>(0x103, 0x4),  // 211
+        // Maridia Green Doors (4) [212]
+        std::pair<int, unsigned char>(0x101, 0x80),
+        std::pair<int, unsigned char>(0x102, 0x10),
+        std::pair<int, unsigned char>(0x102, 0x20),
+        std::pair<int, unsigned char>(0x103, 0x4),
 
-        // Crateria Yellow Doors (6) [212]
-        std::pair<int, unsigned char>(0xF0, 0x2),   // 212
-        std::pair<int, unsigned char>(0xF1, 0x20),  // 213
-        std::pair<int, unsigned char>(0xF1, 0x40),  // 214
-        std::pair<int, unsigned char>(0xF1, 0x80),  // 215
-        std::pair<int, unsigned char>(0xF2, 0x1),   // 216
-        std::pair<int, unsigned char>(0xF2, 0x8),   // 217
+        // Crateria Yellow Doors (6) [216]
+        std::pair<int, unsigned char>(0xF0, 0x2),
+        std::pair<int, unsigned char>(0xF1, 0x20),
+        std::pair<int, unsigned char>(0xF1, 0x40),
+        std::pair<int, unsigned char>(0xF1, 0x80),
+        std::pair<int, unsigned char>(0xF2, 0x1),
+        std::pair<int, unsigned char>(0xF2, 0x8),
         
-        // Brinstar Yellow Doors (4) [218]
-        std::pair<int, unsigned char>(0xF5, 0x1),   // 218
-        std::pair<int, unsigned char>(0xF6, 0x1),   // 219
-        std::pair<int, unsigned char>(0xF7, 0x2),   // 220
-        std::pair<int, unsigned char>(0xF7, 0x10),  // 221
+        // Brinstar Yellow Doors (4) [222]
+        std::pair<int, unsigned char>(0xF5, 0x1),
+        std::pair<int, unsigned char>(0xF6, 0x1),
+        std::pair<int, unsigned char>(0xF7, 0x2),
+        std::pair<int, unsigned char>(0xF7, 0x10),
         
-        // Norfair Yellow Doors (3) [222]
-        std::pair<int, unsigned char>(0xF9, 0x10),  // 222
-        std::pair<int, unsigned char>(0xFB, 0x1),   // 223
-        std::pair<int, unsigned char>(0xFB, 0x40),  // 224
+        // Norfair Yellow Doors (3) [226]
+        std::pair<int, unsigned char>(0xF9, 0x10),
+        std::pair<int, unsigned char>(0xFB, 0x1),
+        std::pair<int, unsigned char>(0xFB, 0x40),
         
-        // Crateria Metal Doors (1) [225]
-        std::pair<int, unsigned char>(0xF3, 0x8),   // 225
+        // Crateria Metal Doors (1) [229]
+        std::pair<int, unsigned char>(0xF3, 0x8),
         
-        // Brinstar Metal Doors (16) [226]
-        std::pair<int, unsigned char>(0xF3, 0x2),   // 226
-        std::pair<int, unsigned char>(0xF3, 0x4),   // 227
-        std::pair<int, unsigned char>(0xF4, 0x20),  // 228
-        std::pair<int, unsigned char>(0xF5, 0x10),  // 229
-        std::pair<int, unsigned char>(0xF5, 0x20),  // 230
-        std::pair<int, unsigned char>(0xF5, 0x80),  // 231
-        std::pair<int, unsigned char>(0xF6, 0x2),   // 232
-        std::pair<int, unsigned char>(0xF6, 0x40),  // 233
-        std::pair<int, unsigned char>(0xF6, 0x80),  // 234
-        std::pair<int, unsigned char>(0xF7, 0x40),  // 235
-        std::pair<int, unsigned char>(0xF8, 0x1),   // 236
-        std::pair<int, unsigned char>(0xF8, 0x2),   // 237
-        std::pair<int, unsigned char>(0xF8, 0x4),   // 238
-        std::pair<int, unsigned char>(0xF8, 0x8),   // 239
-        std::pair<int, unsigned char>(0xF8, 0x40),  // 240
-        std::pair<int, unsigned char>(0xF8, 0x80),  // 241
+        // Brinstar Metal Doors (16) [230]
+        std::pair<int, unsigned char>(0xF3, 0x2),
+        std::pair<int, unsigned char>(0xF3, 0x4),
+        std::pair<int, unsigned char>(0xF4, 0x20),
+        std::pair<int, unsigned char>(0xF5, 0x10),
+        std::pair<int, unsigned char>(0xF5, 0x20),
+        std::pair<int, unsigned char>(0xF5, 0x80),
+        std::pair<int, unsigned char>(0xF6, 0x2),
+        std::pair<int, unsigned char>(0xF6, 0x40),
+        std::pair<int, unsigned char>(0xF6, 0x80),
+        std::pair<int, unsigned char>(0xF7, 0x40),
+        std::pair<int, unsigned char>(0xF8, 0x1),
+        std::pair<int, unsigned char>(0xF8, 0x2),
+        std::pair<int, unsigned char>(0xF8, 0x4),
+        std::pair<int, unsigned char>(0xF8, 0x8),
+        std::pair<int, unsigned char>(0xF8, 0x40),
+        std::pair<int, unsigned char>(0xF8, 0x80),
         
-        // Norfair Metal Doors (6) [242]
-        std::pair<int, unsigned char>(0xF9, 0x80),  // 242
-        std::pair<int, unsigned char>(0xFA, 0x1),   // 243
-        std::pair<int, unsigned char>(0xFB, 0x2),   // 244
-        std::pair<int, unsigned char>(0xFB, 0x4),   // 245
-        std::pair<int, unsigned char>(0xFB, 0x8),   // 246
-        std::pair<int, unsigned char>(0xFC, 0x1),   // 247
+        // Norfair Metal Doors (6) [246]
+        std::pair<int, unsigned char>(0xF9, 0x80),
+        std::pair<int, unsigned char>(0xFA, 0x1),
+        std::pair<int, unsigned char>(0xFB, 0x2),
+        std::pair<int, unsigned char>(0xFB, 0x4),
+        std::pair<int, unsigned char>(0xFB, 0x8),
+        std::pair<int, unsigned char>(0xFC, 0x1),
         
-        // Wrecked Ship Metal Doors (5) [248]
-        std::pair<int, unsigned char>(0x100, 0x8),  // 248
-        std::pair<int, unsigned char>(0x100, 0x40), // 249
-        std::pair<int, unsigned char>(0x101, 0x1),  // 250
-        std::pair<int, unsigned char>(0x101, 0x2),  // 251
-        std::pair<int, unsigned char>(0x101, 0x4),  // 252
+        // Wrecked Ship Metal Doors (5) [252]
+        std::pair<int, unsigned char>(0x100, 0x8),
+        std::pair<int, unsigned char>(0x100, 0x40),
+        std::pair<int, unsigned char>(0x101, 0x1),
+        std::pair<int, unsigned char>(0x101, 0x2),
+        std::pair<int, unsigned char>(0x101, 0x4),
         
-        // Maridia Metal Doors (7) [253]
-        std::pair<int, unsigned char>(0x102, 0x2),  // 253
-        std::pair<int, unsigned char>(0x102, 0x8),  // 254
-        std::pair<int, unsigned char>(0x102, 0x80), // 255
-        std::pair<int, unsigned char>(0x103, 0x10), // 256
-        std::pair<int, unsigned char>(0x103, 0x20), // 257
-        std::pair<int, unsigned char>(0x103, 0x40), // 258
-        std::pair<int, unsigned char>(0x103, 0x80), // 259
+        // Maridia Metal Doors (7) [257]
+        std::pair<int, unsigned char>(0x102, 0x2),
+        std::pair<int, unsigned char>(0x102, 0x8),
+        std::pair<int, unsigned char>(0x102, 0x80),
+        std::pair<int, unsigned char>(0x103, 0x10),
+        std::pair<int, unsigned char>(0x103, 0x20),
+        std::pair<int, unsigned char>(0x103, 0x40),
+        std::pair<int, unsigned char>(0x103, 0x80),
         
-        // Tourian Metal Doors (4) [260]
-        std::pair<int, unsigned char>(0x104, 0x1),  // 260
-        std::pair<int, unsigned char>(0x104, 0x2),  // 261
-        std::pair<int, unsigned char>(0x104, 0x4),  // 262
-        std::pair<int, unsigned char>(0x104, 0x8),  // 263
+        // Tourian Metal Doors (5) [264]
+        std::pair<int, unsigned char>(0x104, 0x1),
+        std::pair<int, unsigned char>(0x104, 0x2),
+        std::pair<int, unsigned char>(0x104, 0x4),
+        std::pair<int, unsigned char>(0x104, 0x8),
+        std::pair<int, unsigned char>(0x104, 0x20),
         
-        // Brinstar Eye Door (Kraid) [264]
+        // Brinstar Eye Door (Kraid) [269]
         std::pair<int, unsigned char>(0xF8, 0x20),
         
-        // Norfair Eye Door (Ridley) [265]
+        // Norfair Eye Door (Ridley) [270]
         std::pair<int, unsigned char>(0xFB, 0x10),
         
-        // Wrecked Ship Eye Door (Phantoon) [266]
+        // Wrecked Ship Eye Door (Phantoon) [271]
         std::pair<int, unsigned char>(0x100, 0x20),
         
-        // Maridia Eye Door (Draygon) [267]
+        // Maridia Eye Door (Draygon) [272]
         std::pair<int, unsigned char>(0x103, 0x8),
         
-        // Tourian Eye Door [268]
+        // Tourian Eye Door [273]
         std::pair<int, unsigned char>(0x105, 0x1),
         
-        // Crateria Map [269]
+        // Crateria Map [274]
         std::pair<int, unsigned char>(0x148, 0xFF),
         
-        // Brinstar Map [270]
+        // Brinstar Map [275]
         std::pair<int, unsigned char>(0x149, 0xFF),
         
-        // Norfair Map [271]
+        // Norfair Map [276]
         std::pair<int, unsigned char>(0x14A, 0xFF),
         
-        // Wrecked Ship Map [272]
+        // Wrecked Ship Map [277]
         std::pair<int, unsigned char>(0x14B, 0xFF),
         
-        // Maridia Map [273]
+        // Maridia Map [278]
         std::pair<int, unsigned char>(0x14C, 0xFF),
         
-        // Tourian Map [274]
+        // Tourian Map [279]
         std::pair<int, unsigned char>(0x14D, 0xFF),
         
-        // Save Spot [275]
+        // Save Spot (Area, Point) [280]
         std::pair<int, unsigned char>(0x158, 0),
         std::pair<int, unsigned char>(0x156, 0),
         
-        // Game Hours [277]
+        // Game Hours [282]
         std::pair<int, unsigned char>(0x3E, 0xFF),
         
-        // Game Minutes [278]
+        // Game Minutes [283]
         std::pair<int, unsigned char>(0x3C, 0xFF),
         
-        // Shot Button [279]
+        // Shot Button [284]
         std::pair<int, unsigned char>(0x10, 0),
         
-        // Jump Button [280]
+        // Jump Button [285]
         std::pair<int, unsigned char>(0x12, 0),
         
-        // Dash Button [281]
+        // Dash Button [286]
         std::pair<int, unsigned char>(0x14, 0),
         
-        // Item Cancel Button [282]
+        // Item Cancel Button [287]
         std::pair<int, unsigned char>(0x16, 0),
         
-        // Item Select Button [283]
+        // Item Select Button [288]
         std::pair<int, unsigned char>(0x18, 0),
         
-        // Angle Down Button [284]
+        // Angle Down Button [289]
         std::pair<int, unsigned char>(0x1A, 0),
         
-        // Angle Up Button [285]
+        // Angle Up Button [290]
         std::pair<int, unsigned char>(0x1C, 0),
         
-        // Language (English or Japanese) [286]
+        // Language (English or Japanese) [291]
         std::pair<int, unsigned char>(0x40, 0x1),
         
-        // Moon Walk (Off or On) [287]
+        // Moon Walk (Off or On) [292]
         std::pair<int, unsigned char>(0x42, 0x1),
         
-        // Icon Cancel (Manual or Automatic) [288]
+        // Icon Cancel (Manual or Automatic) [293]
         std::pair<int, unsigned char>(0x48, 0x1)
     };
     
@@ -1087,6 +1095,45 @@ void SRAMFile::checksum() {
             sram[COMPLIMENT_OFFSET2 + (game * 2) + 1] = comp.second;
         }
     }
+}
+
+void SRAMFile::clear(int game) {
+    // ensure we have a valid game
+    wxASSERT((game >= 0) && (game < GAMES));
+    
+    if (valid[game]) {
+        // clear the game data
+        std::memset((sram + GAME_OFFSET + (game * GAME_SIZE)), 0, GAME_SIZE);
+        
+        // invalidate the checksum
+        sram[CHECKSUM_OFFSET + (game * 2)] = 0xFF;
+        sram[CHECKSUM_OFFSET2 + (game * 2)] = 0xFF;
+        
+        // the game is no longer valid
+        valid[game] = false;
+        
+        modified = true;
+    }
+}
+
+void SRAMFile::copy(int src, int dest) {
+    // ensure we have valid games
+    wxASSERT((src >= 0) && (src < GAMES));
+    wxASSERT((dest >= 0) && (dest < GAMES));
+    wxASSERT(src != dest);
+    
+    // ensure our source is a valid game to duplicate
+    wxASSERT(valid[src]);
+    
+    // copy the game data
+    std::memcpy((sram + GAME_OFFSET + (dest * GAME_SIZE)),
+                (sram + GAME_OFFSET + (src * GAME_SIZE)),
+                GAME_SIZE);
+                
+    // the destination is now a valid game
+    valid[dest] = true;
+    
+    modified = true;
 }
 
 std::pair<unsigned char, unsigned char>

@@ -11,7 +11,8 @@ smse_SOURCES = AppConstants.hh \
     exceptions/InvalidSRAMDataException.cc exceptions/InvalidSRAMDataException.hh \
     exceptions/InvalidSRAMFileException.cc exceptions/InvalidSRAMFileException.hh \
     model/SRAMFile.cc model/SRAMFile.hh \
-    view/Frame.cc view/Frame.hh
+    view/Frame.cc view/Frame.hh \
+    view/SRAMFileTarget.cc view/SRAMFileTarget.hh
 
 nodist_smse_SOURCES = res/smse.cc
 

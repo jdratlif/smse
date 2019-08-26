@@ -20,7 +20,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
  
-// $Id: Frame.cc,v 1.44 2005/10/13 07:29:53 technoplaza Exp $
+// $Id: Frame.cc,v 1.51 2005/10/15 16:48:10 technoplaza Exp $
 
 #ifdef HAVE_CONFIG_H
     #include <config.h>
@@ -35,11 +35,11 @@
 #include <wx/regex.h>
 #include <wx/xrc/xmlres.h>
 
-#include "AppConstants.hh"
 #include "exceptions/InvalidSRAMDataException.hh"
 #include "res/icon32x32.xpm"
 #include "model/SRAMFile.hh"
 #include "view/Frame.hh"
+#include "view/SRAMFileTarget.hh"
 
 using namespace smse;
 
@@ -55,6 +55,9 @@ Frame::Frame() : timer(this, ID_SBTIMER), sram(NULL), ignoreTextEvents(true) {
     
     // stop ignoring text events
     ignoreTextEvents = false;
+    
+    // add the file drop target
+    SetDropTarget(new SRAMFileTarget(this));
 }
 
 void Frame::CreateControls() {
@@ -110,6 +113,8 @@ void Frame::load(int game) {
     
     // select the proper game in the SRAM
     sram->setGame(game);
+    
+    this->game = game;
     
     try {
         loadGameTab();
@@ -283,6 +288,7 @@ void Frame::loadGameTab() {
     
     loadBosses();
     loadMiniBosses();
+    loadMetroidRooms();
     loadZebetites();
     
     loadSavePoint();
@@ -598,6 +604,22 @@ void Frame::loadMetalDoors() {
         wxCheckBox)->SetValue(sram->getDoor(MD_T3));
     XRCCTRL(*this, "IDC_METALDOOR_T4",
         wxCheckBox)->SetValue(sram->getDoor(MD_T4));
+    XRCCTRL(*this, "IDC_METALDOOR_T5",
+        wxCheckBox)->SetValue(sram->getDoor(MD_T5));
+}
+
+void Frame::loadMetroidRooms() {
+    // ensure we have an open SRAMFile
+    wxASSERT(sram);
+    
+    XRCCTRL(*this, "IDC_GAME_METROIDROOM1",
+        wxCheckBox)->SetValue(sram->getMetroidRoom(MR1));
+    XRCCTRL(*this, "IDC_GAME_METROIDROOM2",
+        wxCheckBox)->SetValue(sram->getMetroidRoom(MR2));
+    XRCCTRL(*this, "IDC_GAME_METROIDROOM3",
+        wxCheckBox)->SetValue(sram->getMetroidRoom(MR3));
+    XRCCTRL(*this, "IDC_GAME_METROIDROOM4",
+        wxCheckBox)->SetValue(sram->getMetroidRoom(MR4));
 }
 
 void Frame::loadMiniBosses() {
@@ -637,105 +659,105 @@ void Frame::loadMissilePacks() {
     wxASSERT(sram);
     
     // Crateria Missile Packs
-    XRCCTRL(*this, "IDC_ITEMS_MISSILE_C1",
+    XRCCTRL(*this, "IDC_PICKUPS_MISSILE_C1",
         wxCheckBox)->SetValue(sram->hasMissilePack(SO_CMISSILEPACKS));
-    XRCCTRL(*this, "IDC_ITEMS_MISSILE_C2",
+    XRCCTRL(*this, "IDC_PICKUPS_MISSILE_C2",
         wxCheckBox)->SetValue(sram->hasMissilePack(SO_CMISSILEPACKS + 1));
-    XRCCTRL(*this, "IDC_ITEMS_MISSILE_C3",
+    XRCCTRL(*this, "IDC_PICKUPS_MISSILE_C3",
         wxCheckBox)->SetValue(sram->hasMissilePack(SO_CMISSILEPACKS + 2));
-    XRCCTRL(*this, "IDC_ITEMS_MISSILE_C4",
+    XRCCTRL(*this, "IDC_PICKUPS_MISSILE_C4",
         wxCheckBox)->SetValue(sram->hasMissilePack(SO_CMISSILEPACKS + 3));
-    XRCCTRL(*this, "IDC_ITEMS_MISSILE_C5",
+    XRCCTRL(*this, "IDC_PICKUPS_MISSILE_C5",
         wxCheckBox)->SetValue(sram->hasMissilePack(SO_CMISSILEPACKS + 4));
-    XRCCTRL(*this, "IDC_ITEMS_MISSILE_C6",
+    XRCCTRL(*this, "IDC_PICKUPS_MISSILE_C6",
         wxCheckBox)->SetValue(sram->hasMissilePack(SO_CMISSILEPACKS + 5));
-    XRCCTRL(*this, "IDC_ITEMS_MISSILE_C7",
+    XRCCTRL(*this, "IDC_PICKUPS_MISSILE_C7",
         wxCheckBox)->SetValue(sram->hasMissilePack(SO_CMISSILEPACKS + 6));
-    XRCCTRL(*this, "IDC_ITEMS_MISSILE_C8",
+    XRCCTRL(*this, "IDC_PICKUPS_MISSILE_C8",
         wxCheckBox)->SetValue(sram->hasMissilePack(SO_CMISSILEPACKS + 7));
         
     // Brinstar Missile Packs
-    XRCCTRL(*this, "IDC_ITEMS_MISSILE_BS1",
+    XRCCTRL(*this, "IDC_PICKUPS_MISSILE_BS1",
         wxCheckBox)->SetValue(sram->hasMissilePack(SO_BSMISSILEPACKS ));
-    XRCCTRL(*this, "IDC_ITEMS_MISSILE_BS2",
+    XRCCTRL(*this, "IDC_PICKUPS_MISSILE_BS2",
         wxCheckBox)->SetValue(sram->hasMissilePack(SO_BSMISSILEPACKS + 1));
-    XRCCTRL(*this, "IDC_ITEMS_MISSILE_BS3",
+    XRCCTRL(*this, "IDC_PICKUPS_MISSILE_BS3",
         wxCheckBox)->SetValue(sram->hasMissilePack(SO_BSMISSILEPACKS + 2));
-    XRCCTRL(*this, "IDC_ITEMS_MISSILE_BS4",
+    XRCCTRL(*this, "IDC_PICKUPS_MISSILE_BS4",
         wxCheckBox)->SetValue(sram->hasMissilePack(SO_BSMISSILEPACKS + 3));
-    XRCCTRL(*this, "IDC_ITEMS_MISSILE_BS5",
+    XRCCTRL(*this, "IDC_PICKUPS_MISSILE_BS5",
         wxCheckBox)->SetValue(sram->hasMissilePack(SO_BSMISSILEPACKS + 4));
-    XRCCTRL(*this, "IDC_ITEMS_MISSILE_BS6",
+    XRCCTRL(*this, "IDC_PICKUPS_MISSILE_BS6",
         wxCheckBox)->SetValue(sram->hasMissilePack(SO_BSMISSILEPACKS + 5));
-    XRCCTRL(*this, "IDC_ITEMS_MISSILE_BS7",
+    XRCCTRL(*this, "IDC_PICKUPS_MISSILE_BS7",
         wxCheckBox)->SetValue(sram->hasMissilePack(SO_BSMISSILEPACKS + 6));
-    XRCCTRL(*this, "IDC_ITEMS_MISSILE_BS8",
+    XRCCTRL(*this, "IDC_PICKUPS_MISSILE_BS8",
         wxCheckBox)->SetValue(sram->hasMissilePack(SO_BSMISSILEPACKS + 7));
-    XRCCTRL(*this, "IDC_ITEMS_MISSILE_BS9",
+    XRCCTRL(*this, "IDC_PICKUPS_MISSILE_BS9",
         wxCheckBox)->SetValue(sram->hasMissilePack(SO_BSMISSILEPACKS + 8));
-    XRCCTRL(*this, "IDC_ITEMS_MISSILE_BS10",
+    XRCCTRL(*this, "IDC_PICKUPS_MISSILE_BS10",
         wxCheckBox)->SetValue(sram->hasMissilePack(SO_BSMISSILEPACKS + 9));
-    XRCCTRL(*this, "IDC_ITEMS_MISSILE_BS11",
+    XRCCTRL(*this, "IDC_PICKUPS_MISSILE_BS11",
         wxCheckBox)->SetValue(sram->hasMissilePack(SO_BSMISSILEPACKS + 10));
-    XRCCTRL(*this, "IDC_ITEMS_MISSILE_BS12",
+    XRCCTRL(*this, "IDC_PICKUPS_MISSILE_BS12",
         wxCheckBox)->SetValue(sram->hasMissilePack(SO_BSMISSILEPACKS + 11));
         
     // Norfair Missile Packs
-    XRCCTRL(*this, "IDC_ITEMS_MISSILE_NF1",
+    XRCCTRL(*this, "IDC_PICKUPS_MISSILE_NF1",
         wxCheckBox)->SetValue(sram->hasMissilePack(SO_NFMISSILEPACKS));
-    XRCCTRL(*this, "IDC_ITEMS_MISSILE_NF2",
+    XRCCTRL(*this, "IDC_PICKUPS_MISSILE_NF2",
         wxCheckBox)->SetValue(sram->hasMissilePack(SO_NFMISSILEPACKS + 1));
-    XRCCTRL(*this, "IDC_ITEMS_MISSILE_NF3",
+    XRCCTRL(*this, "IDC_PICKUPS_MISSILE_NF3",
         wxCheckBox)->SetValue(sram->hasMissilePack(SO_NFMISSILEPACKS + 2));
-    XRCCTRL(*this, "IDC_ITEMS_MISSILE_NF4",
+    XRCCTRL(*this, "IDC_PICKUPS_MISSILE_NF4",
         wxCheckBox)->SetValue(sram->hasMissilePack(SO_NFMISSILEPACKS + 3));
-    XRCCTRL(*this, "IDC_ITEMS_MISSILE_NF5",
+    XRCCTRL(*this, "IDC_PICKUPS_MISSILE_NF5",
         wxCheckBox)->SetValue(sram->hasMissilePack(SO_NFMISSILEPACKS + 4));
-    XRCCTRL(*this, "IDC_ITEMS_MISSILE_NF6",
+    XRCCTRL(*this, "IDC_PICKUPS_MISSILE_NF6",
         wxCheckBox)->SetValue(sram->hasMissilePack(SO_NFMISSILEPACKS + 5));
-    XRCCTRL(*this, "IDC_ITEMS_MISSILE_NF7",
+    XRCCTRL(*this, "IDC_PICKUPS_MISSILE_NF7",
         wxCheckBox)->SetValue(sram->hasMissilePack(SO_NFMISSILEPACKS + 6));
-    XRCCTRL(*this, "IDC_ITEMS_MISSILE_NF8",
+    XRCCTRL(*this, "IDC_PICKUPS_MISSILE_NF8",
         wxCheckBox)->SetValue(sram->hasMissilePack(SO_NFMISSILEPACKS + 7));
-    XRCCTRL(*this, "IDC_ITEMS_MISSILE_NF9",
+    XRCCTRL(*this, "IDC_PICKUPS_MISSILE_NF9",
         wxCheckBox)->SetValue(sram->hasMissilePack(SO_NFMISSILEPACKS + 8));
-    XRCCTRL(*this, "IDC_ITEMS_MISSILE_NF10",
+    XRCCTRL(*this, "IDC_PICKUPS_MISSILE_NF10",
         wxCheckBox)->SetValue(sram->hasMissilePack(SO_NFMISSILEPACKS + 9));
-    XRCCTRL(*this, "IDC_ITEMS_MISSILE_NF11",
+    XRCCTRL(*this, "IDC_PICKUPS_MISSILE_NF11",
         wxCheckBox)->SetValue(sram->hasMissilePack(SO_NFMISSILEPACKS + 10));
-    XRCCTRL(*this, "IDC_ITEMS_MISSILE_NF12",
+    XRCCTRL(*this, "IDC_PICKUPS_MISSILE_NF12",
         wxCheckBox)->SetValue(sram->hasMissilePack(SO_NFMISSILEPACKS + 11));
-    XRCCTRL(*this, "IDC_ITEMS_MISSILE_NF13",
+    XRCCTRL(*this, "IDC_PICKUPS_MISSILE_NF13",
         wxCheckBox)->SetValue(sram->hasMissilePack(SO_NFMISSILEPACKS + 12));
-    XRCCTRL(*this, "IDC_ITEMS_MISSILE_NF14",
+    XRCCTRL(*this, "IDC_PICKUPS_MISSILE_NF14",
         wxCheckBox)->SetValue(sram->hasMissilePack(SO_NFMISSILEPACKS + 13));
-    XRCCTRL(*this, "IDC_ITEMS_MISSILE_NF15",
+    XRCCTRL(*this, "IDC_PICKUPS_MISSILE_NF15",
         wxCheckBox)->SetValue(sram->hasMissilePack(SO_NFMISSILEPACKS + 14));
         
     // Wrecked Ship Missile Packs
-    XRCCTRL(*this, "IDC_ITEMS_MISSILE_WS1",
+    XRCCTRL(*this, "IDC_PICKUPS_MISSILE_WS1",
         wxCheckBox)->SetValue(sram->hasMissilePack(SO_WSMISSILEPACKS));
-    XRCCTRL(*this, "IDC_ITEMS_MISSILE_WS2",
+    XRCCTRL(*this, "IDC_PICKUPS_MISSILE_WS2",
         wxCheckBox)->SetValue(sram->hasMissilePack(SO_WSMISSILEPACKS + 1));
-    XRCCTRL(*this, "IDC_ITEMS_MISSILE_WS3",
+    XRCCTRL(*this, "IDC_PICKUPS_MISSILE_WS3",
         wxCheckBox)->SetValue(sram->hasMissilePack(SO_WSMISSILEPACKS + 2));
         
     // Maridia Missile Packs
-    XRCCTRL(*this, "IDC_ITEMS_MISSILE_M1",
+    XRCCTRL(*this, "IDC_PICKUPS_MISSILE_M1",
         wxCheckBox)->SetValue(sram->hasMissilePack(SO_MMISSILEPACKS));
-    XRCCTRL(*this, "IDC_ITEMS_MISSILE_M2",
+    XRCCTRL(*this, "IDC_PICKUPS_MISSILE_M2",
         wxCheckBox)->SetValue(sram->hasMissilePack(SO_MMISSILEPACKS + 1));
-    XRCCTRL(*this, "IDC_ITEMS_MISSILE_M3",
+    XRCCTRL(*this, "IDC_PICKUPS_MISSILE_M3",
         wxCheckBox)->SetValue(sram->hasMissilePack(SO_MMISSILEPACKS + 2));
-    XRCCTRL(*this, "IDC_ITEMS_MISSILE_M4",
+    XRCCTRL(*this, "IDC_PICKUPS_MISSILE_M4",
         wxCheckBox)->SetValue(sram->hasMissilePack(SO_MMISSILEPACKS + 3));
-    XRCCTRL(*this, "IDC_ITEMS_MISSILE_M5",
+    XRCCTRL(*this, "IDC_PICKUPS_MISSILE_M5",
         wxCheckBox)->SetValue(sram->hasMissilePack(SO_MMISSILEPACKS + 4));
-    XRCCTRL(*this, "IDC_ITEMS_MISSILE_M6",
+    XRCCTRL(*this, "IDC_PICKUPS_MISSILE_M6",
         wxCheckBox)->SetValue(sram->hasMissilePack(SO_MMISSILEPACKS + 5));
-    XRCCTRL(*this, "IDC_ITEMS_MISSILE_M7",
+    XRCCTRL(*this, "IDC_PICKUPS_MISSILE_M7",
         wxCheckBox)->SetValue(sram->hasMissilePack(SO_MMISSILEPACKS + 6));
-    XRCCTRL(*this, "IDC_ITEMS_MISSILE_M8",
+    XRCCTRL(*this, "IDC_PICKUPS_MISSILE_M8",
         wxCheckBox)->SetValue(sram->hasMissilePack(SO_MMISSILEPACKS + 7));
 }
 
@@ -744,31 +766,31 @@ void Frame::loadPowerBombPacks() {
     wxASSERT(sram);
     
     // Crateria Power Bomb Pack
-    XRCCTRL(*this, "IDC_ITEMS_PBOMB_C",
+    XRCCTRL(*this, "IDC_PICKUPS_PBOMB_C",
         wxCheckBox)->SetValue(sram->hasPowerBombPack(SO_CPBOMBPACKS));
         
     // Brinstar Power Bomb Packs
-    XRCCTRL(*this, "IDC_ITEMS_PBOMB_BS1",
+    XRCCTRL(*this, "IDC_PICKUPS_PBOMB_BS1",
         wxCheckBox)->SetValue(sram->hasPowerBombPack(SO_BSPBOMBPACKS));
-    XRCCTRL(*this, "IDC_ITEMS_PBOMB_BS2",
+    XRCCTRL(*this, "IDC_PICKUPS_PBOMB_BS2",
         wxCheckBox)->SetValue(sram->hasPowerBombPack(SO_BSPBOMBPACKS + 1));
-    XRCCTRL(*this, "IDC_ITEMS_PBOMB_BS3",
+    XRCCTRL(*this, "IDC_PICKUPS_PBOMB_BS3",
         wxCheckBox)->SetValue(sram->hasPowerBombPack(SO_BSPBOMBPACKS + 2));
-    XRCCTRL(*this, "IDC_ITEMS_PBOMB_BS4",
+    XRCCTRL(*this, "IDC_PICKUPS_PBOMB_BS4",
         wxCheckBox)->SetValue(sram->hasPowerBombPack(SO_BSPBOMBPACKS + 3));
-    XRCCTRL(*this, "IDC_ITEMS_PBOMB_BS5",
+    XRCCTRL(*this, "IDC_PICKUPS_PBOMB_BS5",
         wxCheckBox)->SetValue(sram->hasPowerBombPack(SO_BSPBOMBPACKS + 4));
         
     // Norfair Power Bombs Packs
-    XRCCTRL(*this, "IDC_ITEMS_PBOMB_NF1",
+    XRCCTRL(*this, "IDC_PICKUPS_PBOMB_NF1",
         wxCheckBox)->SetValue(sram->hasPowerBombPack(SO_NFPBOMBPACKS));
-    XRCCTRL(*this, "IDC_ITEMS_PBOMB_NF2",
+    XRCCTRL(*this, "IDC_PICKUPS_PBOMB_NF2",
         wxCheckBox)->SetValue(sram->hasPowerBombPack(SO_NFPBOMBPACKS + 1));
-    XRCCTRL(*this, "IDC_ITEMS_PBOMB_NF3",
+    XRCCTRL(*this, "IDC_PICKUPS_PBOMB_NF3",
         wxCheckBox)->SetValue(sram->hasPowerBombPack(SO_NFPBOMBPACKS + 2));
         
     // Maridia Power Bomb Pack
-    XRCCTRL(*this, "IDC_ITEMS_PBOMB_M",
+    XRCCTRL(*this, "IDC_PICKUPS_PBOMB_M",
         wxCheckBox)->SetValue(sram->hasPowerBombPack(SO_MPBOMBPACKS));
 }
 
@@ -905,33 +927,33 @@ void Frame::loadSuperMissilePacks() {
     wxASSERT(sram);
     
     // Crateria Super Missile Pack
-    XRCCTRL(*this, "IDC_ITEMS_SMISSILE_C", wxCheckBox)->
+    XRCCTRL(*this, "IDC_PICKUPS_SMISSILE_C", wxCheckBox)->
         SetValue(sram->hasSuperMissilePack(SO_CSMISSILEPACKS));
         
     // Brinstar Super Missile Packs
-    XRCCTRL(*this, "IDC_ITEMS_SMISSILE_BS1", wxCheckBox)->
+    XRCCTRL(*this, "IDC_PICKUPS_SMISSILE_BS1", wxCheckBox)->
         SetValue(sram->hasSuperMissilePack(SO_BSSMISSILEPACKS));
-    XRCCTRL(*this, "IDC_ITEMS_SMISSILE_BS2", wxCheckBox)->
+    XRCCTRL(*this, "IDC_PICKUPS_SMISSILE_BS2", wxCheckBox)->
         SetValue(sram->hasSuperMissilePack(SO_BSSMISSILEPACKS + 1));
-    XRCCTRL(*this, "IDC_ITEMS_SMISSILE_BS3", wxCheckBox)->
+    XRCCTRL(*this, "IDC_PICKUPS_SMISSILE_BS3", wxCheckBox)->
         SetValue(sram->hasSuperMissilePack(SO_BSSMISSILEPACKS + 2));
         
     // Norfair Super Missile Pack
-    XRCCTRL(*this, "IDC_ITEMS_SMISSILE_NF", wxCheckBox)->
+    XRCCTRL(*this, "IDC_PICKUPS_SMISSILE_NF", wxCheckBox)->
         SetValue(sram->hasSuperMissilePack(SO_NFSMISSILEPACKS));
         
     // Wrecked Ship Super Missile Packs
-    XRCCTRL(*this, "IDC_ITEMS_SMISSILE_WS1", wxCheckBox)->
+    XRCCTRL(*this, "IDC_PICKUPS_SMISSILE_WS1", wxCheckBox)->
         SetValue(sram->hasSuperMissilePack(SO_WSSMISSILEPACKS));
-    XRCCTRL(*this, "IDC_ITEMS_SMISSILE_WS2", wxCheckBox)->
+    XRCCTRL(*this, "IDC_PICKUPS_SMISSILE_WS2", wxCheckBox)->
         SetValue(sram->hasSuperMissilePack(SO_WSSMISSILEPACKS + 1));
         
     // Maridia Super Missile Packs
-    XRCCTRL(*this, "IDC_ITEMS_SMISSILE_M1", wxCheckBox)->
+    XRCCTRL(*this, "IDC_PICKUPS_SMISSILE_M1", wxCheckBox)->
         SetValue(sram->hasSuperMissilePack(SO_MSMISSILEPACKS));
-    XRCCTRL(*this, "IDC_ITEMS_SMISSILE_M2", wxCheckBox)->
+    XRCCTRL(*this, "IDC_PICKUPS_SMISSILE_M2", wxCheckBox)->
         SetValue(sram->hasSuperMissilePack(SO_MSMISSILEPACKS + 1));
-    XRCCTRL(*this, "IDC_ITEMS_SMISSILE_M3", wxCheckBox)->
+    XRCCTRL(*this, "IDC_PICKUPS_SMISSILE_M3", wxCheckBox)->
         SetValue(sram->hasSuperMissilePack(SO_MSMISSILEPACKS + 2));
 }
 
@@ -984,6 +1006,31 @@ void Frame::loadZebetites() {
     } else {
         // this should NEVER happen
         throw InvalidSRAMDataException("Invalid destroyed zebetite count");
+    }
+}
+
+void Frame::open(const wxString &filename) {
+    try {
+        SRAMFile *temp = new SRAMFile(filename);
+        
+        if (sram) {
+            close();
+        }
+        
+        sram = temp;
+        
+        for (int i = 0; i < GAMES; ++i) {
+            if (sram->isValidGame(i)) {
+                load(i);
+                break;
+            }
+        }
+    } catch (InvalidSRAMFileException &e) {
+        wxString error(e.what(), wxConvLibc);
+        
+        wxMessageBox(error,
+            wxT("Error: Invalid Super Metroid SRAM file"),
+            wxOK | wxICON_ERROR);
     }
 }
 
@@ -1184,6 +1231,8 @@ void Frame::onFileClose(wxCommandEvent &) {
             close(true);
             
             return;
+        } else if (answer == wxCANCEL) {
+            return;
         }
     }
     
@@ -1191,7 +1240,7 @@ void Frame::onFileClose(wxCommandEvent &) {
 }
 
 void Frame::onFileOpen(wxCommandEvent &) {
-    // close current SRAMFile
+    // save current SRAMFile
     if (sram && sram->isModified()) {
         int answer = wxMessageBox(wxT("Save current SRAM?"),
                                   wxT("Warning: Unsaved SRAM file"),
@@ -1209,26 +1258,7 @@ void Frame::onFileOpen(wxCommandEvent &) {
                      wxT("SRAM Files (*.srm)|*.srm"), wxOPEN);
                      
     if (dlg.ShowModal() == wxID_OK) {
-        try {
-            if (sram) {
-                close();
-            }
-            
-            sram = new SRAMFile(dlg.GetPath());
-            
-            for (int i = 0; i < GAMES; ++i) {
-                if (sram->isValidGame(i)) {
-                    load(i);
-                    break;
-                }
-            }
-        } catch (InvalidSRAMFileException &e) {
-            wxString error(e.what(), wxConvLibc);
-            
-            wxMessageBox(error,
-                         wxT("Error: Invalid Super Metroid SRAM file"),
-                         wxOK | wxICON_ERROR);
-        }
+        open(dlg.GetPath());
     }
 }
 
@@ -1272,6 +1302,151 @@ void Frame::onGame(wxCommandEvent &event) {
         wxASSERT(event.GetId() == XRCID("IDM_GAME_GAMEC"));
         
         load(2);
+    }
+}
+
+void Frame::onGameClear(wxCommandEvent &event) {
+    // ensure we have an open SRAMFile
+    wxASSERT(sram);
+    
+    int game;
+    wxChar ch;
+    
+    if (event.GetId() == XRCID("IDM_GAME_CLEARA")) {
+        game = 0;
+        ch = wxT('A');
+    } else if (event.GetId() == XRCID("IDM_GAME_CLEARB")) {
+        game = 1;
+        ch = wxT('B');
+    } else {
+        // ensure we got game C if we're here
+        wxASSERT(event.GetId() == XRCID("IDM_GAME_CLEARC"));
+        
+        game = 2;
+        ch = wxT('C');
+    }
+    
+    int answer = wxMessageBox(wxString::Format
+        (wxT("Are you sure you want to erase Game %c?"), ch),
+        wxT("Really erase game?"), wxYES_NO | wxICON_QUESTION);
+        
+    if (answer == wxYES) {
+        // make copy of the SRAMFile
+        SRAMFile *temp = new SRAMFile(*sram);
+        
+        // erase the old game
+        sram->clear(game);
+        
+        if (this->game == game) {
+            // time to change games
+            int game = -1;
+            
+            for (int i = 0; i < GAMES; ++i) {
+                if (sram->isValidGame(i)) {
+                    game = i;
+                    break;
+                }
+            }
+            
+            if (game == -1) {
+                // we deleted the only valid game
+                if (!close(true)) {
+                    // we can't save the file, so we'll have to revert
+                    delete sram;
+                    
+                    sram = temp;
+                }
+            } else {
+                // no need for the copy anymore
+                delete temp;
+                
+                load(game);
+            }
+        }
+        
+        enableMenus();
+    }
+}
+
+void Frame::onGameClearUpdate(wxUpdateUIEvent &event) {
+    if (event.GetId() == XRCID("IDM_GAME_CLEAR")) {
+        event.Enable(sram);
+    } else if (event.GetId() == XRCID("IDM_GAME_CLEARA")) {
+        event.Enable(sram && sram->isValidGame(0));
+    } else if (event.GetId() == XRCID("IDM_GAME_CLEARB")) {
+        event.Enable(sram && sram->isValidGame(1));
+    } else {
+        // ensure we have clear C if we're here
+        wxASSERT(event.GetId() == XRCID("IDM_GAME_CLEARC"));
+        
+        event.Enable(sram && sram->isValidGame(2));
+    }
+}
+
+void Frame::onGameCopy(wxCommandEvent &event) {
+    // ensure we have an open SRAMFile
+    wxASSERT(sram);
+    
+    int src, dest;
+    wxChar sch, dch;
+    
+    if (event.GetId() == XRCID("IDM_GAME_COPYAB")) {
+        src = 0;
+        dest = 1;
+        sch = wxT('A');
+        dch = wxT('B');
+    } else if (event.GetId() == XRCID("IDM_GAME_COPYAC")) {
+        src = 0;
+        dest = 2;
+        sch = wxT('A');
+        dch = wxT('C');
+    } else if (event.GetId() == XRCID("IDM_GAME_COPYBA")) {
+        src = 1;
+        dest = 0;
+        sch = wxT('B');
+        dch = wxT('A');
+    } else if (event.GetId() == XRCID("IDM_GAME_COPYBC")) {
+        src = 1;
+        dest = 2;
+        sch = wxT('B');
+        dch = wxT('C');
+    } else if (event.GetId() == XRCID("IDM_GAME_COPYCA")) {
+        src = 2;
+        dest = 0;
+        sch = wxT('C');
+        dch = wxT('A');
+    } else {
+        // ensure we have copy C->B if we're here
+        wxASSERT(event.GetId() == XRCID("IDM_GAME_COPYCB"));
+        
+        src = 2;
+        dest = 1;
+        sch = wxT('C');
+        dch = wxT('B');
+    }
+    
+    int answer = wxMessageBox(wxString::Format
+        (wxT("Are you sure you want to copy Game %c over Game %c?"), sch, dch),
+        wxT("Really copy game?"), wxYES_NO | wxICON_QUESTION);
+        
+    if (answer == wxYES) {
+        sram->copy(src, dest);
+        enableMenus();
+    }
+}
+
+void Frame::onGameCopyUpdate(wxUpdateUIEvent &event) {
+    if (event.GetId() == XRCID("IDM_GAME_COPY")) {
+        event.Enable(sram);
+    } else if (event.GetId() == XRCID("IDM_GAME_COPYA")) {
+        event.Enable(sram && sram->isValidGame(0));
+    } else if (event.GetId() == XRCID("IDM_GAME_COPYB")) {
+        event.Enable(sram && sram->isValidGame(1));
+    } else {
+        // ensure we have copy C->B if we're here
+        wxASSERT(event.GetId() == XRCID("IDM_GAME_COPYC"));
+        
+        event.Enable(sram && sram->isValidGame(2));
     }
 }
 
@@ -1338,73 +1513,77 @@ void Frame::onGameGiveEverything(wxCommandEvent &) {
     // ensure we have an open SRAMFile
     wxASSERT(sram);
     
-    wxCommandEvent event3(wxEVT_COMMAND_MENU_SELECTED,
-        XRCID("IDM_GAME_GIVE_BOSSES"));
-    GetEventHandler()->ProcessEvent(event3);
-    
-    wxCommandEvent event4(wxEVT_COMMAND_MENU_SELECTED,
-        XRCID("IDM_GAME_GIVE_MINIBOSSES"));
-    GetEventHandler()->ProcessEvent(event4);
-    
-    wxCommandEvent event5(wxEVT_COMMAND_MENU_SELECTED,
-        XRCID("IDM_GAME_GIVE_ZEBETITES"));
-    GetEventHandler()->ProcessEvent(event5);
-    
-    wxCommandEvent event6(wxEVT_COMMAND_MENU_SELECTED,
-        XRCID("IDM_GAME_GIVE_MAPS"));
-    GetEventHandler()->ProcessEvent(event6);
-    
-    wxCommandEvent event7(wxEVT_COMMAND_MENU_SELECTED,
-        XRCID("IDM_GAME_GIVE_ITEMS"));
-    GetEventHandler()->ProcessEvent(event7);
-    
-    wxCommandEvent event8(wxEVT_COMMAND_MENU_SELECTED,
-        XRCID("IDM_GAME_GIVE_MISSILES"));
-    GetEventHandler()->ProcessEvent(event8);
-    
-    wxCommandEvent event9(wxEVT_COMMAND_MENU_SELECTED,
-        XRCID("IDM_GAME_GIVE_SMISSILES"));
-    GetEventHandler()->ProcessEvent(event9);
-    
-    wxCommandEvent event10(wxEVT_COMMAND_MENU_SELECTED,
-        XRCID("IDM_GAME_GIVE_PBOMBS"));
-    GetEventHandler()->ProcessEvent(event10);
-    
-    wxCommandEvent event11(wxEVT_COMMAND_MENU_SELECTED,
-        XRCID("IDM_GAME_GIVE_ETANKS"));
-    GetEventHandler()->ProcessEvent(event11);
-    
-    wxCommandEvent event12(wxEVT_COMMAND_MENU_SELECTED,
-        XRCID("IDM_GAME_GIVE_RTANKS"));
-    GetEventHandler()->ProcessEvent(event12);
-    
-    wxCommandEvent event13(wxEVT_COMMAND_MENU_SELECTED,
-        XRCID("IDM_GAME_GIVE_REDDOORS"));
-    GetEventHandler()->ProcessEvent(event13);
-    
-    wxCommandEvent event14(wxEVT_COMMAND_MENU_SELECTED,
-        XRCID("IDM_GAME_GIVE_GREENDOORS"));
-    GetEventHandler()->ProcessEvent(event14);
-    
-    wxCommandEvent event15(wxEVT_COMMAND_MENU_SELECTED,
-        XRCID("IDM_GAME_GIVE_YELLOWDOORS"));
-    GetEventHandler()->ProcessEvent(event15);
-    
-    wxCommandEvent event16(wxEVT_COMMAND_MENU_SELECTED,
-        XRCID("IDM_GAME_GIVE_EYEDOORS"));
-    GetEventHandler()->ProcessEvent(event16);
-    
-    wxCommandEvent event17(wxEVT_COMMAND_MENU_SELECTED,
-        XRCID("IDM_GAME_GIVE_METALDOORS"));
-    GetEventHandler()->ProcessEvent(event17);
-    
     wxCommandEvent event1(wxEVT_COMMAND_MENU_SELECTED,
-        XRCID("IDM_GAME_GIVE_ENERGY"));
+        XRCID("IDM_GAME_GIVE_BOSSES"));
     GetEventHandler()->ProcessEvent(event1);
     
     wxCommandEvent event2(wxEVT_COMMAND_MENU_SELECTED,
-        XRCID("IDM_GAME_GIVE_INVENTORY"));
+        XRCID("IDM_GAME_GIVE_MINIBOSSES"));
     GetEventHandler()->ProcessEvent(event2);
+    
+    wxCommandEvent event3(wxEVT_COMMAND_MENU_SELECTED,
+        XRCID("IDM_GAME_GIVE_METROIDROOMS"));
+    GetEventHandler()->ProcessEvent(event3);
+    
+    wxCommandEvent event4(wxEVT_COMMAND_MENU_SELECTED,
+        XRCID("IDM_GAME_GIVE_ZEBETITES"));
+    GetEventHandler()->ProcessEvent(event4);
+    
+    wxCommandEvent event5(wxEVT_COMMAND_MENU_SELECTED,
+        XRCID("IDM_GAME_GIVE_MAPS"));
+    GetEventHandler()->ProcessEvent(event5);
+    
+    wxCommandEvent event6(wxEVT_COMMAND_MENU_SELECTED,
+        XRCID("IDM_GAME_GIVE_ITEMS"));
+    GetEventHandler()->ProcessEvent(event6);
+    
+    wxCommandEvent event7(wxEVT_COMMAND_MENU_SELECTED,
+        XRCID("IDM_GAME_GIVE_MISSILES"));
+    GetEventHandler()->ProcessEvent(event7);
+    
+    wxCommandEvent event8(wxEVT_COMMAND_MENU_SELECTED,
+        XRCID("IDM_GAME_GIVE_SMISSILES"));
+    GetEventHandler()->ProcessEvent(event8);
+    
+    wxCommandEvent event9(wxEVT_COMMAND_MENU_SELECTED,
+        XRCID("IDM_GAME_GIVE_PBOMBS"));
+    GetEventHandler()->ProcessEvent(event9);
+    
+    wxCommandEvent event10(wxEVT_COMMAND_MENU_SELECTED,
+        XRCID("IDM_GAME_GIVE_ETANKS"));
+    GetEventHandler()->ProcessEvent(event10);
+    
+    wxCommandEvent event11(wxEVT_COMMAND_MENU_SELECTED,
+        XRCID("IDM_GAME_GIVE_RTANKS"));
+    GetEventHandler()->ProcessEvent(event11);
+    
+    wxCommandEvent event12(wxEVT_COMMAND_MENU_SELECTED,
+        XRCID("IDM_GAME_GIVE_REDDOORS"));
+    GetEventHandler()->ProcessEvent(event12);
+    
+    wxCommandEvent event13(wxEVT_COMMAND_MENU_SELECTED,
+        XRCID("IDM_GAME_GIVE_GREENDOORS"));
+    GetEventHandler()->ProcessEvent(event13);
+    
+    wxCommandEvent event14(wxEVT_COMMAND_MENU_SELECTED,
+        XRCID("IDM_GAME_GIVE_YELLOWDOORS"));
+    GetEventHandler()->ProcessEvent(event14);
+    
+    wxCommandEvent event15(wxEVT_COMMAND_MENU_SELECTED,
+        XRCID("IDM_GAME_GIVE_EYEDOORS"));
+    GetEventHandler()->ProcessEvent(event15);
+    
+    wxCommandEvent event16(wxEVT_COMMAND_MENU_SELECTED,
+        XRCID("IDM_GAME_GIVE_METALDOORS"));
+    GetEventHandler()->ProcessEvent(event16);
+    
+    wxCommandEvent event17(wxEVT_COMMAND_MENU_SELECTED,
+        XRCID("IDM_GAME_GIVE_ENERGY"));
+    GetEventHandler()->ProcessEvent(event17);
+    
+    wxCommandEvent event18(wxEVT_COMMAND_MENU_SELECTED,
+        XRCID("IDM_GAME_GIVE_INVENTORY"));
+    GetEventHandler()->ProcessEvent(event18);
 }
 
 void Frame::onGameGiveEyeDoors(wxCommandEvent &) {
@@ -1517,6 +1696,18 @@ void Frame::onGameGiveMetalDoors(wxCommandEvent &) {
     }
     
     loadMetalDoors();
+}
+
+void Frame::onGameGiveMetroidRooms(wxCommandEvent &) {
+    // ensure we have an open SRAMFile
+    wxASSERT(sram);
+    
+    sram->setMetroidRoom(MR1);
+    sram->setMetroidRoom(MR2);
+    sram->setMetroidRoom(MR3);
+    sram->setMetroidRoom(MR4);
+    
+    loadMetroidRooms();
 }
 
 void Frame::onGameGiveMiniBosses(wxCommandEvent &) {
@@ -1982,11 +2173,31 @@ void Frame::onMetalDoorChange(wxCommandEvent &event) {
         sram->setDoor(MD_T2, event.IsChecked());
     } else if (event.GetId() == XRCID("IDC_METALDOOR_T3")) {
         sram->setDoor(MD_T3, event.IsChecked());
-    } else {
-        // ensure we have tourian metal door 4 if we're here
-        wxASSERT(event.GetId() == XRCID("IDC_METALDOOR_T4"));
-        
+    } else if (event.GetId() == XRCID("IDC_METALDOOR_T4")) {
         sram->setDoor(MD_T4, event.IsChecked());
+    } else {
+        // ensure we have tourian metal door 5 if we're here
+        wxASSERT(event.GetId() == XRCID("IDC_METALDOOR_T5"));
+        
+        sram->setDoor(MD_T5, event.IsChecked());
+    }
+}
+
+void Frame::onMetroidRoomChange(wxCommandEvent &event) {
+    // ensure we have an open SRAMFile
+    wxASSERT(sram);
+    
+    if (event.GetId() == XRCID("IDC_GAME_METROIDROOM1")) {
+        sram->setMetroidRoom(MR1, event.IsChecked());
+    } else if (event.GetId() == XRCID("IDC_GAME_METROIDROOM2")) {
+        sram->setMetroidRoom(MR2, event.IsChecked());
+    } else if (event.GetId() == XRCID("IDC_GAME_METROIDROOM3")) {
+        sram->setMetroidRoom(MR3, event.IsChecked());
+    } else {
+        // ensure we have metroid room 5 if we're here
+        wxASSERT(event.GetId() == XRCID("IDC_GAME_METROIDROOM4"));
+        
+        sram->setMetroidRoom(MR4, event.IsChecked());
     }
 }
 
@@ -2044,99 +2255,99 @@ void Frame::onMissilePackChange(wxCommandEvent &event) {
     // ensure we have an open SRAMFile
     wxASSERT(sram);
     
-    if (event.GetId() == XRCID("IDC_ITEMS_MISSILE_C1")) {
+    if (event.GetId() == XRCID("IDC_PICKUPS_MISSILE_C1")) {
         sram->setMissilePack(SO_CMISSILEPACKS, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_MISSILE_C2")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_MISSILE_C2")) {
         sram->setMissilePack(SO_CMISSILEPACKS + 1, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_MISSILE_C3")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_MISSILE_C3")) {
         sram->setMissilePack(SO_CMISSILEPACKS + 2, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_MISSILE_C4")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_MISSILE_C4")) {
         sram->setMissilePack(SO_CMISSILEPACKS + 3, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_MISSILE_C5")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_MISSILE_C5")) {
         sram->setMissilePack(SO_CMISSILEPACKS + 4, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_MISSILE_C6")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_MISSILE_C6")) {
         sram->setMissilePack(SO_CMISSILEPACKS + 5, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_MISSILE_C7")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_MISSILE_C7")) {
         sram->setMissilePack(SO_CMISSILEPACKS + 6, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_MISSILE_C8")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_MISSILE_C8")) {
         sram->setMissilePack(SO_CMISSILEPACKS + 7, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_MISSILE_BS1")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_MISSILE_BS1")) {
         sram->setMissilePack(SO_BSMISSILEPACKS, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_MISSILE_BS2")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_MISSILE_BS2")) {
         sram->setMissilePack(SO_BSMISSILEPACKS + 1, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_MISSILE_BS3")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_MISSILE_BS3")) {
         sram->setMissilePack(SO_BSMISSILEPACKS + 2, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_MISSILE_BS4")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_MISSILE_BS4")) {
         sram->setMissilePack(SO_BSMISSILEPACKS + 3, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_MISSILE_BS5")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_MISSILE_BS5")) {
         sram->setMissilePack(SO_BSMISSILEPACKS + 4, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_MISSILE_BS6")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_MISSILE_BS6")) {
         sram->setMissilePack(SO_BSMISSILEPACKS + 5, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_MISSILE_BS7")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_MISSILE_BS7")) {
         sram->setMissilePack(SO_BSMISSILEPACKS + 6, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_MISSILE_BS8")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_MISSILE_BS8")) {
         sram->setMissilePack(SO_BSMISSILEPACKS + 7, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_MISSILE_BS9")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_MISSILE_BS9")) {
         sram->setMissilePack(SO_BSMISSILEPACKS + 8, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_MISSILE_BS10")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_MISSILE_BS10")) {
         sram->setMissilePack(SO_BSMISSILEPACKS + 9, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_MISSILE_BS11")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_MISSILE_BS11")) {
         sram->setMissilePack(SO_BSMISSILEPACKS + 10, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_MISSILE_BS12")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_MISSILE_BS12")) {
         sram->setMissilePack(SO_BSMISSILEPACKS + 11, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_MISSILE_NF1")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_MISSILE_NF1")) {
         sram->setMissilePack(SO_NFMISSILEPACKS, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_MISSILE_NF2")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_MISSILE_NF2")) {
         sram->setMissilePack(SO_NFMISSILEPACKS + 1, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_MISSILE_NF3")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_MISSILE_NF3")) {
         sram->setMissilePack(SO_NFMISSILEPACKS + 2, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_MISSILE_NF4")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_MISSILE_NF4")) {
         sram->setMissilePack(SO_NFMISSILEPACKS + 3, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_MISSILE_NF5")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_MISSILE_NF5")) {
         sram->setMissilePack(SO_NFMISSILEPACKS + 4, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_MISSILE_NF6")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_MISSILE_NF6")) {
         sram->setMissilePack(SO_NFMISSILEPACKS + 5, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_MISSILE_NF7")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_MISSILE_NF7")) {
         sram->setMissilePack(SO_NFMISSILEPACKS + 6, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_MISSILE_NF8")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_MISSILE_NF8")) {
         sram->setMissilePack(SO_NFMISSILEPACKS + 7, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_MISSILE_NF9")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_MISSILE_NF9")) {
         sram->setMissilePack(SO_NFMISSILEPACKS + 8, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_MISSILE_NF10")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_MISSILE_NF10")) {
         sram->setMissilePack(SO_NFMISSILEPACKS + 9, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_MISSILE_NF11")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_MISSILE_NF11")) {
         sram->setMissilePack(SO_NFMISSILEPACKS + 10, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_MISSILE_NF12")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_MISSILE_NF12")) {
         sram->setMissilePack(SO_NFMISSILEPACKS + 11, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_MISSILE_NF13")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_MISSILE_NF13")) {
         sram->setMissilePack(SO_NFMISSILEPACKS + 12, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_MISSILE_NF14")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_MISSILE_NF14")) {
         sram->setMissilePack(SO_NFMISSILEPACKS + 13, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_MISSILE_NF15")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_MISSILE_NF15")) {
         sram->setMissilePack(SO_NFMISSILEPACKS + 14, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_MISSILE_WS1")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_MISSILE_WS1")) {
         sram->setMissilePack(SO_WSMISSILEPACKS, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_MISSILE_WS2")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_MISSILE_WS2")) {
         sram->setMissilePack(SO_WSMISSILEPACKS + 1, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_MISSILE_WS3")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_MISSILE_WS3")) {
         sram->setMissilePack(SO_WSMISSILEPACKS + 2, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_MISSILE_M1")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_MISSILE_M1")) {
         sram->setMissilePack(SO_MMISSILEPACKS, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_MISSILE_M2")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_MISSILE_M2")) {
         sram->setMissilePack(SO_MMISSILEPACKS + 1, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_MISSILE_M3")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_MISSILE_M3")) {
         sram->setMissilePack(SO_MMISSILEPACKS + 2, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_MISSILE_M4")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_MISSILE_M4")) {
         sram->setMissilePack(SO_MMISSILEPACKS + 3, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_MISSILE_M5")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_MISSILE_M5")) {
         sram->setMissilePack(SO_MMISSILEPACKS + 4, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_MISSILE_M6")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_MISSILE_M6")) {
         sram->setMissilePack(SO_MMISSILEPACKS + 5, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_MISSILE_M7")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_MISSILE_M7")) {
         sram->setMissilePack(SO_MMISSILEPACKS + 6, event.IsChecked());
     } else {
         // ensure we have maridia pack 8 if we're here
-        wxASSERT(event.GetId() == XRCID("IDC_ITEMS_MISSILE_M8"));
+        wxASSERT(event.GetId() == XRCID("IDC_PICKUPS_MISSILE_M8"));
         
         sram->setMissilePack(SO_MMISSILEPACKS + 7, event.IsChecked());
     }
@@ -2232,27 +2443,27 @@ void Frame::onPowerBombPackChange(wxCommandEvent &event) {
     // ensure we have an open SRAMFile
     wxASSERT(sram);
     
-    if (event.GetId() == XRCID("IDC_ITEMS_PBOMB_C")) {
+    if (event.GetId() == XRCID("IDC_PICKUPS_PBOMB_C")) {
         sram->setPowerBombPack(SO_CPBOMBPACKS, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_PBOMB_BS1")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_PBOMB_BS1")) {
         sram->setPowerBombPack(SO_BSPBOMBPACKS, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_PBOMB_BS2")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_PBOMB_BS2")) {
         sram->setPowerBombPack(SO_BSPBOMBPACKS + 1, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_PBOMB_BS3")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_PBOMB_BS3")) {
         sram->setPowerBombPack(SO_BSPBOMBPACKS + 2, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_PBOMB_BS4")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_PBOMB_BS4")) {
         sram->setPowerBombPack(SO_BSPBOMBPACKS + 3, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_PBOMB_BS5")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_PBOMB_BS5")) {
         sram->setPowerBombPack(SO_BSPBOMBPACKS + 4, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_PBOMB_NF1")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_PBOMB_NF1")) {
         sram->setPowerBombPack(SO_NFPBOMBPACKS, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_PBOMB_NF2")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_PBOMB_NF2")) {
         sram->setPowerBombPack(SO_NFPBOMBPACKS + 1, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_PBOMB_NF3")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_PBOMB_NF3")) {
         sram->setPowerBombPack(SO_NFPBOMBPACKS + 2, event.IsChecked());
     } else {
         // ensure we have the maridia power bomb pack if we're here
-        wxASSERT(event.GetId() == XRCID("IDC_ITEMS_PBOMB_M"));
+        wxASSERT(event.GetId() == XRCID("IDC_PICKUPS_PBOMB_M"));
         
         sram->setPowerBombPack(SO_MPBOMBPACKS, event.IsChecked());
     }
@@ -2582,27 +2793,27 @@ void Frame::onSuperMissilePackChange(wxCommandEvent &event) {
     // ensure we have an open SRAMFile
     wxASSERT(sram);
     
-    if (event.GetId() == XRCID("IDC_ITEMS_SMISSILE_C")) {
+    if (event.GetId() == XRCID("IDC_PICKUPS_SMISSILE_C")) {
         sram->setSuperMissilePack(SO_CSMISSILEPACKS, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_SMISSILE_BS1")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_SMISSILE_BS1")) {
         sram->setSuperMissilePack(SO_BSSMISSILEPACKS, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_SMISSILE_BS2")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_SMISSILE_BS2")) {
         sram->setSuperMissilePack(SO_BSSMISSILEPACKS + 1, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_SMISSILE_BS3")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_SMISSILE_BS3")) {
         sram->setSuperMissilePack(SO_BSSMISSILEPACKS + 2, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_SMISSILE_NF")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_SMISSILE_NF")) {
         sram->setSuperMissilePack(SO_NFSMISSILEPACKS, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_SMISSILE_WS1")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_SMISSILE_WS1")) {
         sram->setSuperMissilePack(SO_WSSMISSILEPACKS, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_SMISSILE_WS2")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_SMISSILE_WS2")) {
         sram->setSuperMissilePack(SO_WSSMISSILEPACKS + 1, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_SMISSILE_M1")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_SMISSILE_M1")) {
         sram->setSuperMissilePack(SO_MSMISSILEPACKS, event.IsChecked());
-    } else if (event.GetId() == XRCID("IDC_ITEMS_SMISSILE_M2")) {
+    } else if (event.GetId() == XRCID("IDC_PICKUPS_SMISSILE_M2")) {
         sram->setSuperMissilePack(SO_MSMISSILEPACKS + 1, event.IsChecked());
     } else {
         // ensure we have maridia 3 super missile pack if we're here
-        wxASSERT(event.GetId() == XRCID("IDC_ITEMS_SMISSILE_M3"));
+        wxASSERT(event.GetId() == XRCID("IDC_PICKUPS_SMISSILE_M3"));
         
         sram->setSuperMissilePack(SO_MSMISSILEPACKS + 2, event.IsChecked());
     }
@@ -2764,6 +2975,11 @@ BEGIN_EVENT_TABLE(Frame, wxFrame)
     EVT_CHECKBOX(XRCID("IDC_GAME_MINIBOSS_GOLDENTORIZO"),
         Frame::onMiniBossChange)
         
+    EVT_CHECKBOX(XRCID("IDC_GAME_METROIDROOM1"), Frame::onMetroidRoomChange)
+    EVT_CHECKBOX(XRCID("IDC_GAME_METROIDROOM2"), Frame::onMetroidRoomChange)
+    EVT_CHECKBOX(XRCID("IDC_GAME_METROIDROOM3"), Frame::onMetroidRoomChange)
+    EVT_CHECKBOX(XRCID("IDC_GAME_METROIDROOM4"), Frame::onMetroidRoomChange)
+        
     EVT_CHECKBOX(XRCID("IDC_GAME_MAP_C"), Frame::onMapChange)
     EVT_CHECKBOX(XRCID("IDC_GAME_MAP_BS"), Frame::onMapChange)
     EVT_CHECKBOX(XRCID("IDC_GAME_MAP_NF"), Frame::onMapChange)
@@ -2820,89 +3036,6 @@ BEGIN_EVENT_TABLE(Frame, wxFrame)
     EVT_CHECKBOX(XRCID("IDC_ITEMS_PLASMA_EQUIPPED"),
         Frame::onItemEquippedChange)
         
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_MISSILE_C1"), Frame::onMissilePackChange)
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_MISSILE_C2"), Frame::onMissilePackChange)
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_MISSILE_C3"), Frame::onMissilePackChange)
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_MISSILE_C4"), Frame::onMissilePackChange)
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_MISSILE_C5"), Frame::onMissilePackChange)
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_MISSILE_C6"), Frame::onMissilePackChange)
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_MISSILE_C7"), Frame::onMissilePackChange)
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_MISSILE_C8"), Frame::onMissilePackChange)
-    
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_MISSILE_BS1"), Frame::onMissilePackChange)
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_MISSILE_BS2"), Frame::onMissilePackChange)
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_MISSILE_BS3"), Frame::onMissilePackChange)
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_MISSILE_BS4"), Frame::onMissilePackChange)
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_MISSILE_BS5"), Frame::onMissilePackChange)
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_MISSILE_BS6"), Frame::onMissilePackChange)
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_MISSILE_BS7"), Frame::onMissilePackChange)
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_MISSILE_BS8"), Frame::onMissilePackChange)
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_MISSILE_BS9"), Frame::onMissilePackChange)
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_MISSILE_BS10"), Frame::onMissilePackChange)
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_MISSILE_BS11"), Frame::onMissilePackChange)
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_MISSILE_BS12"), Frame::onMissilePackChange)
-    
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_MISSILE_NF1"), Frame::onMissilePackChange)
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_MISSILE_NF2"), Frame::onMissilePackChange)
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_MISSILE_NF3"), Frame::onMissilePackChange)
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_MISSILE_NF4"), Frame::onMissilePackChange)
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_MISSILE_NF5"), Frame::onMissilePackChange)
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_MISSILE_NF6"), Frame::onMissilePackChange)
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_MISSILE_NF7"), Frame::onMissilePackChange)
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_MISSILE_NF8"), Frame::onMissilePackChange)
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_MISSILE_NF9"), Frame::onMissilePackChange)
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_MISSILE_NF10"), Frame::onMissilePackChange)
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_MISSILE_NF11"), Frame::onMissilePackChange)
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_MISSILE_NF12"), Frame::onMissilePackChange)
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_MISSILE_NF13"), Frame::onMissilePackChange)
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_MISSILE_NF14"), Frame::onMissilePackChange)
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_MISSILE_NF15"), Frame::onMissilePackChange)
-    
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_MISSILE_WS1"), Frame::onMissilePackChange)
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_MISSILE_WS2"), Frame::onMissilePackChange)
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_MISSILE_WS3"), Frame::onMissilePackChange)
-    
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_MISSILE_M1"), Frame::onMissilePackChange)
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_MISSILE_M2"), Frame::onMissilePackChange)
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_MISSILE_M3"), Frame::onMissilePackChange)
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_MISSILE_M4"), Frame::onMissilePackChange)
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_MISSILE_M5"), Frame::onMissilePackChange)
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_MISSILE_M6"), Frame::onMissilePackChange)
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_MISSILE_M7"), Frame::onMissilePackChange)
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_MISSILE_M8"), Frame::onMissilePackChange)
-    
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_SMISSILE_C"),
-        Frame::onSuperMissilePackChange)
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_SMISSILE_BS1"),
-        Frame::onSuperMissilePackChange)
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_SMISSILE_BS2"),
-        Frame::onSuperMissilePackChange)
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_SMISSILE_BS3"),
-        Frame::onSuperMissilePackChange)
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_SMISSILE_NF"),
-        Frame::onSuperMissilePackChange)
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_SMISSILE_WS1"),
-        Frame::onSuperMissilePackChange)
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_SMISSILE_WS2"),
-        Frame::onSuperMissilePackChange)
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_SMISSILE_M1"),
-        Frame::onSuperMissilePackChange)
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_SMISSILE_M2"),
-        Frame::onSuperMissilePackChange)
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_SMISSILE_M3"),
-        Frame::onSuperMissilePackChange)
-        
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_PBOMB_C"), Frame::onPowerBombPackChange)
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_PBOMB_BS1"), Frame::onPowerBombPackChange)
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_PBOMB_BS2"), Frame::onPowerBombPackChange)
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_PBOMB_BS3"), Frame::onPowerBombPackChange)
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_PBOMB_BS4"), Frame::onPowerBombPackChange)
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_PBOMB_BS5"), Frame::onPowerBombPackChange)
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_PBOMB_NF1"), Frame::onPowerBombPackChange)
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_PBOMB_NF2"), Frame::onPowerBombPackChange)
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_PBOMB_NF3"), Frame::onPowerBombPackChange)
-    EVT_CHECKBOX(XRCID("IDC_ITEMS_PBOMB_M"), Frame::onPowerBombPackChange)
-    
     EVT_CHECKBOX(XRCID("IDC_ITEMS_ET_C1"), Frame::onEnergyTankChange)
     EVT_CHECKBOX(XRCID("IDC_ITEMS_ET_C2"), Frame::onEnergyTankChange)
     EVT_CHECKBOX(XRCID("IDC_ITEMS_ET_BS1"), Frame::onEnergyTankChange)
@@ -2922,6 +3055,89 @@ BEGIN_EVENT_TABLE(Frame, wxFrame)
     EVT_CHECKBOX(XRCID("IDC_ITEMS_RTANK_NF"), Frame::onReserveTankChange)
     EVT_CHECKBOX(XRCID("IDC_ITEMS_RTANK_WS"), Frame::onReserveTankChange)
     EVT_CHECKBOX(XRCID("IDC_ITEMS_RTANK_M"), Frame::onReserveTankChange)
+    
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_MISSILE_C1"), Frame::onMissilePackChange)
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_MISSILE_C2"), Frame::onMissilePackChange)
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_MISSILE_C3"), Frame::onMissilePackChange)
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_MISSILE_C4"), Frame::onMissilePackChange)
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_MISSILE_C5"), Frame::onMissilePackChange)
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_MISSILE_C6"), Frame::onMissilePackChange)
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_MISSILE_C7"), Frame::onMissilePackChange)
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_MISSILE_C8"), Frame::onMissilePackChange)
+    
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_MISSILE_BS1"), Frame::onMissilePackChange)
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_MISSILE_BS2"), Frame::onMissilePackChange)
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_MISSILE_BS3"), Frame::onMissilePackChange)
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_MISSILE_BS4"), Frame::onMissilePackChange)
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_MISSILE_BS5"), Frame::onMissilePackChange)
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_MISSILE_BS6"), Frame::onMissilePackChange)
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_MISSILE_BS7"), Frame::onMissilePackChange)
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_MISSILE_BS8"), Frame::onMissilePackChange)
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_MISSILE_BS9"), Frame::onMissilePackChange)
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_MISSILE_BS10"), Frame::onMissilePackChange)
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_MISSILE_BS11"), Frame::onMissilePackChange)
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_MISSILE_BS12"), Frame::onMissilePackChange)
+    
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_MISSILE_NF1"), Frame::onMissilePackChange)
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_MISSILE_NF2"), Frame::onMissilePackChange)
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_MISSILE_NF3"), Frame::onMissilePackChange)
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_MISSILE_NF4"), Frame::onMissilePackChange)
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_MISSILE_NF5"), Frame::onMissilePackChange)
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_MISSILE_NF6"), Frame::onMissilePackChange)
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_MISSILE_NF7"), Frame::onMissilePackChange)
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_MISSILE_NF8"), Frame::onMissilePackChange)
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_MISSILE_NF9"), Frame::onMissilePackChange)
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_MISSILE_NF10"), Frame::onMissilePackChange)
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_MISSILE_NF11"), Frame::onMissilePackChange)
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_MISSILE_NF12"), Frame::onMissilePackChange)
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_MISSILE_NF13"), Frame::onMissilePackChange)
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_MISSILE_NF14"), Frame::onMissilePackChange)
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_MISSILE_NF15"), Frame::onMissilePackChange)
+    
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_MISSILE_WS1"), Frame::onMissilePackChange)
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_MISSILE_WS2"), Frame::onMissilePackChange)
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_MISSILE_WS3"), Frame::onMissilePackChange)
+    
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_MISSILE_M1"), Frame::onMissilePackChange)
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_MISSILE_M2"), Frame::onMissilePackChange)
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_MISSILE_M3"), Frame::onMissilePackChange)
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_MISSILE_M4"), Frame::onMissilePackChange)
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_MISSILE_M5"), Frame::onMissilePackChange)
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_MISSILE_M6"), Frame::onMissilePackChange)
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_MISSILE_M7"), Frame::onMissilePackChange)
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_MISSILE_M8"), Frame::onMissilePackChange)
+    
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_SMISSILE_C"),
+        Frame::onSuperMissilePackChange)
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_SMISSILE_BS1"),
+        Frame::onSuperMissilePackChange)
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_SMISSILE_BS2"),
+        Frame::onSuperMissilePackChange)
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_SMISSILE_BS3"),
+        Frame::onSuperMissilePackChange)
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_SMISSILE_NF"),
+        Frame::onSuperMissilePackChange)
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_SMISSILE_WS1"),
+        Frame::onSuperMissilePackChange)
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_SMISSILE_WS2"),
+        Frame::onSuperMissilePackChange)
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_SMISSILE_M1"),
+        Frame::onSuperMissilePackChange)
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_SMISSILE_M2"),
+        Frame::onSuperMissilePackChange)
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_SMISSILE_M3"),
+        Frame::onSuperMissilePackChange)
+        
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_PBOMB_C"), Frame::onPowerBombPackChange)
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_PBOMB_BS1"), Frame::onPowerBombPackChange)
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_PBOMB_BS2"), Frame::onPowerBombPackChange)
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_PBOMB_BS3"), Frame::onPowerBombPackChange)
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_PBOMB_BS4"), Frame::onPowerBombPackChange)
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_PBOMB_BS5"), Frame::onPowerBombPackChange)
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_PBOMB_NF1"), Frame::onPowerBombPackChange)
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_PBOMB_NF2"), Frame::onPowerBombPackChange)
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_PBOMB_NF3"), Frame::onPowerBombPackChange)
+    EVT_CHECKBOX(XRCID("IDC_PICKUPS_PBOMB_M"), Frame::onPowerBombPackChange)
     
     EVT_CHECKBOX(XRCID("IDC_REDDOOR_C_MAP"), Frame::onRedDoorChange)
     EVT_CHECKBOX(XRCID("IDC_REDDOOR_C_BOMBS"), Frame::onRedDoorChange)
@@ -3047,6 +3263,7 @@ BEGIN_EVENT_TABLE(Frame, wxFrame)
     EVT_CHECKBOX(XRCID("IDC_METALDOOR_T2"), Frame::onMetalDoorChange)
     EVT_CHECKBOX(XRCID("IDC_METALDOOR_T3"), Frame::onMetalDoorChange)
     EVT_CHECKBOX(XRCID("IDC_METALDOOR_T4"), Frame::onMetalDoorChange)
+    EVT_CHECKBOX(XRCID("IDC_METALDOOR_T5"), Frame::onMetalDoorChange)
     
     EVT_CHOICE(XRCID("IDC_MISC_DASH"), Frame::onControllerChange)
     EVT_CHOICE(XRCID("IDC_MISC_JUMP"), Frame::onControllerChange)
@@ -3079,6 +3296,7 @@ BEGIN_EVENT_TABLE(Frame, wxFrame)
     
     EVT_MENU(XRCID("IDM_GAME_GIVE_BOSSES"), Frame::onGameGiveBosses)
     EVT_MENU(XRCID("IDM_GAME_GIVE_MINIBOSSES"), Frame::onGameGiveMiniBosses)
+    EVT_MENU(XRCID("IDM_GAME_GIVE_METROIDROOMS"), Frame::onGameGiveMetroidRooms)
     EVT_MENU(XRCID("IDM_GAME_GIVE_ZEBETITES"), Frame::onGameGiveZebetites)
     
     EVT_MENU(XRCID("IDM_GAME_GIVE_MAPS"), Frame::onGameGiveMaps)
@@ -3098,6 +3316,17 @@ BEGIN_EVENT_TABLE(Frame, wxFrame)
     EVT_MENU(XRCID("IDM_GAME_GIVE_YELLOWDOORS"), Frame::onGameGiveYellowDoors)
     EVT_MENU(XRCID("IDM_GAME_GIVE_EYEDOORS"), Frame::onGameGiveEyeDoors)
     EVT_MENU(XRCID("IDM_GAME_GIVE_METALDOORS"), Frame::onGameGiveMetalDoors)
+    
+    EVT_MENU(XRCID("IDM_GAME_COPYAB"), Frame::onGameCopy)
+    EVT_MENU(XRCID("IDM_GAME_COPYAC"), Frame::onGameCopy)
+    EVT_MENU(XRCID("IDM_GAME_COPYBA"), Frame::onGameCopy)
+    EVT_MENU(XRCID("IDM_GAME_COPYBC"), Frame::onGameCopy)
+    EVT_MENU(XRCID("IDM_GAME_COPYCA"), Frame::onGameCopy)
+    EVT_MENU(XRCID("IDM_GAME_COPYCB"), Frame::onGameCopy)
+    
+    EVT_MENU(XRCID("IDM_GAME_CLEARA"), Frame::onGameClear)
+    EVT_MENU(XRCID("IDM_GAME_CLEARB"), Frame::onGameClear)
+    EVT_MENU(XRCID("IDM_GAME_CLEARC"), Frame::onGameClear)
     
     EVT_MENU(wxID_ABOUT, Frame::onHelpAbout)
     
@@ -3140,6 +3369,16 @@ BEGIN_EVENT_TABLE(Frame, wxFrame)
     
     EVT_UPDATE_UI(XRCID("IDM_GAME_ENDING"), Frame::onGameEndingUpdate)
     EVT_UPDATE_UI(XRCID("IDM_GAME_GIVE"), Frame::onGameGiveUpdate)
+    
+    EVT_UPDATE_UI(XRCID("IDM_GAME_COPY"), Frame::onGameCopyUpdate)
+    EVT_UPDATE_UI(XRCID("IDM_GAME_COPYA"), Frame::onGameCopyUpdate)
+    EVT_UPDATE_UI(XRCID("IDM_GAME_COPYB"), Frame::onGameCopyUpdate)
+    EVT_UPDATE_UI(XRCID("IDM_GAME_COPYC"), Frame::onGameCopyUpdate)
+    
+    EVT_UPDATE_UI(XRCID("IDM_GAME_CLEAR"), Frame::onGameClearUpdate)
+    EVT_UPDATE_UI(XRCID("IDM_GAME_CLEARA"), Frame::onGameClearUpdate)
+    EVT_UPDATE_UI(XRCID("IDM_GAME_CLEARB"), Frame::onGameClearUpdate)
+    EVT_UPDATE_UI(XRCID("IDM_GAME_CLEARC"), Frame::onGameClearUpdate)
     
     EVT_UPDATE_UI(XRCID("IDN_SMSE"), Frame::onNotebookUpdate)
     

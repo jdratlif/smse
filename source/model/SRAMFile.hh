@@ -20,7 +20,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
  
-// $Id: SRAMFile.hh,v 1.36 2005/10/13 02:06:26 technoplaza Exp $
+// $Id: SRAMFile.hh,v 1.39 2005/10/15 04:50:51 technoplaza Exp $
 
 #ifndef _SMSE_SRAMFILE_HH_
 #define _SMSE_SRAMFILE_HH_
@@ -29,51 +29,10 @@
 
 #include <wx/string.h>
 
+#include "AppConstants.hh"
 #include "exceptions/FileIOException.hh"
 #include "exceptions/InvalidButtonException.hh"
 #include "exceptions/InvalidSRAMFileException.hh"
-
-/// size of the SRAM file
-#define SRAM_SIZE 0x2000
-
-/// The number of save games in the SRAM data
-#define GAMES 3
-
-/// size of each individual save game
-#define GAME_SIZE 0x65C
-
-/// offset to the beginning of the game data
-#define GAME_OFFSET 0x10
-
-/// offset of the checksums
-#define CHECKSUM_OFFSET 0
-
-/// offset of the checksum compliments
-#define COMPLIMENT_OFFSET 0x8
-
-/// offset of the redundant checksums
-#define CHECKSUM_OFFSET2 0x1FF0
-
-/// offset of the redundant checksum compliments
-#define COMPLIMENT_OFFSET2 0x1FF8
-
-/// number of save points in Crateria
-#define C_SAVEPOINTS 2
-
-/// number of save points in Brinstar
-#define BS_SAVEPOINTS 5
-
-/// number of save points in Norfair
-#define NF_SAVEPOINTS 6
-
-/// number of save points in the Wrecked Ship
-#define WS_SAVEPOINTS 1
-
-/// number of save points in Maridia
-#define M_SAVEPOINTS 4
-
-/// number of save points in Tourian
-#define T_SAVEPOINTS 2
 
 namespace smse {
     /// names for the SRAM offsets
@@ -93,44 +52,44 @@ namespace smse {
         // Bosses
         SO_SILVERTORIZO = 58, SO_SPORESPAWN, SO_KRAID, SO_PHANTOON = 62,
         SO_BOTWOON = 64, SO_DRAYGON, SO_CROCOMIRE = 67, SO_GOLDENTORIZO,
-        SO_RIDLEY, SO_ZEBETITES = 71,
+        SO_RIDLEY, SO_METROIDROOMS = 71, SO_ZEBETITES = 75,
         
         // Misc Game Progress
         SO_TOURIANELEVATOR, SO_MARIDIATUBEBROKEN, SO_RESCUEDANIMALS,
         
         // Missile Packs
-        SO_CMISSILEPACKS, SO_BSMISSILEPACKS = 83, SO_NFMISSILEPACKS = 95,
-        SO_WSMISSILEPACKS = 110, SO_MMISSILEPACKS = 113,
+        SO_CMISSILEPACKS, SO_BSMISSILEPACKS = 87, SO_NFMISSILEPACKS = 99,
+        SO_WSMISSILEPACKS = 114, SO_MMISSILEPACKS = 117,
         
         // Super Missile Packs
-        SO_CSMISSILEPACKS = 121, SO_BSSMISSILEPACKS, SO_NFSMISSILEPACKS = 125,
-        SO_WSSMISSILEPACKS, SO_MSMISSILEPACKS = 128,
+        SO_CSMISSILEPACKS = 125, SO_BSSMISSILEPACKS, SO_NFSMISSILEPACKS = 129,
+        SO_WSSMISSILEPACKS, SO_MSMISSILEPACKS = 132,
         
         // Power Bomb Packs
-        SO_CPBOMBPACKS = 131, SO_BSPBOMBPACKS, SO_NFPBOMBPACKS = 137,
-        SO_MPBOMBPACKS = 140,
+        SO_CPBOMBPACKS = 135, SO_BSPBOMBPACKS, SO_NFPBOMBPACKS = 141,
+        SO_MPBOMBPACKS = 144,
         
         // Energy and Reserve Tanks
-        SO_CETANKS, SO_BSETANKS = 143,  SO_NFETANKS = 148, SO_WSETANKS = 152,
-        SO_METANKS, SO_BSRTANK = 155, SO_NFRTANK, SO_WSRTANK, SO_MRTANK,
+        SO_CETANKS, SO_BSETANKS = 147,  SO_NFETANKS = 152, SO_WSETANKS = 156,
+        SO_METANKS, SO_BSRTANK = 159, SO_NFRTANK, SO_WSRTANK, SO_MRTANK,
         
         // Red Doors
-        SO_CRDOORS, SO_BSRDOORS = 162, SO_NFRDOORS = 172, SO_WSRDOORS = 179,
-        SO_MRDOORS, SO_TRDOORS = 187,
+        SO_CRDOORS, SO_BSRDOORS = 166, SO_NFRDOORS = 176, SO_WSRDOORS = 183,
+        SO_MRDOORS, SO_TRDOORS = 191,
         
         // Green Doors
-        SO_CGDOORS = 189, SO_BSGDOORS = 191, SO_NFGDOORS = 201,
-        SO_WSGDOORS = 207, SO_MGDOORS,
+        SO_CGDOORS = 193, SO_BSGDOORS = 195, SO_NFGDOORS = 205,
+        SO_WSGDOORS = 211, SO_MGDOORS,
         
         // Yellow Doors
-        SO_CYDOORS = 212, SO_BSYDOORS = 218, SO_NFYDOORS = 222,
+        SO_CYDOORS = 216, SO_BSYDOORS = 222, SO_NFYDOORS = 226,
         
         // Metal Doors
-        SO_CMDOORS = 225, SO_BSMDOORS, SO_NFMDOORS = 242,
-        SO_WSMDOORS = 248, SO_MMDOORS = 253, SO_TMDOORS = 260,
+        SO_CMDOORS = 229, SO_BSMDOORS, SO_NFMDOORS = 246,
+        SO_WSMDOORS = 252, SO_MMDOORS = 257, SO_TMDOORS = 264,
         
         // Eye Doors
-        SO_BSEDOOR = 264, SO_NFEDOOR, SO_WSEDOOR, SO_MEDOOR, SO_TEDOOR,
+        SO_BSEDOOR = 269, SO_NFEDOOR, SO_WSEDOOR, SO_MEDOOR, SO_TEDOOR,
         
         // Maps
         SO_CMAP, SO_BSMAP, SO_NFMAP, SO_WSMAP, SO_MMAP, SO_TMAP,
@@ -171,7 +130,7 @@ namespace smse {
     /// names for the doors
     enum Door {
         // Crateria Red Doors
-        RD_C_MAP = 159, RD_C_BOMBS, RD_C_TELEVATOR,
+        RD_C_MAP = 163, RD_C_BOMBS, RD_C_TELEVATOR,
         
         // Brinstar Red Doors
         RD_BS1, RD_BS_MAP, RD_BS2, RD_BS3, RD_BS4, RD_BS_RTANK,
@@ -235,7 +194,7 @@ namespace smse {
         MD_M_BOTWOONEXIT, MD_M_DRAYGONEXIT, MD_M_SPACEJUMP,
         
         // Tourian Metal Doors
-        MD_T1, MD_T2, MD_T3, MD_T4,
+        MD_T1, MD_T2, MD_T3, MD_T4, MD_T5,
         
         // Eye Doors
         ED_KRAID, ED_RIDLEY, ED_PHANTOON, ED_DRAYGON, ED_T
@@ -253,8 +212,13 @@ namespace smse {
     
     /// semi-typesafe names for the miscellaneous bits
     enum MiscBit {
-        MB_TELEVATOR = 72, MB_MTUBEBROKEN, MB_RESCUEDANIMALS,
-        MB_LANGUAGE = 286, MB_MOONWALK, MB_ICONCANCEL
+        MB_TELEVATOR = 76, MB_MTUBEBROKEN, MB_RESCUEDANIMALS,
+        MB_LANGUAGE = 291, MB_MOONWALK, MB_ICONCANCEL
+    };
+    
+    /// semi-typesafe names for the Metroid rooms in Tourian
+    enum MetroidRoom {
+        MR1, MR2, MR3, MR4
     };
     
     /// semi-typesafe names for the boss statues
@@ -624,6 +588,23 @@ namespace smse {
         unsigned char getMaxSuperMissiles() const;
         
         /**
+         * Checks if one of the Metroid rooms in Tourian has been cleared.
+         *
+         * @param room The room to check.
+         *
+         * @return true if the room has been cleared; false otherwise.
+         */
+        bool getMetroidRoom(enum MetroidRoom room) const;
+        
+        /**
+         * Sets whether one of the Metroid rooms in Tourian is clear or not;
+         *
+         * @param room The room.
+         * @param clear true to clear the room; false otherwise.
+         */
+        void setMetroidRoom(enum MetroidRoom room, bool clear = true);
+        
+        /**
          * Gets one of the miscellaneous bits that don't fit in with any other
          * group of data.
          *
@@ -830,6 +811,21 @@ namespace smse {
         void setZebetites(int count = 4);
         
         /**
+         * Clears a game.
+         *
+         * @param game The game to clear (0-2).
+         */
+        void clear(int game);
+        
+        /**
+         * Copies one game over another.
+         *
+         * @param src The source game (0-2).
+         * @param dest The destination game (0-2).
+         */
+        void copy(int src, int dest);
+        
+        /**
          * Saves this SRAMFile to disk.
          *
          * @param filename The filename to save as or wxEmptyString to overwrite
@@ -843,27 +839,45 @@ namespace smse {
     
     inline bool SRAMFile::getBit(const std::pair<int, unsigned char> &bit) const
         { return (game[bit.first] & bit.second); }
+        
     inline bool SRAMFile::getBoss(enum Boss boss) const
         { return getBit(SRAM_OFFSET[boss]); }
+        
     inline void SRAMFile::setBoss(enum Boss boss, bool dead)
         { setBit(SRAM_OFFSET[boss], dead); }
+        
     inline int SRAMFile::getGame() const
         { return (static_cast<int>(game - sram - GAME_OFFSET) / GAME_SIZE); }
+        
     inline bool SRAMFile::isItemEquipped(enum Item item) const
         { return getBit(SRAM_OFFSET[item + 2]); }
+        
     inline void SRAMFile::setItemEquipped(enum Item item, bool equipped)
         { setBit(SRAM_OFFSET[item + 2], equipped); }
+        
     inline bool SRAMFile::hasMap(enum Area area) const
         { return getBit(SRAM_OFFSET[area + SO_CMAP]); }
+        
     inline void SRAMFile::setMap(enum Area area, bool give)
         { setBit(SRAM_OFFSET[area + SO_CMAP], give); }
+        
+    inline bool SRAMFile::getMetroidRoom(enum MetroidRoom room) const
+        { return getBit(SRAM_OFFSET[SO_METROIDROOMS + room]); }
+        
+    inline void SRAMFile::setMetroidRoom(enum MetroidRoom room, bool clear)
+        { setBit(SRAM_OFFSET[SO_METROIDROOMS + room], clear); }
+        
     inline bool SRAMFile::getMiscBit(enum MiscBit bit) const
         { return getBit(SRAM_OFFSET[bit]); }
+        
     inline void SRAMFile::setMiscBit(enum MiscBit bit, bool on)
         { setBit(SRAM_OFFSET[bit], on); }
+        
     inline bool SRAMFile::isModified() const { return modified; }
+    
     inline bool SRAMFile::getStatue(enum Statue statue) const
         { return getBit(SRAM_OFFSET[statue]); }
+        
     inline void SRAMFile::setStatue(enum Statue statue, bool active)
         { setBit(SRAM_OFFSET[statue], active); }
 }

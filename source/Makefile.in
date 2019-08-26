@@ -58,14 +58,16 @@ am__smse_SOURCES_DIST = AppConstants.hh App.cc App.hh \
 	exceptions/InvalidSRAMDataException.hh \
 	exceptions/InvalidSRAMFileException.cc \
 	exceptions/InvalidSRAMFileException.hh model/SRAMFile.cc \
-	model/SRAMFile.hh view/Frame.cc view/Frame.hh res/windows.rc
+	model/SRAMFile.hh view/Frame.cc view/Frame.hh \
+	view/SRAMFileTarget.cc view/SRAMFileTarget.hh res/windows.rc
 am__dirstamp = $(am__leading_dot)dirstamp
 @WINDOWS_TRUE@am__objects_1 = res/windows.$(OBJEXT)
 am_smse_OBJECTS = App.$(OBJEXT) exceptions/FileIOException.$(OBJEXT) \
 	exceptions/InvalidButtonException.$(OBJEXT) \
 	exceptions/InvalidSRAMDataException.$(OBJEXT) \
 	exceptions/InvalidSRAMFileException.$(OBJEXT) \
-	model/SRAMFile.$(OBJEXT) view/Frame.$(OBJEXT) $(am__objects_1)
+	model/SRAMFile.$(OBJEXT) view/Frame.$(OBJEXT) \
+	view/SRAMFileTarget.$(OBJEXT) $(am__objects_1)
 nodist_smse_OBJECTS = res/smse.$(OBJEXT)
 smse_OBJECTS = $(am_smse_OBJECTS) $(nodist_smse_OBJECTS)
 smse_LDADD = $(LDADD)
@@ -186,7 +188,8 @@ smse_SOURCES = AppConstants.hh App.cc App.hh \
 	exceptions/InvalidSRAMDataException.hh \
 	exceptions/InvalidSRAMFileException.cc \
 	exceptions/InvalidSRAMFileException.hh model/SRAMFile.cc \
-	model/SRAMFile.hh view/Frame.cc view/Frame.hh $(am__append_1)
+	model/SRAMFile.hh view/Frame.cc view/Frame.hh \
+	view/SRAMFileTarget.cc view/SRAMFileTarget.hh $(am__append_1)
 nodist_smse_SOURCES = res/smse.cc
 all: all-am
 
@@ -277,6 +280,8 @@ view/$(DEPDIR)/$(am__dirstamp):
 	@: > view/$(DEPDIR)/$(am__dirstamp)
 view/Frame.$(OBJEXT): view/$(am__dirstamp) \
 	view/$(DEPDIR)/$(am__dirstamp)
+view/SRAMFileTarget.$(OBJEXT): view/$(am__dirstamp) \
+	view/$(DEPDIR)/$(am__dirstamp)
 res/$(am__dirstamp):
 	@$(mkdir_p) res
 	@: > res/$(am__dirstamp)
@@ -300,6 +305,7 @@ mostlyclean-compile:
 	-rm -f res/smse.$(OBJEXT)
 	-rm -f res/windows.$(OBJEXT)
 	-rm -f view/Frame.$(OBJEXT)
+	-rm -f view/SRAMFileTarget.$(OBJEXT)
 
 distclean-compile:
 	-rm -f *.tab.c
@@ -312,6 +318,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@model/$(DEPDIR)/SRAMFile.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@res/$(DEPDIR)/smse.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@view/$(DEPDIR)/Frame.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@view/$(DEPDIR)/SRAMFileTarget.Po@am__quote@
 
 .cc.o:
 @am__fastdepCXX_TRUE@	depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.o$$||'`; \

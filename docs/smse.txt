@@ -1,5 +1,5 @@
 --------------------------------------------------------------------------------
-| smse 0.90 - The Super Metroid SRAM Editor
+| smse 0.91 - The Super Metroid SRAM Editor
 | Copyright (C) 2005 emuWorks (http://games.technoplaza.net/)
 | by John Ratliff <webmaster [AT] technoplaza [DOT] net>
 --------------------------------------------------------------------------------
@@ -17,6 +17,7 @@
       - 3.3.1 Game Selection
       - 3.3.2 The Ending Submenu
       - 3.3.3 The Give Submenu
+      - 3.3.4 The Copy and Clear Submenus
   - 4.0 Known Bugs and Issues
   - 5.0 Release History
   - 6.0 Contact Information
@@ -121,10 +122,13 @@
   common program controls such as checkboxes, drop-down boxes, text boxes, and
   spin buttons.
   
-  When the program is started, a big blank window will open. You will need to
-  select open from the file menu to select a Super Metroid SRAM file. At this
-  time, you cannot specify one on the terminal. When you select open, a file
-  dialog will appear and let you browse for your SRAM file.
+  When the program is started, a big blank window will open. There are a couple
+  ways to open your Super Metroid SRAM file. You can either drag the file onto
+  the window or you can use the open command from the file menu. If you start
+  from the terminal, you can also specify the SRAM file as a command line
+  argument, e.g. ./smse metroid3.srm. You might also be able to drag your SRAM
+  file onto the executable to open it. This works under Windows, but I don't
+  know if other platforms handle application file drop like this.
   
   ZSNES on Windows generally stores its SRAM files in the same directory as the
   ROM file unless you have explicitly changed this behavior. I believe Snes9x
@@ -135,13 +139,13 @@
   
   After you have opened the SRAM file, a notebook will open (terminology varies,
   but a notebook is the window with tabs at the top where you can select a
-  different page). There are five tabs on the notebook: "Game", "Misc", "Items",
-  "Color Doors", and "Special Doors". The names should give you a hint as to
-  what kinds of Super Metroid properties you can edit on each page, but we will
-  do a brief overview.
+  different page). There are eight tabs on the notebook: "Game", "Misc",
+  "Items", "Pickups", "Red Doors", "Green Doors", "Yellow & Eye Doors", and
+  finally "Metal Doors". The names should give you a hint as to what kinds of
+  properties you can edit on each page, but we will do a brief overview.
   
   The 'Game' tab has general game properties. These include Samus' health,
-  inventory, which bosses she has killed, the save point, and her map data (the
+  inventory, which enemies she has killed, the save point, and her map data (the
   maps given to you by the map data stations in the game).
   
   Note: The Tourian map is given to you automatically when you first enter
@@ -156,8 +160,10 @@
   
   The 'Items' tab contains all the items Samus can find on Zebes. This includes
   all her suit power-ups (Morphing Ball, Space Jump, Varia Suit, etc), the
-  grappling beam and X-Ray Scope, all the missile, super missile, and power bomb
-  packs, and finally, all the energy and reserve tanks.
+  grappling beam and X-Ray Scope, and all the energy and reserve tanks.
+  
+  The 'Pickups' tab contains all the missile, super missile, and power bomb
+  pack pickups.
   
   Note: To avoid any confusion by Super Metroid, the program tries as much as
         possible to limit invalid selections or choices. You cannot have
@@ -167,24 +173,19 @@
         spazer and plasma simultaneously. This is a good limit though because if
         you fired such a beam, the game would crash (yes, I tried it).
         
-  The 'Color Doors' tab contains all the red, green, and yellow doors in the
-  game that I was able to find. I think this is all of them, but I might have
-  missed a couple. The doors have descriptions where possible, but some doors
-  don't lead to anything that can be pointed out without a common point of
-  reference. I did about the best I could. I will try to update the names if I
-  can.
+  Each door tab contains a particular kind of door. Red doors are the ones you
+  can open with 5 missiles or 1 super missile. Green doors are the ones that
+  require a super missile to open. Yellow doors require a power bomb. Eye doors
+  are the doors with an eye that guard certain places in Zebes. They can be
+  killed with three missiles or a super missile. Metal doors require you to
+  complete a task before you can open them. Some metal doors cannot be opened.
+        
+  The doors have descriptions where possible, but some doors don't lead to
+  anything that can be pointed out without a common point of reference. I
+  labelled most of the doors.
   
-  The final tab, 'Special Doors' contains all the eye doors and metal doors.
-  The eye doors are the doors with eyes in them that shoot at Samus. There are
-  five in the game, one for each area (excluding Crateria and the Space Colony).
-  The metal doors are the ones that flash when you have completed a task. I do
-  not know the ramifications of opening a door and exiting through it before a
-  task is complete. For instance, if you were to open Phantoon's exit door and
-  leave during the battle, it is unknown what would happen. Attempt this at your
-  own risk. Maybe I'll try it and update the docs.
-  
-  Most of the controls on the five tabs are fairly straightforward. Checkboxes
-  for almost everything. A few radio buttons for exclusive choices and finally,
+  Most of the controls on the tabs are fairly straightforward. Checkboxes for
+  almost everything. A few radio buttons for exclusive choices and finally,
   some text boxes for entering values.
   
   The energy, reserve, missile, super missile, and power bomb controls cannot
@@ -194,11 +195,15 @@
   values in the first place, but this seems to be a difficult if not impossible
   task.
   
+  The metroid room controls determine which rooms in Tourian have been cleared
+  of metroids. There are four rooms in Tourian with metroids. Using these
+  controls, you can kill all the metroids in a particular room.
+  
   Because of the way the game works, it is not possible to kill individual
   zebetites. The game only checks for a certain bit pattern when deciding to
   display a zebetite or not. This means you can kill any number of zebetites
   in a row, but you can't kill 1 and 3 without killing 2. (or if you can, then
-  I don't know the math to do it).
+  I don't know quite how to do it).
   
   The game time control is in the form hours:minutes. You must supply a valid
   value for the game time to change. The status bar will flash a warning while
@@ -216,24 +221,39 @@
 | 3.2 Save Points
 --------------------------------------------------------------------------------
 
-  I wish I had a comprehensive list of the save points, but unfortunately, such
-  a list would require a common point of reference, which I don't have.
+  The save point options in the program are a little vague. Here is the full
+  list of save points. It's hard to be specific, but I have some common points
+  of reference that may should help uniquely identify each save point.
   
-  There are three save points I know about. I may update this section to list
-  some others that could be easily described.
+  Crateria 1 is Samus' ship
+  Crateria 2 is near the old Tourian escape shaft
   
-  Crateria 1 is Samus' ship.
-  Tourian 1 is the save point just before Mother Brain.
-  Tourian 2 is the save point at the entrance to Tourian.
+  Brinstar 1 is near Spore Spawn
+  Brinstar 2 is near the elevator from Crateria (the first one)
+  Brinstar 3 is near the Etecoon's shaft
+  Brinstar 4 is near Kraid
+  Brinstar 5 is near the elevator to Crateria near the Wrecked Ship entrance
+  
+  Norfair 1 is just past Crocomire
+  Norfair 2 is near the Norfair reserve tank
+  Norfair 3 is near the elevator from Brinstar
+  Norfair 4 is just before Crocomire
+  Norfair 5 is by the elevator to lower Norfair (Ridley's Lair)
+  Norfair 6 is near Ridley
+  
+  There's only one save point in the Wrecked Ship.
+  
+  Maridia 1 is near the glass tube
+  Maridia 2 is near the Craterian elevator past the Wrecked Ship
+  Maridia 3 is near the Maridian reserve tank
+  Maridia 4 is near Draygon
+  
+  Tourian 1 is near Mother Brain
+  Tourian 2 is near the elevator from Crateria
   
   Once you pass the Metroid larva, you cannot exit Tourian normally. The metal
   door that blocks your path cannot be opened as far as I know. You can change
   your save point if you want to leave Tourian.
-  
-  The numbers mean nothing. 1 is not necessarily the save point closest to the
-  area's elevator (though one would think it should be, I don't think it ever
-  is). Sorry I don't have a better list than this. I'll try to work on getting
-  the ones closest to the area elevators at the least.
   
 --------------------------------------------------------------------------------
 | 3.3 The Game Menu
@@ -283,6 +303,7 @@
   
   Bosses - Kills all bosses
   Mini-Bosses - Kills all mini-bosses
+  Metroid Rooms - Kills all metroids in the four rooms in Tourian
   Zebetites - Kills all zebetites
   
   Maps - Give Samus all map data
@@ -309,6 +330,25 @@
   to Tourian 1. Because all the metal doors were open, I simply screw attacked
   past the Metroids without killing any. I received a 100% collection rate for
   items.
+  
+--------------------------------------------------------------------------------
+| 3.3.4 The Copy and Clear Submenus
+--------------------------------------------------------------------------------
+
+  The copy and clear menus are just like the game copy and game clear options
+  on the Super Metroid menu screen.
+  
+  Copy copies one game to another, while clear erases a game.
+  
+  Any of the menu items on these submenus will bring up a dialog to confirm your
+  actions before it makes them.
+  
+  There are some minor caveats with clear. If you clear the game you are
+  currently editing, one of two things will happen. If there is another valid
+  game, then it will select the first one found and change to editing that game.
+  If there are no other valid games, then it will close the file and save
+  automatically. If it is unable to save the SRAM file, then it will ignore the
+  clear.
 
 --------------------------------------------------------------------------------
 | 4.0 Known Bugs and Issues
@@ -316,11 +356,19 @@
 
   There are no KNOWN bugs at this time. :-)
   
-  This program requires a 1024x768 display. Sorry. I really do try to aim for
-  800x600 most of the time, but there are just too many things to edit in
-  Super Metroid. An 800x600 rewrite may come later, but right now, it's not on
-  my TODO list. In Windows, it may barely fit on 800x600. Linux is a definite
-  no, and I don't think the OS X version will fit in 800x600 either.
+  For some reason Linux doesn't maximize the notebook when it is first
+  displayed. It only takes up most of the screen, even though it's supposed to
+  take the entire window. I think it is a bug in wxWidgets, and I can't do much
+  about that. You can fix it by resizing or maximizing the window.
+  
+  The Linux version takes up much more space than the Windows and OS X versions.
+  Unfortunately, I can't do much about this but try to adapt. Version >= 0.91
+  will fit in an 800x600 display on GTK+ if you have no top or bottom panels on
+  the screen. If you have one of each (as I do), the status bar will be
+  obscured, but all the controls will be usable. Sorry, but this is the best I
+  could do. If you want it to look better, stop using a tiny resolution.
+  1024x768 and up work great. I will not cater to people still clinging to
+  640x480.
   
   You can create invalid controller configurations with this program. There is
   no check for invalid configurations currently. I hope to address this in a
@@ -328,14 +376,21 @@
   controller configuration controls, but if you do, make sure you don't
   duplicate any buttons or it won't work as expected.
   
-  I think you can edit which Metroids have been killed. I thought earlier it was
-  tied to the metal doors being open, but later information contradicts this. I
-  may add a Metroid killing property in a future version.
-  
 --------------------------------------------------------------------------------
 | 5.0 Release History
 --------------------------------------------------------------------------------
   
+  Version 0.91 - Saturday, October 15, 2005
+    - Updated save point list in the readme
+    - Added Tourian Metal Door 5
+    - Fixed bug where close on would ignore cancel button on the save prompt
+    - Added metroid room controls
+    - Added metroid rooms to Game/Give submenu
+    - Added drag 'N drop
+    - Added command line SRAM argument
+    - Added copy and clear to game menu
+    - Changed GUI to fit in 800x600 on Linux/GTK (barely)
+    
   Version 0.90 - Thursday, October 13, 2005
     - First public release
 
