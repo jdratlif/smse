@@ -1,6 +1,6 @@
 --------------------------------------------------------------------------------
-| smse 1.0 - The Super Metroid SRAM Editor
-| Copyright (C) 2005 emuWorks (http://games.technoplaza.net/)
+| smse 1.0a - The Super Metroid SRAM Editor
+| Copyright (C) 2005,2007-2008 emuWorks (http://games.technoplaza.net/)
 | by John Ratliff <webmaster [AT] technoplaza [DOT] net>
 --------------------------------------------------------------------------------
 
@@ -88,24 +88,19 @@
 | 2.0 Compilation and Installation
 --------------------------------------------------------------------------------
 
-  If you are not using a binary distribution (Binaries are provided for Windows,
-  Linux GTK+, and Mac OS X), then you will need to compile the source. Or maybe
-  you just want to. In either case, it should be fairly simple. First, here are
-  the prerequisites:
+  Binaries are available for Windows (2000 and later), Linux (requires GTK+ >=
+  2.0), and Mac OS X (Tiger or later). The source is also available if you want
+  to compile it yourself.
   
-  An ISO compliant C++ compiler. I use g++ (3.3 or higher is recommended).
-  wxWidgets >= 2.6.0. I used wxWidgets 2.6.2. http://www.wxwidgets.org
+  To compile, you will need a modern C++ compiler and wxWidgets 2.8 or later.
   
-  I use the GNU autotools to create Makefiles, so if you have a UNIX build
-  environment, you can probably just do
+  On most platforms, compiling is as easy as opening a terminal and running
+  ./configure && make. That should work on Linux, Mac OS X, and Windows with
+  mingw/msys. There are also Visual Studio project files in the vstudio
+  directory.
   
-  ./configure && make
-  
-  make install if you like. configure with --prefix if you like also. You can do
-  ./configure --help for a full option listing.
-  
-  In Windows, you can use mingw and msys to obtain a unix development
-  environment. This is how I built the Windows binary.
+  For more complete compilation instructions, consult our compiling HOWTO at
+  http://games.technoplaza.net/compile.php.
   
 --------------------------------------------------------------------------------
 | 3.0 Using the Program
@@ -380,24 +375,31 @@
 | 5.0 Release History
 --------------------------------------------------------------------------------
   
-  Version 1.0 - February 22, 2007
-    - Replaced ampersand in Yellow & Eye Doors tab with a /
-    - Minor code cleanup (compiles in debug mode now)
-    - Added Visual C++ 2005 project files
+  Version 1.0a - Tuesday, December 16, 2008
+    - Updated code to compile under wxWidgets 2.8.
+    - Updated Visual Studio project files for Visual Studio 2008.
+    - Added upx compression to mac version.
+    - Added icons for the mac version.
+    - Updated compilation instructions.
+
+  Version 1.0 - Thursday, February 22, 2007
+    - Replaced ampersand in Yellow & Eye Doors tab with a /.
+    - Minor code cleanup (compiles in debug mode now).
+    - Added Visual C++ 2005 project files.
   
   Version 0.91 - Saturday, October 15, 2005
-    - Updated save point list in the readme
-    - Added Tourian Metal Door 5
-    - Fixed bug where close on would ignore cancel button on the save prompt
-    - Added metroid room controls
-    - Added metroid rooms to Game/Give submenu
-    - Added drag 'N drop
-    - Added command line SRAM argument
-    - Added copy and clear to game menu
-    - Changed GUI to fit in 800x600 on Linux/GTK (barely)
+    - Updated save point list in the readme.
+    - Added Tourian Metal Door 5.
+    - Fixed bug where close on would ignore cancel button on the save prompt.
+    - Added metroid room controls.
+    - Added metroid rooms to Game/Give submenu.
+    - Added drag 'N drop.
+    - Added command line SRAM argument.
+    - Added copy and clear to game menu.
+    - Changed GUI to fit in 800x600 on Linux/GTK (barely).
     
   Version 0.90 - Thursday, October 13, 2005
-    - First public release
+    - First public release.
 
 --------------------------------------------------------------------------------
 | 6.0 Contacting the Author
@@ -423,9 +425,10 @@
 | 8.0 Legal Information
 --------------------------------------------------------------------------------
 
-  This program is Copyright (C) 2005 emuWorks (http://games.technoplaza.net/).
-  It is licensed under the GNU General Public License, which is included with
-  this program in the docs directory in the file license.txt.
+  This program is Copyright (C) 2005,2007-2008 emuWorks
+  http://games.technoplaza.net/. It is licensed under the GNU General Public
+  License, which is included with this program in the docs directory in the file
+  license.txt.
   
   For more information, please consult GNU at http://www.gnu.org/, or the Free
   Software Foundation at http://www.fsf.org/.

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <resource version="2.3.0.1" xmlns="http://www.wxwidgets.org/wxxrc">
     <object class="wxFrame" name="IDF_SMSE" subclass="Frame">
         <style>wxCAPTION|wxRESIZE_BORDER|wxSYSTEM_MENU|wxMINIMIZE_BOX|wxMAXIMIZE_BOX|wxCLOSE_BOX</style>
@@ -9,7 +9,6 @@
                 <label>&amp;File</label>
                 <object class="wxMenuItem" name="wxID_OPEN">
                     <label>&amp;Open SRAM\tCtrl-O</label>
-                    <help>Open a Super Metroid SRAM file for editing</help>
                 </object>
                 <object class="wxMenuItem" name="wxID_CLOSE">
                     <label>&amp;Close\tCtrl-W</label>
@@ -19,19 +18,16 @@
                 </object>
                 <object class="wxMenuItem" name="wxID_SAVE">
                     <label>&amp;Save\tCtrl-S</label>
-                    <help>Save changes to the SRAM</help>
                     <enabled>0</enabled>
                 </object>
                 <object class="wxMenuItem" name="wxID_SAVEAS">
                     <label>Save As</label>
-                    <help>Save changes to the SRAM to another file</help>
                     <enabled>0</enabled>
                 </object>
                 <object class="separator">
                 </object>
                 <object class="wxMenuItem" name="wxID_EXIT">
                     <label>E&amp;xit</label>
-                    <help>Exit the application</help>
                 </object>
             </object>
             <object class="wxMenu">
@@ -40,19 +36,16 @@
                     <label>Game &amp;A\tF1</label>
                     <radio>1</radio>
                     <checked>1</checked>
-                    <help>Edit save game slot 1</help>
                     <enabled>0</enabled>
                 </object>
                 <object class="wxMenuItem" name="IDM_GAME_GAMEB">
                     <label>Game &amp;B\tF2</label>
                     <radio>1</radio>
-                    <help>Edit save game slot 2</help>
                     <enabled>0</enabled>
                 </object>
                 <object class="wxMenuItem" name="IDM_GAME_GAMEC">
                     <label>Game &amp;C\tF3</label>
                     <radio>1</radio>
-                    <help>Edit save game slot 3</help>
                     <enabled>0</enabled>
                 </object>
                 <object class="separator">
@@ -61,145 +54,117 @@
                     <label>&amp;Ending</label>
                     <object class="wxMenuItem" name="IDM_GAME_ENDING1">
                         <label>&amp;Best Ending\tF5</label>
-                        <help>Change the Game Time to 0:00 for the Best Ending</help>
                     </object>
                     <object class="wxMenuItem" name="IDM_GAME_ENDING2">
                         <label>&amp;Average Ending\tF6</label>
-                        <help>Change the Game Time to 3:00 for the Average Ending</help>
                     </object>
                     <object class="wxMenuItem" name="IDM_GAME_ENDING3">
                         <label>&amp;Worst Ending\tF7</label>
-                        <help>Change the Game Time to 10:00 for the Worst Ending</help>
                     </object>
                 </object>
                 <object class="wxMenu" name="IDM_GAME_GIVE">
                     <label>&amp;Give</label>
                     <object class="wxMenuItem" name="IDM_GAME_GIVE_EVERYTHING">
                         <label>&amp;Everything\tF9</label>
-                        <help>Give full energy, inventory, and items; open all doors and kill all bosses and mini-bosses</help>
                     </object>
                     <object class="separator">
                     </object>
                     <object class="wxMenuItem" name="IDM_GAME_GIVE_ENERGY">
                         <label>Energy</label>
-                        <help>Fill Samus' primary and reserve energy</help>
                     </object>
                     <object class="wxMenuItem" name="IDM_GAME_GIVE_INVENTORY">
                         <label>Inventory</label>
-                        <help>Fill Samus' missile, super missile, and power bomb inventory</help>
                     </object>
                     <object class="separator">
                     </object>
                     <object class="wxMenuItem" name="IDM_GAME_GIVE_BOSSES">
                         <label>Bosses</label>
-                        <help>Kill all bosses</help>
                     </object>
                     <object class="wxMenuItem" name="IDM_GAME_GIVE_MINIBOSSES">
                         <label>Mini-Bosses</label>
-                        <help>Kill all mini-bosses</help>
                     </object>
                     <object class="wxMenuItem" name="IDM_GAME_GIVE_METROIDROOMS">
                         <label>Metroid Rooms</label>
-                        <help>Clear all metroid rooms</help>
                     </object>
                     <object class="wxMenuItem" name="IDM_GAME_GIVE_ZEBETITES">
                         <label>Zebetites</label>
-                        <help>Kill all zebetites</help>
                     </object>
                     <object class="separator">
                     </object>
                     <object class="wxMenuItem" name="IDM_GAME_GIVE_MAPS">
                         <label>Maps</label>
-                        <help>Give Samus all area maps</help>
                     </object>
                     <object class="separator">
                     </object>
                     <object class="wxMenuItem" name="IDM_GAME_GIVE_ITEMS">
                         <label>Items</label>
-                        <help>Give Samus all items</help>
                     </object>
                     <object class="separator">
                     </object>
                     <object class="wxMenuItem" name="IDM_GAME_GIVE_MISSILES">
                         <label>Missile Packs</label>
-                        <help>Give Samus all missile packs</help>
                     </object>
                     <object class="wxMenuItem" name="IDM_GAME_GIVE_SMISSILES">
                         <label>Super Missile Packs</label>
-                        <help>Give Samus all super missile packs</help>
                     </object>
                     <object class="wxMenuItem" name="IDM_GAME_GIVE_PBOMBS">
                         <label>Power Bomb Packs</label>
-                        <help>Give Samus all power bomb packs</help>
                     </object>
                     <object class="separator">
                     </object>
                     <object class="wxMenuItem" name="IDM_GAME_GIVE_ETANKS">
                         <label>Energy Tanks</label>
-                        <help>Give Samus all energy tanks</help>
                     </object>
                     <object class="wxMenuItem" name="IDM_GAME_GIVE_RTANKS">
                         <label>Reserve Tanks</label>
-                        <help>Give Samus all reserve tanks</help>
                     </object>
                     <object class="separator">
                     </object>
                     <object class="wxMenuItem" name="IDM_GAME_GIVE_REDDOORS">
                         <label>Red Doors</label>
-                        <help>Open all red doors</help>
                     </object>
                     <object class="wxMenuItem" name="IDM_GAME_GIVE_GREENDOORS">
                         <label>Green Doors</label>
-                        <help>Open all green doors</help>
                     </object>
                     <object class="wxMenuItem" name="IDM_GAME_GIVE_YELLOWDOORS">
                         <label>Yellow Doors</label>
-                        <help>Open all yellow doors</help>
                     </object>
                     <object class="wxMenuItem" name="IDM_GAME_GIVE_EYEDOORS">
                         <label>Eye Doors</label>
-                        <help>Destroy all eye doors</help>
                     </object>
                     <object class="wxMenuItem" name="IDM_GAME_GIVE_METALDOORS">
                         <label>Metal Doors</label>
-                        <help>Open all metal doors</help>
                     </object>
                 </object>
                 <object class="separator">
                 </object>
                 <object class="wxMenu" name="IDM_GAME_COPY">
                     <label>Copy</label>
-                    <object class="wxMenu" name="IDM_GAME_COPYA">
+                    <object class="wxMenu">
                         <label>Game A</label>
                         <object class="wxMenuItem" name="IDM_GAME_COPYAB">
                             <label>Game B</label>
-                            <help>Copy game A over game B</help>
                         </object>
                         <object class="wxMenuItem" name="IDM_GAME_COPYAC">
                             <label>Game C</label>
-                            <help>Copy game A over game C</help>
                         </object>
                     </object>
-                    <object class="wxMenu" name="IDM_GAME_COPYB">
+                    <object class="wxMenu">
                         <label>Game B</label>
                         <object class="wxMenuItem" name="IDM_GAME_COPYBA">
                             <label>Game A</label>
-                            <help>Copy game B over game A</help>
                         </object>
                         <object class="wxMenuItem" name="IDM_GAME_COPYBC">
                             <label>Game C</label>
-                            <help>Copy game B over game C</help>
                         </object>
                     </object>
-                    <object class="wxMenu" name="IDM_GAME_COPYC">
+                    <object class="wxMenu">
                         <label>Game C</label>
                         <object class="wxMenuItem" name="IDM_GAME_COPYCA">
                             <label>Game A</label>
-                            <help>Copy game C over game A</help>
                         </object>
                         <object class="wxMenuItem" name="IDM_GAME_COPYCB">
                             <label>Game B</label>
-                            <help>Copy game C over game B</help>
                         </object>
                     </object>
                 </object>
@@ -207,15 +172,12 @@
                     <label>Clear</label>
                     <object class="wxMenuItem" name="IDM_GAME_CLEARA">
                         <label>Game A</label>
-                        <help>Clear game A</help>
                     </object>
                     <object class="wxMenuItem" name="IDM_GAME_CLEARB">
                         <label>Game B</label>
-                        <help>Clear game B</help>
                     </object>
                     <object class="wxMenuItem" name="IDM_GAME_CLEARC">
                         <label>Game C</label>
-                        <help>Clear game C</help>
                     </object>
                 </object>
             </object>
@@ -223,7 +185,6 @@
                 <label>&amp;Help</label>
                 <object class="wxMenuItem" name="wxID_ABOUT">
                     <label>About</label>
-                    <help>About Super Metroid SRAM Editor</help>
                 </object>
             </object>
         </object>
@@ -234,7 +195,7 @@
                 <border>0</border>
                 <option>1</option>
                 <object class="wxNotebook" name="IDN_SMSE">
-                    <style>wxNB_TOP|wxNB_NOPAGETHEME</style>
+                    <style>wxBK_TOP|wxNB_NOPAGETHEME</style>
                     <object class="notebookpage">
                         <label>Game</label>
                         <object class="wxPanel" name="IDP_GAME">
@@ -261,7 +222,7 @@
                                                         <vgap>0</vgap>
                                                         <hgap>0</hgap>
                                                         <object class="sizeritem">
-                                                            <flag>wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxADJUST_MINSIZE</flag>
+                                                            <flag>wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT</flag>
                                                             <border>5</border>
                                                             <object class="wxStaticText" name="wxID_STATIC">
                                                                 <label>Primary:</label>
@@ -271,12 +232,12 @@
                                                             <flag>wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT</flag>
                                                             <border>5</border>
                                                             <object class="wxTextCtrl" name="IDT_GAME_ENERGY">
-                                                                <value>99</value>
+                                                                <value>0</value>
                                                                 <maxlength>4</maxlength>
                                                             </object>
                                                         </object>
                                                         <object class="sizeritem">
-                                                            <flag>wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP|wxADJUST_MINSIZE</flag>
+                                                            <flag>wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
                                                             <border>5</border>
                                                             <object class="wxStaticText" name="wxID_STATIC">
                                                                 <label>Reserve:</label>
@@ -309,7 +270,7 @@
                                                         <vgap>0</vgap>
                                                         <hgap>0</hgap>
                                                         <object class="sizeritem">
-                                                            <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxADJUST_MINSIZE</flag>
+                                                            <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT</flag>
                                                             <border>5</border>
                                                             <object class="wxStaticText" name="wxID_STATIC">
                                                                 <label>Missiles:</label>
@@ -334,7 +295,7 @@
                                                             </object>
                                                         </object>
                                                         <object class="sizeritem">
-                                                            <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxADJUST_MINSIZE</flag>
+                                                            <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT</flag>
                                                             <border>5</border>
                                                             <object class="wxStaticText" name="wxID_STATIC">
                                                                 <label>Super Missiles:</label>
@@ -359,7 +320,7 @@
                                                             </object>
                                                         </object>
                                                         <object class="sizeritem">
-                                                            <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxADJUST_MINSIZE</flag>
+                                                            <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT</flag>
                                                             <border>5</border>
                                                             <object class="wxStaticText" name="wxID_STATIC">
                                                                 <label>Power Bombs:</label>
@@ -409,7 +370,7 @@
                                                         <vgap>0</vgap>
                                                         <hgap>0</hgap>
                                                         <object class="sizeritem">
-                                                            <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxADJUST_MINSIZE</flag>
+                                                            <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT</flag>
                                                             <border>5</border>
                                                             <object class="wxStaticText" name="wxID_STATIC">
                                                                 <label>Kraid:</label>
@@ -435,7 +396,7 @@
                                                             </object>
                                                         </object>
                                                         <object class="sizeritem">
-                                                            <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP|wxADJUST_MINSIZE</flag>
+                                                            <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
                                                             <border>5</border>
                                                             <object class="wxStaticText" name="wxID_STATIC">
                                                                 <label>Phantoon:</label>
@@ -461,7 +422,7 @@
                                                             </object>
                                                         </object>
                                                         <object class="sizeritem">
-                                                            <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP|wxADJUST_MINSIZE</flag>
+                                                            <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
                                                             <border>5</border>
                                                             <object class="wxStaticText" name="wxID_STATIC">
                                                                 <label>Draygon:</label>
@@ -487,7 +448,7 @@
                                                             </object>
                                                         </object>
                                                         <object class="sizeritem">
-                                                            <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP|wxADJUST_MINSIZE</flag>
+                                                            <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
                                                             <border>5</border>
                                                             <object class="wxStaticText" name="wxID_STATIC">
                                                                 <label>Ridley:</label>
@@ -531,7 +492,7 @@
                                                         <vgap>0</vgap>
                                                         <hgap>0</hgap>
                                                         <object class="sizeritem">
-                                                            <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxADJUST_MINSIZE</flag>
+                                                            <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT</flag>
                                                             <border>5</border>
                                                             <object class="wxStaticText" name="wxID_STATIC">
                                                                 <label>Silver Torizo:</label>
@@ -547,7 +508,7 @@
                                                             </object>
                                                         </object>
                                                         <object class="sizeritem">
-                                                            <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP|wxADJUST_MINSIZE</flag>
+                                                            <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
                                                             <border>5</border>
                                                             <object class="wxStaticText" name="wxID_STATIC">
                                                                 <label>Spore Spawn:</label>
@@ -563,7 +524,7 @@
                                                             </object>
                                                         </object>
                                                         <object class="sizeritem">
-                                                            <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP|wxADJUST_MINSIZE</flag>
+                                                            <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
                                                             <border>5</border>
                                                             <object class="wxStaticText" name="wxID_STATIC">
                                                                 <label>Botwoon:</label>
@@ -579,7 +540,7 @@
                                                             </object>
                                                         </object>
                                                         <object class="sizeritem">
-                                                            <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP|wxADJUST_MINSIZE</flag>
+                                                            <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
                                                             <border>5</border>
                                                             <object class="wxStaticText" name="wxID_STATIC">
                                                                 <label>Crocomire:</label>
@@ -595,7 +556,7 @@
                                                             </object>
                                                         </object>
                                                         <object class="sizeritem">
-                                                            <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP|wxADJUST_MINSIZE</flag>
+                                                            <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
                                                             <border>5</border>
                                                             <object class="wxStaticText" name="wxID_STATIC">
                                                                 <label>Golden Torizo:</label>
@@ -664,6 +625,8 @@
                                             <object class="wxRadioBox" name="IDRB_GAME_ZEBETITES">
                                                 <style>wxRA_SPECIFY_COLS</style>
                                                 <label>Zebetites</label>
+                                                <dimension>1</dimension>
+                                                <selection>0</selection>
                                                 <content>
                                                     <item>Zero</item>
                                                     <item>One</item>
@@ -692,6 +655,8 @@
                                                     <object class="wxRadioBox" name="IDRB_GAME_SAVEAREA">
                                                         <style>wxRA_SPECIFY_COLS</style>
                                                         <label>Area</label>
+                                                        <dimension>1</dimension>
+                                                        <selection>0</selection>
                                                         <content>
                                                             <item>Crateria</item>
                                                             <item>Brinstar</item>
@@ -898,7 +863,7 @@
                                                 <vgap>0</vgap>
                                                 <hgap>0</hgap>
                                                 <object class="sizeritem">
-                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxADJUST_MINSIZE</flag>
+                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT</flag>
                                                     <border>5</border>
                                                     <object class="wxStaticText" name="wxID_STATIC">
                                                         <label>Dash:</label>
@@ -921,7 +886,7 @@
                                                     </object>
                                                 </object>
                                                 <object class="sizeritem">
-                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxADJUST_MINSIZE</flag>
+                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT</flag>
                                                     <border>5</border>
                                                     <object class="wxStaticText" name="wxID_STATIC">
                                                         <label>Jump:</label>
@@ -944,7 +909,7 @@
                                                     </object>
                                                 </object>
                                                 <object class="sizeritem">
-                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP|wxADJUST_MINSIZE</flag>
+                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
                                                     <border>5</border>
                                                     <object class="wxStaticText" name="wxID_STATIC">
                                                         <label>Item Cancel:</label>
@@ -967,7 +932,7 @@
                                                     </object>
                                                 </object>
                                                 <object class="sizeritem">
-                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP|wxADJUST_MINSIZE</flag>
+                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
                                                     <border>5</border>
                                                     <object class="wxStaticText" name="wxID_STATIC">
                                                         <label>Shot:</label>
@@ -990,7 +955,7 @@
                                                     </object>
                                                 </object>
                                                 <object class="sizeritem">
-                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP|wxADJUST_MINSIZE</flag>
+                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
                                                     <border>5</border>
                                                     <object class="wxStaticText" name="wxID_STATIC">
                                                         <label>Angle Up:</label>
@@ -1008,7 +973,7 @@
                                                     </object>
                                                 </object>
                                                 <object class="sizeritem">
-                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP|wxADJUST_MINSIZE</flag>
+                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
                                                     <border>5</border>
                                                     <object class="wxStaticText" name="wxID_STATIC">
                                                         <label>Angle Down:</label>
@@ -1026,7 +991,7 @@
                                                     </object>
                                                 </object>
                                                 <object class="sizeritem">
-                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP|wxADJUST_MINSIZE</flag>
+                                                    <flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP</flag>
                                                     <border>5</border>
                                                     <object class="wxStaticText" name="wxID_STATIC">
                                                         <label>Item Select:</label>
@@ -1064,6 +1029,8 @@
                                             <object class="wxRadioBox" name="IDRB_MISC_LANGUAGE">
                                                 <style>wxRA_SPECIFY_ROWS</style>
                                                 <label>Language</label>
+                                                <dimension>1</dimension>
+                                                <selection>0</selection>
                                                 <content>
                                                     <item>English</item>
                                                     <item>Japanese</item>
@@ -1076,6 +1043,8 @@
                                             <object class="wxRadioBox" name="IDRB_MISC_MOONWALK">
                                                 <style>wxRA_SPECIFY_ROWS</style>
                                                 <label>Moon Walk</label>
+                                                <dimension>1</dimension>
+                                                <selection>0</selection>
                                                 <content>
                                                     <item>Off</item>
                                                     <item>On</item>
@@ -1088,6 +1057,8 @@
                                             <object class="wxRadioBox" name="IDRB_MISC_ICONCANCEL">
                                                 <style>wxRA_SPECIFY_ROWS</style>
                                                 <label>Icon Cancel</label>
+                                                <dimension>1</dimension>
+                                                <selection>0</selection>
                                                 <content>
                                                     <item>Manual</item>
                                                     <item>Automatic</item>
@@ -3689,7 +3660,7 @@
                 </object>
             </object>
         </object>
-        <object class="wxStatusBar" name="IDSBAR_SMSE">
+        <object class="wxStatusBar" name="ID_STATUSBAR">
             <style>wxST_SIZEGRIP|wxNO_BORDER</style>
             <fields>1</fields>
             <widths></widths>

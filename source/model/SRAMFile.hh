@@ -1,6 +1,6 @@
 /*
  * Super Metroid SRAM Editor
- * Copyright (C) 2005 emuWorks
+ * Copyright (C) 2005,2007-2008 emuWorks
  * http://games.technoplaza.net/
  *
  * This file is part of Super Metroid SRAM Editor.
@@ -20,10 +20,10 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
  
-// $Id: SRAMFile.hh,v 1.41 2007/02/23 01:53:41 technoplaza Exp $
+// $Id: SRAMFile.hh,v 1.42 2008/12/17 04:14:15 jdratlif Exp $
 
-#ifndef _SMSE_SRAMFILE_HH_
-#define _SMSE_SRAMFILE_HH_
+#ifndef SMSE_SRAMFILE_HH_
+#define SMSE_SRAMFILE_HH_
 
 #include <utility>
 

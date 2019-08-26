@@ -1,6 +1,6 @@
 /*
  * Super Metroid SRAM Editor
- * Copyright (C) 2005 emuWorks
+ * Copyright (C) 2005,2007-2008 emuWorks
  * http://games.technoplaza.net/
  *
  * This file is part of Super Metroid SRAM Editor.
@@ -20,7 +20,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
  
-// $Id: Frame.cc,v 1.52 2005/10/17 09:54:45 technoplaza Exp $
+// $Id: Frame.cc,v 1.54 2008/12/17 04:56:18 jdratlif Exp $
 
 #ifdef HAVE_CONFIG_H
     #include <config.h>
@@ -32,6 +32,7 @@
     #include <wx/wx.h>
 #endif
 
+#include <wx/notebook.h>
 #include <wx/regex.h>
 #include <wx/xrc/xmlres.h>
 
@@ -1032,6 +1033,8 @@ void Frame::open(const wxString &filename) {
             wxT("Error: Invalid Super Metroid SRAM file"),
             wxOK | wxICON_ERROR);
     }
+    
+    XRCCTRL(*this, "IDN_SMSE", wxNotebook)->Show(sram);
 }
 
 bool Frame::save(const wxString &filename) {
@@ -1255,7 +1258,7 @@ void Frame::onFileOpen(wxCommandEvent &) {
     
     wxFileDialog dlg(this, wxT("Select a Super Metroid SRAM file"),
                      wxEmptyString, wxEmptyString,
-                     wxT("SRAM Files (*.srm)|*.srm"), wxOPEN);
+                     wxT("SRAM Files (*.srm)|*.srm"), wxFD_OPEN);
                      
     if (dlg.ShowModal() == wxID_OK) {
         open(dlg.GetPath());
@@ -1275,7 +1278,7 @@ void Frame::onFileSaveAs(wxCommandEvent &) {
     
     wxFileDialog dlg(this, wxT("Select a Super Metroid SRAM file"),
                      wxEmptyString, wxEmptyString,
-                     wxT("SRAM Files (*.srm)|*.srm"), wxSAVE);
+                     wxT("SRAM Files (*.srm)|*.srm"), wxFD_SAVE);
                      
     if (dlg.ShowModal() == wxID_OK) {
         sram->save(dlg.GetPath());

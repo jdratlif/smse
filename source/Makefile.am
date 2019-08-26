@@ -1,6 +1,9 @@
+# $Id: Makefile.am,v 1.9 2008/12/17 04:04:17 jdratlif Exp $
+
 AUTOMAKE_OPTIONS = subdir-objects
 CLEANFILES = res/smse.cc
-EXTRA_DIST = res/icon32x32.ico res/icon32x32.xpm res/smse.xrc res/windows.rc
+EXTRA_DIST = res/icon32x32.ico res/icon32x32.xpm res/Info.plist res/smse.icns \
+	res/smse.xrc res/windows.rc
 
 bin_PROGRAMS = smse
 
@@ -27,4 +30,14 @@ endif
 
 .xrc.cc:
 	wxrc -c -o $@ $<
+
+smse.app: smse res/smse.icns res/Info.plist
+	-mkdir smse.app
+	-mkdir smse.app/Contents
+	-mkdir smse.app/Contents/MacOS
+	-mkdir smse.app/Contents/Resources
+	cp smse smse.app/Contents/MacOS
+	cp res/Info.plist smse.app/Contents
+	cp res/smse.icns smse.app/Contents/Resources
+	echo -n 'APPL????' > smse.app/Contents/PkgInfo
 

@@ -1,6 +1,6 @@
 /*
  * Super Metroid SRAM Editor
- * Copyright (C) 2005 emuWorks
+ * Copyright (C) 2005,2007-2008 emuWorks
  * http://games.technoplaza.net/
  *
  * This file is part of Super Metroid SRAM Editor.
@@ -20,10 +20,10 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
  
-// $Id: InvalidSRAMDataException.hh,v 1.1 2005/10/10 01:38:06 technoplaza Exp $
+// $Id: InvalidSRAMDataException.hh,v 1.2 2008/12/17 04:14:15 jdratlif Exp $
 
-#ifndef _SMSE_INVALIDSRAMDATAEXCEPTION_HH_
-#define _SMSE_INVALIDSRAMDATAEXCEPTION_HH_
+#ifndef SMSE_INVALIDSRAMDATAEXCEPTION_HH_
+#define SMSE_INVALIDSRAMDATAEXCEPTION_HH_
 
 #include <stdexcept>
 

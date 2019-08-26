@@ -1,6 +1,6 @@
 /*
  * Super Metroid SRAM Editor
- * Copyright (C) 2005 emuWorks
+ * Copyright (C) 2005,2007-2008 emuWorks
  * http://games.technoplaza.net/
  *
  * This file is part of Super Metroid SRAM Editor.
@@ -20,7 +20,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
  
-// $Id: InvalidButtonException.cc,v 1.1 2005/10/08 20:03:03 technoplaza Exp $
+// $Id: InvalidButtonException.cc,v 1.2 2008/12/17 04:14:15 jdratlif Exp $
 
 #ifdef HAVE_CONFIG_H
     #include <config.h>

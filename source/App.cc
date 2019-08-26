@@ -1,6 +1,6 @@
 /*
  * Super Metroid SRAM Editor
- * Copyright (C) 2005 emuWorks
+ * Copyright (C) 2005,2007-2008 emuWorks
  * http://games.technoplaza.net/
  *
  * This file is part of Super Metroid SRAM Editor.
@@ -20,7 +20,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
  
-// $Id: App.cc,v 1.2 2005/10/15 03:13:48 technoplaza Exp $
+// $Id: App.cc,v 1.4 2008/12/17 04:14:15 jdratlif Exp $
 
 #ifdef HAVE_CONFIG_H
     #include <config.h>
@@ -41,8 +41,8 @@
 using namespace smse;
 
 const wxString smse::APP_NAME(wxT("Super Metroid SRAM Editor"));
-const wxString smse::APP_VERSION(wxT("1.0"));
-const wxString smse::APP_COPYRIGHT(wxT("Copyright (C) 2005 emuWorks"));
+const wxString smse::APP_VERSION(wxT("1.0a"));
+const wxString smse::APP_COPYRIGHT(wxT("Copyright (C) 2005,2007-2008 emuWorks"));
 const wxString smse::APP_URL(wxT("http://games.technoplaza.net/"));
 
 // prototype for InitXmlResource function

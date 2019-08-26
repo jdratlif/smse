@@ -1,5 +1,7 @@
+dnl $Id: configure.ac,v 1.8 2008/12/17 04:04:17 jdratlif Exp $
+
 dnl Initialize autoconf
-AC_INIT([smse], [1.0], [webmaster@technoplaza.net])
+AC_INIT([smse], [1.0a], [webmaster@technoplaza.net])
 
 dnl require autoconf >= 2.59
 AC_PREREQ([2.59])
@@ -8,7 +10,7 @@ dnl use the config.h header
 AC_CONFIG_HEADERS([config.h])
 
 dnl initialize automake and allow bzipped distributions
-AM_INIT_AUTOMAKE([1.9.6 dist-bzip2 dist-zip])
+AM_INIT_AUTOMAKE([1.9.6 dist-bzip2])
 
 dnl host system check
 AC_CANONICAL_HOST
@@ -26,16 +28,15 @@ AC_PROG_INSTALL
 
 dnl tests for wxWidgets
 AM_OPTIONS_WXCONFIG
-AM_PATH_WXCONFIG([2.6.0], HAVE_WXWIDGETS=1, HAVE_WXWIDGETS=0)
+AM_PATH_WXCONFIG([2.8.0], HAVE_WXWIDGETS=1, HAVE_WXWIDGETS=0)
 
 if test $HAVE_WXWIDGETS -eq 1; then
     CPPFLAGS="$CPPFLAGS $WX_CPPFLAGS"
     CXXFLAGS="$CXXFLAGS $WX_CXXFLAGS_ONLY"
     LIBS="$LIBS $WX_LIBS"
 else
-    AC_MSG_ERROR([wxWidgets >= 2.6 is required.
-                  
-                  Please install wxWidgets 2.6 from http://www.wxwidgets.org.
+    AC_MSG_ERROR([wxWidgets 2.8 is required.
+                  Please install wxWidgets from http://www.wxwidgets.org.
                   
                   This error could also be the result of a non-standard install
                   path or a missing wx-config program.])
