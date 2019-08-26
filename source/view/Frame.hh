@@ -20,12 +20,15 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
  
-// $Id: Frame.hh,v 1.44 2005/10/15 16:48:10 technoplaza Exp $
+// $Id: Frame.hh,v 1.45 2005/10/17 09:54:45 technoplaza Exp $
 
 #ifndef _SMSE_FRAME_HH_
 #define _SMSE_FRAME_HH_
 
 #include <wx/spinbutt.h>
+
+/// idenfitier for the status bar clear timer
+#define ID_SBTIMER wxID_HIGHEST + 1
 
 namespace smse {
     class SRAMFile;
@@ -38,6 +41,57 @@ namespace smse {
         friend class SRAMFileTarget;
         
     private:
+        /// time (ms) to wait before clearing the status bar
+        static const int CLEAR_DELAY = 4000;
+        
+        /// number of save points in Crateria
+        static const int C_SAVEPOINTS = 2;
+        
+        /// number of save points in Brinstar
+        static const int BS_SAVEPOINTS = 5;
+        
+        /// number of save points in Norfair
+        static const int NF_SAVEPOINTS = 6;
+        
+        /// number of save points in the Wrecked Ship
+        static const int WS_SAVEPOINTS = 1;
+        
+        /// number of save points in Maridia
+        static const int M_SAVEPOINTS = 4;
+        
+        /// number of save points in Tourian
+        static const int T_SAVEPOINTS = 2;
+        
+        /// number of missile packs in the game
+        static const int MISSILE_PACKS = 46;
+        
+        /// number of super missile packs in the game
+        static const int SMISSILE_PACKS = 10;
+        
+        /// number of power bomb packs in the game
+        static const int PBOMB_PACKS = 10;
+        
+        /// number of energy tanks in the game
+        static const int ETANKS = 14;
+        
+        /// number of reserve tanks in the game
+        static const int RTANKS = 4;
+        
+        /// number of red doors in the game
+        static const int REDDOORS = 30;
+        
+        /// number of green doors in the game
+        static const int GREENDOORS = 23;
+        
+        /// number of yellow doors in the game
+        static const int YELLOWDOORS = 13;
+        
+        /// number of metal doors in the game
+        static const int METALDOORS = 40;
+        
+        /// number of eye doors in the game
+        static const int EYEDOORS = 5;
+
         wxTimer timer;
         SRAMFile *sram;
         int game;

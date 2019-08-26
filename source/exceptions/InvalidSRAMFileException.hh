@@ -40,7 +40,7 @@ namespace smse {
     };
     
     inline InvalidSRAMFileException::
-        InvalidSRAMFileException(const std::string& message) : 
+        InvalidSRAMFileException(const std::string &message) : 
         std::runtime_error(message) {}
 }
 

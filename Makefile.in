@@ -161,7 +161,9 @@ sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
 SUBDIRS = source
-EXTRA_DIST = apidocs docs/*.txt DialogBlocks/smse.pjd TODO Doxyfile Info.plist
+EXTRA_DIST = apidocs docs/*.txt DialogBlocks/smse.pjd TODO Doxyfile Info.plist \
+	vc.net/smse/smse.sln vc.net/smse/smse.vcproj
+
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-recursive
 
@@ -353,7 +355,7 @@ distclean-tags:
 distdir: $(DISTFILES)
 	$(am__remove_distdir)
 	mkdir $(distdir)
-	$(mkdir_p) $(distdir)/DialogBlocks $(distdir)/docs
+	$(mkdir_p) $(distdir)/DialogBlocks $(distdir)/docs $(distdir)/vc.net/smse
 	@srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`; \
 	topsrcdirstrip=`echo "$(top_srcdir)" | sed 's|.|.|g'`; \
 	list='$(DISTFILES)'; for file in $$list; do \

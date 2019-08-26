@@ -20,7 +20,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
  
-// $Id: SRAMFile.hh,v 1.39 2005/10/15 04:50:51 technoplaza Exp $
+// $Id: SRAMFile.hh,v 1.41 2007/02/23 01:53:41 technoplaza Exp $
 
 #ifndef _SMSE_SRAMFILE_HH_
 #define _SMSE_SRAMFILE_HH_
@@ -227,8 +227,51 @@ namespace smse {
         STATUE_DRAYGON = 66, STATUE_RIDLEY = 70
     };
     
+    /// save points in Crateria
+    const int C_SAVEPOINTS = 2;
+    
+    /// save points in Brinstar
+    const int BS_SAVEPOINTS = 5;
+    
+    /// save points in Norfair
+    const int NF_SAVEPOINTS = 6;
+    
+    /// save points in Wrecked Ship
+    const int WS_SAVEPOINTS = 1;
+    
+    /// save points in Maridia
+    const int M_SAVEPOINTS = 4;
+    
+    /// save points in Tourian
+    const int T_SAVEPOINTS = 2;
+    
     /// Class to encapsulate a Super Metroid SRAM File
     class SRAMFile {
+    public:
+        /// size of the SRAM file
+        static const unsigned int SRAM_SIZE = 0x2000;
+        
+        /// number of save games in the SRAM data
+        static const unsigned int GAMES = 3;
+        
+        /// size of each individual save game
+        static const unsigned int GAME_SIZE = 0x65C;
+        
+        /// offset to the beginning of the game data
+        static const int GAME_OFFSET = 0x10;
+        
+        /// offset of the checksums
+        static const int CHECKSUM_OFFSET = 0;
+        
+        /// offset of the redundant checksums
+        static const int CHECKSUM_OFFSET2 = 0x1FF0;
+        
+        /// offset of the checksum compliments
+        static const int COMPLIMENT_OFFSET = 0x8;
+        
+        /// offset of the redundant checksum compliments
+        static const int COMPLIMENT_OFFSET2 = 0x1FF8;
+        
     private:
         /// all the SRAM offsets
         static const std::pair<int, unsigned char> SRAM_OFFSET[];

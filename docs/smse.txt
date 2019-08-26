@@ -1,5 +1,5 @@
 --------------------------------------------------------------------------------
-| smse 0.91 - The Super Metroid SRAM Editor
+| smse 1.0 - The Super Metroid SRAM Editor
 | Copyright (C) 2005 emuWorks (http://games.technoplaza.net/)
 | by John Ratliff <webmaster [AT] technoplaza [DOT] net>
 --------------------------------------------------------------------------------
@@ -379,6 +379,11 @@
 --------------------------------------------------------------------------------
 | 5.0 Release History
 --------------------------------------------------------------------------------
+  
+  Version 1.0 - February 22, 2007
+    - Replaced ampersand in Yellow & Eye Doors tab with a /
+    - Minor code cleanup (compiles in debug mode now)
+    - Added Visual C++ 2005 project files
   
   Version 0.91 - Saturday, October 15, 2005
     - Updated save point list in the readme

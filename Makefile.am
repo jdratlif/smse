@@ -1,5 +1,6 @@
 SUBDIRS = source
-EXTRA_DIST = apidocs docs/*.txt DialogBlocks/smse.pjd TODO Doxyfile Info.plist
+EXTRA_DIST = apidocs docs/*.txt DialogBlocks/smse.pjd TODO Doxyfile Info.plist \
+	vc.net/smse/smse.sln vc.net/smse/smse.vcproj
 
 .PHONY: allclean apidocs touch
 

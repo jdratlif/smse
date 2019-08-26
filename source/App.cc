@@ -41,7 +41,7 @@
 using namespace smse;
 
 const wxString smse::APP_NAME(wxT("Super Metroid SRAM Editor"));
-const wxString smse::APP_VERSION(wxT(PACKAGE_VERSION));
+const wxString smse::APP_VERSION(wxT("1.0"));
 const wxString smse::APP_COPYRIGHT(wxT("Copyright (C) 2005 emuWorks"));
 const wxString smse::APP_URL(wxT("http://games.technoplaza.net/"));
 

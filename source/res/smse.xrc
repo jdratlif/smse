@@ -3008,7 +3008,7 @@
                         </object>
                     </object>
                     <object class="notebookpage">
-                        <label>Yellow &amp; Eye Doors</label>
+                        <label>Yellow/Eye Doors</label>
                         <object class="wxPanel" name="IDP_YELLOWEYEDOORS">
                             <style>wxSUNKEN_BORDER|wxTAB_TRAVERSAL</style>
                             <object class="wxBoxSizer">

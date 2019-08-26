@@ -5,16 +5,18 @@ EXTRA_DIST = res/icon32x32.ico res/icon32x32.xpm res/smse.xrc res/windows.rc
 bin_PROGRAMS = smse
 
 smse_SOURCES = AppConstants.hh \
-    App.cc App.hh \
-    exceptions/FileIOException.cc exceptions/FileIOException.hh \
-    exceptions/InvalidButtonException.cc exceptions/InvalidButtonException.hh \
-    exceptions/InvalidSRAMDataException.cc exceptions/InvalidSRAMDataException.hh \
-    exceptions/InvalidSRAMFileException.cc exceptions/InvalidSRAMFileException.hh \
-    model/SRAMFile.cc model/SRAMFile.hh \
-    view/Frame.cc view/Frame.hh \
-    view/SRAMFileTarget.cc view/SRAMFileTarget.hh
-
-nodist_smse_SOURCES = res/smse.cc
+	App.cc App.hh \
+	exceptions/FileIOException.cc exceptions/FileIOException.hh \
+	exceptions/InvalidButtonException.cc \
+	exceptions/InvalidButtonException.hh \
+	exceptions/InvalidSRAMDataException.cc \
+	exceptions/InvalidSRAMDataException.hh \
+	exceptions/InvalidSRAMFileException.cc \
+	exceptions/InvalidSRAMFileException.hh \
+	model/SRAMFile.cc model/SRAMFile.hh \
+	res/smse.cc \
+	view/Frame.cc view/Frame.hh \
+	view/SRAMFileTarget.cc view/SRAMFileTarget.hh
 
 if WINDOWS
 smse_SOURCES += res/windows.rc

@@ -20,7 +20,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
  
-// $Id: Frame.cc,v 1.51 2005/10/15 16:48:10 technoplaza Exp $
+// $Id: Frame.cc,v 1.52 2005/10/17 09:54:45 technoplaza Exp $
 
 #ifdef HAVE_CONFIG_H
     #include <config.h>
@@ -1019,7 +1019,7 @@ void Frame::open(const wxString &filename) {
         
         sram = temp;
         
-        for (int i = 0; i < GAMES; ++i) {
+        for (unsigned int i = 0; i < SRAMFile::GAMES; ++i) {
             if (sram->isValidGame(i)) {
                 load(i);
                 break;
@@ -1341,7 +1341,7 @@ void Frame::onGameClear(wxCommandEvent &event) {
             // time to change games
             int game = -1;
             
-            for (int i = 0; i < GAMES; ++i) {
+            for (unsigned int i = 0; i < SRAMFile::GAMES; ++i) {
                 if (sram->isValidGame(i)) {
                     game = i;
                     break;

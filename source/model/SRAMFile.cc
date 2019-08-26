@@ -20,7 +20,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
  
-// $Id: SRAMFile.cc,v 1.34 2005/10/15 08:56:50 technoplaza Exp $
+// $Id: SRAMFile.cc,v 1.35 2005/10/17 09:54:45 technoplaza Exp $
 
 #ifdef HAVE_CONFIG_H
     #include <config.h>
@@ -607,7 +607,11 @@ std::pair<unsigned char,
     // ensure we have a valid game
     wxASSERT((game >= 0) && (game <= 2));
               
-    int offset = (redundant ? CHECKSUM_OFFSET2 : CHECKSUM_OFFSET);
+    int offset = CHECKSUM_OFFSET;
+    
+    if (redundant) {
+        offset = CHECKSUM_OFFSET2;
+    }
     
     return std::pair<unsigned char,
                      unsigned char>(sram[offset + (game * 2)],
@@ -620,7 +624,11 @@ std::pair<unsigned char,
     // ensure we have a valid game
     wxASSERT((game >= 0) && (game <= 2));
     
-    int offset = (redundant ? COMPLIMENT_OFFSET2 : COMPLIMENT_OFFSET);
+    int offset = COMPLIMENT_OFFSET;
+    
+    if (redundant) {
+        offset = COMPLIMENT_OFFSET2;
+    }
     
     return std::pair<unsigned char,
                      unsigned char>(sram[offset + (game * 2)],
@@ -1077,7 +1085,7 @@ std::pair<unsigned char,
 }
 
 void SRAMFile::checksum() {
-    for (int game = 0; game < GAMES; ++game) {
+    for (unsigned int game = 0; game < GAMES; ++game) {
         if (valid[game]) {
             std::pair<unsigned char, unsigned char> pair = checksum(game);
             std::pair<unsigned char, unsigned char> comp = compliment(pair);
@@ -1146,7 +1154,7 @@ std::pair<unsigned char, unsigned char>
 bool SRAMFile::hasValidGame() {
     bool valid = false;
     
-    for (int game = 0; game < GAMES; ++game) {
+    for (unsigned int game = 0; game < GAMES; ++game) {
         std::pair<unsigned char, unsigned char> schecksum = getChecksum(game);
         std::pair<unsigned char,
                   unsigned char> scompliment = getCompliment(game);
