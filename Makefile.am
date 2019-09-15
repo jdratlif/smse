@@ -19,6 +19,5 @@ bundle:
 
 touch:
 	-find -iname "*.cc" -exec touch {} \;
-	-find -iname "*.cpp" -exec touch {} \;
 	-find -iname "*.hh" -exec touch {} \;
 	-find -iname "*.xrc" -exec touch {} \;
