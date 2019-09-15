@@ -1,0 +1,7 @@
+autom4te.cache/*
+vstudio/.vs
+vstudio/Debug
+vstudio/Debug DLL
+vstudio/Release
+vstudio/Release DLL
+vstudio/x64
