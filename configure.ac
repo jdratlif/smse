@@ -1,16 +1,14 @@
-dnl $Id: configure.ac,v 1.8 2008/12/17 04:04:17 jdratlif Exp $
-
 dnl Initialize autoconf
-AC_INIT([smse], [1.0a], [webmaster@technoplaza.net])
+AC_INIT([smse], [1.0b], [webmaster@technoplaza.net])
 
-dnl require autoconf >= 2.59
-AC_PREREQ([2.59])
+dnl require autoconf >= 2.69
+AC_PREREQ([2.69])
 
 dnl use the config.h header
 AC_CONFIG_HEADERS([config.h])
 
 dnl initialize automake and allow bzipped distributions
-AM_INIT_AUTOMAKE([1.9.6 dist-bzip2])
+AM_INIT_AUTOMAKE([1.16.1 dist-bzip2])
 
 dnl host system check
 AC_CANONICAL_HOST
@@ -42,6 +40,21 @@ else
                   path or a missing wx-config program.])
 fi
 
+dnl add compile options for older versions of OS X
+AC_ARG_WITH([macosx-version-min],
+    AS_HELP_STRING(
+        [--with-macosx-version-min=VERSION],
+        [compile for this version of Mac OS X and later]))
+
+if test "x$with_macosx_version_min" != "x"; then
+    MACOSX_VERSION_MIN_OPTS="-mmacosx-version-min=$with_macosx_version_min"
+    CPPFLAGS="$CPPFLAGS $MACOSX_VERSION_MIN_OPTS"
+    CFLAGS="$CFLAGS $MACOSX_VERSION_MIN_OPTS"
+    CXXFLAGS="$CXXFLAGS $MACOSX_VERSION_MIN_OPTS"
+    LDFLAGS="$LDFLAGS $MACOSX_VERSION_MIN_OPTS"
+fi
+
+dnl save CPP include paths to use with windows resource compiler in msys/cygwin
 WX_INCLUDES=""
 for opt in $WX_CPPFLAGS
 do
@@ -56,4 +69,3 @@ AC_SUBST(WX_INCLUDES)
 dnl configure files to produce
 AC_CONFIG_FILES([Makefile source/Makefile])
 AC_OUTPUT
-

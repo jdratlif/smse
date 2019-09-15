@@ -1,5 +1,3 @@
-# $Id: Makefile.am,v 1.9 2008/12/17 04:04:17 jdratlif Exp $
-
 AUTOMAKE_OPTIONS = subdir-objects
 CLEANFILES = res/smse.cc
 EXTRA_DIST = res/icon32x32.ico res/icon32x32.xpm res/Info.plist res/smse.icns \
@@ -40,4 +38,3 @@ smse.app: smse res/smse.icns res/Info.plist
 	cp res/Info.plist smse.app/Contents
 	cp res/smse.icns smse.app/Contents/Resources
 	echo -n 'APPL????' > smse.app/Contents/PkgInfo
-
